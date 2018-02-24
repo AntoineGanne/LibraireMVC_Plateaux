@@ -25,7 +25,7 @@ public class Piece {
         forme=new ArrayList<Case>();
 
         Random rand=new Random();
-        id=rand.nextInt(3)+1;
+        id=rand.nextInt(253)+1;
     }
 
 

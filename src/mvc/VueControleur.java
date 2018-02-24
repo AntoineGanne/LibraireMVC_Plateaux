@@ -85,6 +85,13 @@ public class VueControleur extends Application {
                 for(int x=0;x<nbCasesX;x++) {
                     for (int y = 0; y < nbCaseY; y++) {
                         Rectangle rect=affichagePlateau[x][y];
+                        if(plateau[x][y]==0){
+                            rect.setFill(Color.WHITE);
+                        }
+                        else{
+                            rect.setFill(Color.hsb(plateau[x][y],0.8,0.8));
+                        }
+                        /*
                         switch (plateau[x][y]){
                             case 0:
                                 rect.setFill(Color.WHITE);
@@ -98,9 +105,14 @@ public class VueControleur extends Application {
                             case 3:
                                 rect.setFill(Color.GREEN);
                                 break;
+                            case 4:
+                                rect.setFill(Color.BURLYWOOD);
+                            case 5:
+                                rect.setFill(Color.hsb(5,0.5,0.7));
                             default:
                                 rect.setFill(Color.PINK);
                         }
+                        */
 
                     }
                 }

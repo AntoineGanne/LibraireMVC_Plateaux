@@ -43,13 +43,7 @@ public class Modele extends Observable {
         notifyObservers();
     }
     
-    public void calc() {
 
-        
-        // notification de la vue, suite à la mise à jour du champ lastValue
-        setChanged();
-        notifyObservers();
-    }
 
 
 

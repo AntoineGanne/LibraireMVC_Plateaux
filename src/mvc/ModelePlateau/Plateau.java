@@ -2,10 +2,11 @@ package mvc.ModelePlateau;
 
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
+import java.io.Console;
 import java.util.ArrayList;
 
 public class Plateau {
-    ArrayList<Piece> pieces;
+    private ArrayList<Piece> pieces;
 
     public int getNbCasesX() {
         return nbCasesX;
@@ -21,10 +22,7 @@ public class Plateau {
     Plateau(){
         pieces=new ArrayList<Piece>();
 
-        boolean[][] btab={{true}};
 
-        Piece p = new Piece(btab,0,0);
-        pieces.add(p);
     }
 
     public Plateau(int nbCasesX_in,int nbCasesY_in){
@@ -34,9 +32,12 @@ public class Plateau {
     }
 
     public void ajouterPiece(int posX,int posY){
-        boolean[][] btab={{true}};
+        //boolean[][] FormeDeLaPiece={{true}}; // correspond a une seule case
 
-        Piece p = new Piece(btab,posX,posY);
+        boolean[][] FormeDeLaPiece={{true,true},
+                                   {true,false}};
+
+        Piece p = new Piece(FormeDeLaPiece,posX,posY);
         pieces.add(p);
     }
 
@@ -51,7 +52,14 @@ public class Plateau {
              pieces) {
             for(Case c:
                     p.positionsAbsolues()){
-                resultat[c.getX()][c.getY()]=p.getId();
+                //On verifie que le case soient bien dans les limites du plateau
+                if (c.getX() < 0 || c.getX()>=nbCasesX || c.getY() < 0 || c.getY()>=nbCasesY ) {
+                    System.out.println("warning: case dépassant les limites du tableau (fonction: etatDuPlateau()");
+                }
+                else
+                {
+                    resultat[c.getX()][c.getY()]=p.getId();
+                }
             }
         }
         return resultat;
