@@ -1,6 +1,5 @@
 package mvc.ModelePlateau;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.io.Console;
 import java.util.ArrayList;

@@ -1,6 +1,5 @@
 package mvc.ModelePlateau;
 
-import com.sun.javafx.geom.Vec2d;
 
 public class Case {
     private int x;

@@ -1,7 +1,6 @@
 package mvc.ModelePlateau;
 
-import com.sun.javafx.geom.Vec2d;
-import com.sun.javafx.geom.Vec2f;
+
 import java.util.Random;
 
 import java.util.ArrayList;
