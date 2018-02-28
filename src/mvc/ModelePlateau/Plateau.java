@@ -1,6 +1,8 @@
 package mvc.ModelePlateau;
 
 
+import mvc.ExceptionsDuProjet.*;
+
 import java.io.Console;
 import java.util.ArrayList;
 
@@ -30,17 +32,37 @@ public class Plateau {
         nbCasesY=nbCasesY_in;
     }
 
-    public void ajouterPiece(int posX,int posY){
+    public void ajouterPiece(int posX,int posY) throws Exception{
         //boolean[][] FormeDeLaPiece={{true}}; // correspond a une seule case
 
         boolean[][] FormeDeLaPiece={{true,true},
                                    {true,false}};
 
+        if(posX+2 >nbCasesX ){
+            throw new exceptionPieceHorsPlateau();
+        }
+
         Piece p = new Piece(FormeDeLaPiece,posX,posY);
         pieces.add(p);
     }
 
-    public int[][] etatDuPlateau(){
+    public void ajouterPiece(int posX,int posY, boolean[][] FormeDeLaPiece) throws Exception{
+
+        int tx=FormeDeLaPiece.length;
+        int ty=0;
+        if(tx!=0){
+            ty=FormeDeLaPiece[0].length;
+        }
+
+        if(tx+posX<0 || tx+posX>nbCasesX || ty+posY<0 || ty+posY>nbCasesY){
+            throw new exceptionPieceHorsPlateau();
+        }
+
+        Piece p = new Piece(FormeDeLaPiece,posX,posY);
+        pieces.add(p);
+    }
+
+    public int[][] etatDuPlateau() {
         int[][] resultat=new int[nbCasesX][nbCasesY];
         for(int x=0;x<nbCasesX;x++){
             for(int y=0;y<nbCasesX;y++){
@@ -63,4 +85,8 @@ public class Plateau {
         }
         return resultat;
     }
+
+
 }
+
+

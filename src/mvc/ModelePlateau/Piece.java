@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Piece {
     private ArrayList<Case> forme;
     private int  tailleX, tailleY;
+    private boolean estFigee;
 
     public int getId() {
         return id;
@@ -52,6 +53,8 @@ public class Piece {
 
         tailleX=tx;
         tailleY=ty;
+
+
         //
 
         //initialisation de forme

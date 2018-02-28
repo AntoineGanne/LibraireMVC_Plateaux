@@ -9,10 +9,7 @@ import mvc.ModelePlateau.Plateau;
 
 import java.util.Observable;
 
-/**
- *
- * @author fred
- */
+
 public class Modele extends Observable {
 
     public int[][] getEtatDuPlateau() {
@@ -37,7 +34,12 @@ public class Modele extends Observable {
     }
 
     public void posePiece(int posX,int posY){
-        plat.ajouterPiece(posX,posY);
+        try {
+            plat.ajouterPiece(posX,posY,new boolean[][]{{true, true,false},{true,true ,true}});
+        }
+        catch(Exception e){
+            System.out.println("exception captée");
+        }
 
         setChanged();
         notifyObservers();

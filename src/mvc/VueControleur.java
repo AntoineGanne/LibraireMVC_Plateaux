@@ -31,10 +31,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import org.w3c.dom.css.Rect;
 
-/**
- *
- * @author freder
- */
+
 public class VueControleur extends Application {
     
     // modèle : ce qui réalise le calcule de l'expression
