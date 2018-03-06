@@ -8,17 +8,17 @@ import java.util.ArrayList;
 
 public class Plateau {
     private ArrayList<Piece> pieces;
+    private int nbCasesX;
+    private int nbCasesY;
 
     public int getNbCasesX() {
         return nbCasesX;
     }
-
     public int getNbCasesY() {
         return nbCasesY;
     }
 
-    private int nbCasesX;
-    private int nbCasesY;
+
 
     Plateau(){
         pieces=new ArrayList<Piece>();
@@ -45,6 +45,42 @@ public class Plateau {
         Piece p = new Piece(FormeDeLaPiece,posX,posY);
         pieces.add(p);
     }
+
+    public Piece recupPiece(int numPiece) throws Exception{
+        int[][] etatplateau=etatDuPlateau();
+        boolean b_yaunepiece = false;
+        Piece p = null;
+        for(int i=0;i<pieces.size();i++){
+            if(pieces.get(i).getId()==numPiece){
+                b_yaunepiece=true;
+                p = pieces.get(i);
+            }
+        }
+
+        if(b_yaunepiece){
+            return p;
+        }
+        else{
+            throw new exceptionIDPieceDontExist();
+        }
+    }
+
+    public void deplacerPiece(int numPiece, int posX,int posY){ // avec l'id de la piece, la deplacer jusqu'a ce que son pivot atteigne posX, posY
+        int[][] etatplateau=etatDuPlateau();
+        Piece p = null;
+        try {
+            p = recupPiece(numPiece);
+        }
+        catch(Exception e){
+            System.out.println("exception ID don't exist captée");
+        }
+
+        boolean[][] matrice = p.getMatriceBoolPiece();
+        // A COMPLETER
+
+
+    }
+
 
     public void ajouterPiece(int posX,int posY, boolean[][] FormeDeLaPiece) throws Exception{
 

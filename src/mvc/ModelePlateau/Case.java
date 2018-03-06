@@ -3,6 +3,7 @@ package mvc.ModelePlateau;
 
 public class Case {
     private int x;
+    private int y;
 
     public int getX() {
         return x;
@@ -12,7 +13,7 @@ public class Case {
         return y;
     }
 
-    private int y;
+
 
     Case(int x_,int y_){
         x=x_;

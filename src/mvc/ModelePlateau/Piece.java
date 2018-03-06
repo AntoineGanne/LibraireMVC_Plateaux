@@ -9,15 +9,31 @@ public class Piece {
     private ArrayList<Case> forme;
     private int  tailleX, tailleY;
     private boolean estFigee;
+    private int posAbsolueX,posAbsolueY;  //correspond au coin en haut a gauche de la forme de la pièce
+    private int id;   //pour pouvoir differencier les differents pièces, a voir si c'est nécessaire
+    private int pivotX,pivotY;  //pas tout de suite nécessaire en fait
 
     public int getId() {
         return id;
     }
 
-    //private int milieuX,milieuy;  //pas tout de suite nécessaire en fait
-    private int id;   //pour pouvoir differencier les differents pièces, a voir si c'est nécessaire
 
-    private int posAbsolueX,posAbsolueY;  //correspond au coin en haut a gauche de la forme de la pièce
+
+
+    public boolean [][] getMatriceBoolPiece(){
+        boolean[][] result = new boolean[tailleX][tailleY];
+        for(int i=0;i<tailleX;i++){
+            for(int j=0;j<tailleX;j++){
+                result[i][j]=false;
+            }
+        }
+
+        for(int i=0;i<forme.size();i++){
+            result[forme.get(i).getX()][forme.get(i).getY()]=true;
+        }
+
+        return result;
+    }
 
     Piece(){
         tailleX=3;
