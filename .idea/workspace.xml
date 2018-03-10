@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9da84765-4363-4d57-a0d5-9180947dbd3a" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionIDPieceDontExist.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ExceptionsDuProjet/exceptionPieceHorsPlateau.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ExceptionsDuProjet/exceptionPieceHorsPlateau.class" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/Modele.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/Modele.class" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ModelePlateau/Piece.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ModelePlateau/Piece.class" />
@@ -12,7 +9,6 @@
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur$1.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur$1.class" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur$2.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur$2.class" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur.class" />
-      <change beforePath="$PROJECT_DIR$/src/mvc/ModelePlateau/Case.java" afterPath="$PROJECT_DIR$/src/mvc/ModelePlateau/Case.java" />
       <change beforePath="$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java" afterPath="$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java" />
       <change beforePath="$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java" afterPath="$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java" />
     </list>
@@ -26,13 +22,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="exceptionIDPieceDontExist.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="exceptionIDPieceDontExist.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionIDPieceDontExist.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+            <state relative-caret-position="119">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
+                <element signature="e#129#130#0" expanded="true" />
                 <element signature="e#212#213#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Piece.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#getMatriceBoolPiece#0;class#Piece#0" expanded="false" />
+                <element signature="method#Piece#0;class#Piece#0" expanded="false" />
+                <element signature="docComment;method#Piece#1;class#Piece#0" expanded="false" />
+                <element signature="method#Piece#1;class#Piece#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Plateau.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1090">
+              <caret line="73" column="92" lean-forward="true" selection-start-line="73" selection-start-column="92" selection-end-line="73" selection-end-column="92" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#295#296#0" expanded="true" />
+                <element signature="e#326#327#0" expanded="true" />
+                <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -67,9 +95,9 @@
         <option value="$PROJECT_DIR$/src/mvc/VueControleur.java" />
         <option value="$PROJECT_DIR$/src/mvc/Modele.java" />
         <option value="$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionIDPieceDontExist.java" />
+        <option value="$PROJECT_DIR$/src/mvc/ModelePlateau/Case.java" />
         <option value="$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java" />
         <option value="$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java" />
-        <option value="$PROJECT_DIR$/src/mvc/ModelePlateau/Case.java" />
       </list>
     </option>
   </component>
@@ -80,8 +108,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
+    <option name="x" value="514" />
+    <option name="width" value="1413" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
@@ -292,15 +320,16 @@
       <workItem from="1519736971855" duration="5190000" />
       <workItem from="1519801754507" duration="377000" />
       <workItem from="1520354886496" duration="311000" />
-      <workItem from="1520702569903" duration="72000" />
+      <workItem from="1520702569903" duration="556000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9313000" />
+    <option name="totallyTimeSpent" value="9797000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="953" y="0" width="974" height="1047" extended-state="0" />
+    <frame x="514" y="0" width="1413" height="1047" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -314,7 +343,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21189979" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18754473" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -377,6 +406,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3475">
           <caret line="166" column="8" lean-forward="false" selection-start-line="166" selection-start-column="8" selection-end-line="166" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -384,6 +416,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="625">
           <caret line="37" column="75" lean-forward="false" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -391,6 +424,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -400,8 +434,9 @@
           <caret line="57" column="50" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#295#296#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
             <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
-            <element signature="method#ajouterPiece#1;class#Plateau#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -410,6 +445,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+          <folding>
+            <element signature="e#130#131#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -417,6 +455,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
           <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getMatriceBoolPiece#0;class#Piece#0" expanded="false" />
+            <element signature="method#Piece#0;class#Piece#0" expanded="false" />
+            <element signature="docComment;method#Piece#1;class#Piece#0" expanded="false" />
+            <element signature="method#Piece#1;class#Piece#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -424,6 +469,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2363">
           <caret line="166" column="8" lean-forward="false" selection-start-line="166" selection-start-column="8" selection-end-line="166" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -432,6 +480,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="37" column="75" lean-forward="false" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -439,6 +488,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="3" column="13" lean-forward="false" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -448,8 +498,9 @@
           <caret line="57" column="50" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#295#296#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
             <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
-            <element signature="method#ajouterPiece#1;class#Plateau#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -458,6 +509,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="31" lean-forward="true" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+          <folding>
+            <element signature="e#130#131#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -465,6 +519,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
           <caret line="67" column="7" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getMatriceBoolPiece#0;class#Piece#0" expanded="false" />
+            <element signature="method#Piece#0;class#Piece#0" expanded="false" />
+            <element signature="docComment;method#Piece#1;class#Piece#0" expanded="false" />
+            <element signature="method#Piece#1;class#Piece#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -472,6 +533,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1122">
           <caret line="91" column="75" lean-forward="false" selection-start-line="91" selection-start-column="75" selection-end-line="91" selection-end-column="75" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -480,6 +544,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -489,8 +554,9 @@
           <caret line="44" column="53" lean-forward="true" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#295#296#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
             <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
-            <element signature="method#ajouterPiece#1;class#Plateau#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -499,6 +565,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getMatriceBoolPiece#0;class#Piece#0" expanded="false" />
+            <element signature="method#Piece#0;class#Piece#0" expanded="false" />
+            <element signature="docComment;method#Piece#1;class#Piece#0" expanded="false" />
+            <element signature="method#Piece#1;class#Piece#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -506,6 +579,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding>
+            <element signature="e#130#131#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -514,6 +590,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
+          <folding>
+            <element signature="e#130#131#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -521,6 +600,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="321">
           <caret line="166" column="8" lean-forward="false" selection-start-line="166" selection-start-column="8" selection-end-line="166" selection-end-column="8" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -528,6 +610,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="725">
           <caret line="37" column="75" lean-forward="false" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -535,34 +618,44 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
           <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java">
+    <entry file="file://$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionIDPieceDontExist.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="15" column="5" lean-forward="false" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
-            <element signature="method#ajouterPiece#1;class#Plateau#0" expanded="false" />
+            <element signature="e#129#130#0" expanded="true" />
+            <element signature="e#212#213#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="13" column="70" lean-forward="false" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="70" />
+        <state relative-caret-position="272">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#getMatriceBoolPiece#0;class#Piece#0" expanded="false" />
+            <element signature="method#Piece#0;class#Piece#0" expanded="false" />
+            <element signature="docComment;method#Piece#1;class#Piece#0" expanded="false" />
+            <element signature="method#Piece#1;class#Piece#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionIDPieceDontExist.java">
+    <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+        <state relative-caret-position="1090">
+          <caret line="73" column="92" lean-forward="true" selection-start-line="73" selection-start-column="92" selection-end-line="73" selection-end-column="92" />
           <folding>
-            <element signature="e#212#213#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#295#296#0" expanded="true" />
+            <element signature="e#326#327#0" expanded="true" />
+            <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -70,6 +70,7 @@ public class Plateau {
     }
 
 
+
     public void ajouterPiece(int posX,int posY, boolean[][] FormeDeLaPiece) throws Exception{
         ajouterPiece(posX,posY,FormeDeLaPiece,0,0);
     }
