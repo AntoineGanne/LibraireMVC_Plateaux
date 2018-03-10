@@ -14,7 +14,7 @@ public class Piece {
         return id;
     }
 
-    //private int milieuX,milieuy;  //pas tout de suite nécessaire en fait
+    private int milieuX,milieuy;  //pas tout de suite nécessaire en fait
     private int id;   //pour pouvoir differencier les differents pièces, a voir si c'est nécessaire
 
     private int posAbsolueX,posAbsolueY;  //correspond au coin en haut a gauche de la forme de la pièce
@@ -76,6 +76,11 @@ public class Piece {
             resultat.add(new Case(c.getX()+posAbsolueX,c.getY()+posAbsolueY));
         }
         return resultat;
+    }
+
+
+    public boolean testPosePiece(Piece pieceTest){
+        return true;
     }
 
 }

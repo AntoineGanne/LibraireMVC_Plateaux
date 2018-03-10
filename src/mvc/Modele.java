@@ -29,16 +29,19 @@ public class Modele extends Observable {
 
     Modele()
     {
-        plat=new Plateau(10,10);
-
+        plat=new Plateau(30,30);
+    }
+    public Modele(int nbColonnes, int nbLignes)
+    {
+        plat=new Plateau(nbColonnes,nbLignes);
     }
 
     public void posePiece(int posX,int posY){
         try {
-            plat.ajouterPiece(posX,posY,new boolean[][]{{true, true,false},{true,true ,true}});
+            plat.ajouterPiece(posX,posY,new boolean[][]{{false, true,false},{true,true ,true},{false, true,false}},1,1);
         }
         catch(Exception e){
-            System.out.println("exception captée");
+            //e.printStackTrace();
         }
 
         setChanged();

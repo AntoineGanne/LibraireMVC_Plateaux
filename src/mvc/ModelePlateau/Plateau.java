@@ -2,8 +2,6 @@ package mvc.ModelePlateau;
 
 
 import mvc.ExceptionsDuProjet.*;
-
-import java.io.Console;
 import java.util.ArrayList;
 
 public class Plateau {
@@ -33,31 +31,35 @@ public class Plateau {
     }
 
     public void ajouterPiece(int posX,int posY) throws Exception{
-        //boolean[][] FormeDeLaPiece={{true}}; // correspond a une seule case
-
-        boolean[][] FormeDeLaPiece={{true,true},
-                                   {true,false}};
-
-        if(posX+2 >nbCasesX ){
-            throw new exceptionPieceHorsPlateau();
-        }
-
-        Piece p = new Piece(FormeDeLaPiece,posX,posY);
-        pieces.add(p);
+       ajouterPiece(posX,posY,new boolean[][]{{true}});
     }
 
     public void ajouterPiece(int posX,int posY, boolean[][] FormeDeLaPiece) throws Exception{
+        ajouterPiece(posX,posY,FormeDeLaPiece,0,0);
+    }
 
+    public void ajouterPiece(int posX_input,int posY_input, boolean[][] FormeDeLaPiece, int pivotX, int pivotY) throws Exception{
         int tx=FormeDeLaPiece.length;
         int ty=0;
         if(tx!=0){
             ty=FormeDeLaPiece[0].length;
         }
 
+        int posX=posX_input-pivotX;
+        int posY=posY_input-pivotY;
+
         if(tx+posX<0 || tx+posX>nbCasesX || ty+posY<0 || ty+posY>nbCasesY){
             throw new exceptionPieceHorsPlateau();
         }
 
+        int[][] etatPlateau=etatDuPlateau();
+        for(int i=0;i<tx;i++){
+            for(int j=0;j<ty;j++){
+                if(FormeDeLaPiece[i][j] && etatPlateau[i+posX][j+posY]!=0){
+                    throw new exceptionChevauchementDePiece();
+                }
+            }
+        }
         Piece p = new Piece(FormeDeLaPiece,posX,posY);
         pieces.add(p);
     }
