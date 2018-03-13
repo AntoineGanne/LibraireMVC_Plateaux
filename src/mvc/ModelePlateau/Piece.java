@@ -11,15 +11,12 @@ public class Piece {
     private boolean estFigee;
     private int posAbsolueX,posAbsolueY;  //correspond au coin en haut a gauche de la forme de la pièce
     private int id;   //pour pouvoir differencier les differents pièces, a voir si c'est nécessaire
-    private int pivotX,pivotY;  //pas tout de suite nécessaire en fait
+    //private int pivotX,pivotY;
 
+    //region GETTER/SETTER
     public int getId() {
         return id;
     }
-
-    private int milieuX,milieuy;  //pas tout de suite nécessaire en fait
-
-
 
     public boolean [][] getMatriceBoolPiece(){
         boolean[][] result = new boolean[tailleX][tailleY];
@@ -36,6 +33,37 @@ public class Piece {
         return result;
     }
 
+    public boolean getEstFigee() {
+        return estFigee;
+    }
+    public void setEstFigee(boolean estFigee) {
+        this.estFigee = estFigee;
+    }
+
+    public ArrayList<Case> getForme() {
+        return forme;
+    }
+    public void setForme(ArrayList<Case> forme) {
+        this.forme = forme;
+    }
+
+    public int getPosAbsolueX() {
+        return posAbsolueX;
+    }
+    public void setPosAbsolueX(int posAbsolueX) {
+        this.posAbsolueX = posAbsolueX;
+    }
+
+    public int getPosAbsolueY() {
+        return posAbsolueY;
+    }
+    public void setPosAbsolueY(int posAbsolueY) {
+        this.posAbsolueY = posAbsolueY;
+    }
+    //endregion
+
+
+    //region CONSTRUCTEURS
     Piece(){
         tailleX=3;
         tailleY=3;
@@ -81,6 +109,10 @@ public class Piece {
             }
         }
     }
+    //endregion
+
+
+
 
     /**
      * permet de retrouver les positions absolues des cases de la pièce

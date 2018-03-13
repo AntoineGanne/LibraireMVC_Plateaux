@@ -47,9 +47,16 @@ public class Modele extends Observable {
         setChanged();
         notifyObservers();
     }
-    
 
+    public void deplacementPiece(int numPiece, int direction, int nbcase){
+        try {
+            plat.deplacerPiece(numPiece,direction,nbcase);
+        }
+        catch(Exception e){
+            //e.printStackTrace();
+        }
 
-
-
+        setChanged();
+        notifyObservers();
+    }
 }

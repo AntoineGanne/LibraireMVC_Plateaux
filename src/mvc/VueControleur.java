@@ -123,7 +123,7 @@ public class VueControleur extends BorderPane {
                 rect.setFill(Color.WHITE);
 
                 rect.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
+                    // si case
                     @Override
                     public void handle(MouseEvent event) {
                         m.posePiece((int)rect.getX()/20,(int)rect.getY()/20);
