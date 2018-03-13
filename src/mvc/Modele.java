@@ -47,6 +47,7 @@ public class Modele extends Observable {
         setChanged();
         notifyObservers();
     }
+
     
     public int selectionnerPiece(int posX,int posY){
         etatDuPlateau=getEtatDuPlateau();
@@ -55,4 +56,15 @@ public class Modele extends Observable {
 
 
 
+    public void deplacementPiece(int numPiece, int direction, int nbcase){
+        try {
+            plat.deplacerPiece(numPiece,direction,nbcase);
+        }
+        catch(Exception e){
+            //e.printStackTrace();
+        }
+
+        setChanged();
+        notifyObservers();
+    }
 }

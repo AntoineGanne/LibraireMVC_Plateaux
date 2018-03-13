@@ -7,11 +7,10 @@ public class Case {
 
 
     private int y;
-
+    // x=0 ; y=0 : case pivot
     public int getX() {
         return x;
     }
-
     public int getY() {
         return y;
     }
