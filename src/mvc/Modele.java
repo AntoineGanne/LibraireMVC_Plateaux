@@ -48,7 +48,10 @@ public class Modele extends Observable {
         notifyObservers();
     }
     
-
+    public int selectionnerPiece(int posX,int posY){
+        etatDuPlateau=getEtatDuPlateau();
+        return etatDuPlateau[posX][posY];
+    }
 
 
 

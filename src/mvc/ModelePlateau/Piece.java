@@ -6,6 +6,14 @@ import java.util.Random;
 import java.util.ArrayList;
 
 public class Piece {
+    public ArrayList<Case> getForme() {
+        return forme;
+    }
+
+    public void setForme(ArrayList<Case> forme) {
+        this.forme = forme;
+    }
+
     private ArrayList<Case> forme;
     private int  tailleX, tailleY;
     private boolean estFigee;
@@ -17,7 +25,6 @@ public class Piece {
         return id;
     }
 
-    private int milieuX,milieuy;  //pas tout de suite nécessaire en fait
 
 
 
@@ -83,6 +90,22 @@ public class Piece {
     }
 
     /**
+     * simule un pivotage anti-horaire de 90 degrés sans modifier la piece
+     * (le plateau doit faire des tests avant de confirmer le pivotage)
+     * @return les cases qui forment la version pivottée de la piece
+     */
+    public ArrayList<Case> pivoter(){
+        ArrayList<Case> resultat=new ArrayList<Case>(forme.size());
+        for (Case c:
+             forme) {
+            Case casemodifie=new Case(c);
+            casemodifie.pivoterCase();
+            resultat.add(casemodifie);
+        }
+        return resultat;
+    }
+
+    /**
      * permet de retrouver les positions absolues des cases de la pièce
      * @return une collection de cases.
      */
@@ -96,8 +119,5 @@ public class Piece {
     }
 
 
-    public boolean testPosePiece(Piece pieceTest){
-        return true;
-    }
 
 }

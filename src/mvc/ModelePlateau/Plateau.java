@@ -34,7 +34,7 @@ public class Plateau {
        ajouterPiece(posX,posY,new boolean[][]{{true}});
     }
 
-    public Piece recupPiece(int numPiece) throws Exception{
+    public Piece recupPiece(int numPiece) throws exceptionIDPieceDontExist{
         int[][] etatplateau=etatDuPlateau();
         boolean b_yaunepiece = false;
         Piece p = null;
@@ -65,8 +65,6 @@ public class Plateau {
 
         boolean[][] matrice = p.getMatriceBoolPiece();
         // A COMPLETER
-
-
     }
 
 
@@ -99,6 +97,32 @@ public class Plateau {
         }
         Piece p = new Piece(FormeDeLaPiece,posX,posY);
         pieces.add(p);
+    }
+
+    public void pivoterPiece(int idPiece) throws exceptionChevauchementDePiece
+    {
+        Piece pieceSelected=null;
+        try{
+            pieceSelected=this.recupPiece(idPiece);
+        }catch (exceptionIDPieceDontExist e){
+            e.printStackTrace();
+        }
+
+        /*
+        if(pieceSelected!=null){
+            ArrayList<Case> formePiecePivote=pieceSelected.pivoter();
+
+            int[][] etatPlateau=etatDuPlateau();
+            for (Piece p:
+                 pieces) {
+                if(p.getId()!=idPiece){
+                    for(Case c:
+                            p.getForme())
+                        if(c.getX()==)
+                }
+            }
+        }
+        */
     }
 
     public int[][] etatDuPlateau() {

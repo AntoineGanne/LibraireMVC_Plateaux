@@ -1,0 +1,52 @@
+package JeuParking;
+
+import JeuDeTestTetris.ModeleTetris;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import mvc.VueControleur;
+
+public class VueControleurJeuParking extends Application{
+    ModeleJeuParking modele;
+
+    private int nbColonnes, nbLignes;
+
+    @Override
+    public void start(Stage primaryStage){
+        VueControleur vue = new VueControleur();
+
+        // initialisation du modèle que l'on souhaite utiliser
+        modele = new ModeleJeuParking(20,20);
+
+        // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
+        BorderPane border = new BorderPane();
+
+        // permet de placer les diffrents boutons dans une grille
+        GridPane gPane = new GridPane();
+
+        nbColonnes=10;
+        nbLignes=30;
+
+
+        border.setCenter(vue);
+        Scene scene = new Scene(border, Color.LIGHTBLUE);
+
+        primaryStage.setTitle("Le Super Tetris!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+    }
+
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+
+}
