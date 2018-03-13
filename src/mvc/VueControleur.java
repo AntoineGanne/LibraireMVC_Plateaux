@@ -34,10 +34,11 @@ public class VueControleur extends BorderPane {
 
 
 
-    public VueControleur() {
+    public VueControleur(Modele m_input) {
         
         // initialisation du modèle que l'on souhaite utiliser
-        m = new Modele();
+        //m = new Modele();
+        m=m_input;
         
         // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
         BorderPane border = new BorderPane();
@@ -121,7 +122,7 @@ public class VueControleur extends BorderPane {
                 rect.setX(x*20);
                 rect.setY(y*20);
                 rect.setFill(Color.WHITE);
-
+/*
                 rect.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     // si case
                     @Override
@@ -130,6 +131,7 @@ public class VueControleur extends BorderPane {
                     }
 
                 });
+                */
 
                 gPane.add(rect,x,y);
                 //gPane.add(t,x+20,y);

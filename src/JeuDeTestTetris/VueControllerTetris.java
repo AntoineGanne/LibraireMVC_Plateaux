@@ -22,10 +22,13 @@ public class VueControllerTetris extends Application {
 
     @Override
     public void start(Stage primaryStage){
-        VueControleur vue = new VueControleur();
+
 
         // initialisation du modèle que l'on souhaite utiliser
         m = new ModeleTetris(20,20);
+
+        //initialisation de la vue
+        VueControleur vue = new VueControleur(m.getM());
 
         // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
         BorderPane border = new BorderPane();
