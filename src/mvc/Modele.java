@@ -56,7 +56,7 @@ public class Modele extends Observable {
 
 
 
-    public void deplacementPiece(int numPiece, int direction, int nbcase){
+    public void deplacementPiece(int numPiece, String direction, int nbcase){
         try {
             plat.deplacerPiece(numPiece,direction,nbcase);
         }
