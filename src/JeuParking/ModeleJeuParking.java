@@ -21,4 +21,8 @@ public class ModeleJeuParking {
         this.idPieceSelected=modelePlateau.selectionnerPiece(posX,posY);
     }
 
+    public void deplacerPiece(int depX,int depY){
+        
+    }
+
 }
