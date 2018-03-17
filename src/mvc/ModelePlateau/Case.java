@@ -34,12 +34,19 @@ public class Case {
     }
 
     /**
-     * rotation anti-horaire de 90 degrés
+     * rotation anti-horaire de 90 degrés.
+     * @param sensHoraire si vrai alors pivot dans le sens horaire.
      */
-    public void pivoterCase(){
-            int tempX=this.x;
-            this.x=this.y;
-            this.y=-tempX;
+    public void pivoterCase(boolean sensHoraire){
+            if(sensHoraire){
+                int tempX=this.x;
+                this.x=-this.y;
+                this.y=tempX;
+            }else{
+                int tempX=this.x;
+                this.x=this.y;
+                this.y=-tempX;
+            }
     }
 
 }

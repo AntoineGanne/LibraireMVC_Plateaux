@@ -28,7 +28,7 @@ public class VueControllerTetris extends Application {
         m = new ModeleTetris(20,20);
 
         //initialisation de la vue
-        VueControleur vue = new VueControleur(m.getM());
+        VueControleur vue = new VueControleur(m.getM(),500,500);
 
         // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
         BorderPane border = new BorderPane();

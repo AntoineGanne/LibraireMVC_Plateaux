@@ -3,6 +3,10 @@ package JeuBlokus;
 import mvc.Modele;
 
 public class ModeleJeuBlokus {
+    public Modele getModelePlateau() {
+        return modelePlateau;
+    }
+
     private Modele modelePlateau;
     private int idPieceSelected;
 

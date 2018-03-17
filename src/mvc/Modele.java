@@ -5,6 +5,7 @@
  */
 package mvc;
 
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import mvc.ModelePlateau.Plateau;
 
 import java.util.Observable;
@@ -48,6 +49,18 @@ public class Modele extends Observable {
         notifyObservers();
     }
 
+    public void posePiece(int posX,int posY, boolean[][] FormeDeLaPiece,
+                          int pivotX, int pivotY, String deplacementsPossibles)
+    {
+        try {
+            plat.ajouterPiece(posX,posY,FormeDeLaPiece,pivotX,pivotY,deplacementsPossibles);
+        } catch (Exception e) {
+            //e.printStackTrace();
+        }
+        setChanged();
+        notifyObservers();
+    }
+
     
     public int selectionnerPiece(int posX,int posY){
         etatDuPlateau=getEtatDuPlateau();
@@ -56,9 +69,9 @@ public class Modele extends Observable {
 
 
 
-    public void deplacementPiece(int numPiece, String direction, int nbcase){
+    public void deplacementPiece(int numPiece, String direction){
         try {
-            plat.deplacerPiece(numPiece,direction,nbcase);
+            plat.deplacerPiece(numPiece,direction);
         }
         catch(Exception e){
             //e.printStackTrace();
@@ -66,5 +79,9 @@ public class Modele extends Observable {
 
         setChanged();
         notifyObservers();
+    }
+
+    public void setDeplacementsPossiblesPiece(int id,String instructions){
+        plat.setDeplacementsPossiblesPiece(id,instructions);
     }
 }

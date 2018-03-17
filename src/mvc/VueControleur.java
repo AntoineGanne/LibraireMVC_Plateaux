@@ -8,21 +8,16 @@ package mvc;
 
 
 //import java.awt.*;
-import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
-import javafx.application.Application;
 
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
-import javafx.scene.shape.*;
 
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
 
 
 public class VueControleur extends BorderPane {
@@ -31,10 +26,23 @@ public class VueControleur extends BorderPane {
     private Modele m;
 
     private Rectangle[][] affichagePlateau;
+    int tailleRectanglesX;
+    int tailleRectanglesY;
+
+    public GridPane getgPane() {
+        return gPane;
+    }
+
+    private GridPane gPane;
 
 
-
-    public VueControleur(Modele m_input) {
+    /**
+     * initialise la vue du plateau
+     * @param m_input le modele qui sera observé par la vue
+     * @param taillePaneX  taille initiale en X de le vue dans l'application
+     * @param taillePaneY  taille initiale en Y de le vue dans l'application
+     */
+    public VueControleur(Modele m_input,int taillePaneX,int taillePaneY) {
         
         // initialisation du modèle que l'on souhaite utiliser
         //m = new Modele();
@@ -44,20 +52,16 @@ public class VueControleur extends BorderPane {
         BorderPane border = new BorderPane();
 
         // permet de placer les diffrents boutons dans une grille
-        GridPane gPane = new GridPane();
+        gPane = new GridPane();
         
-        int column = 0;
-        int row = 0;
+        int nbCasesX=m.getNbCasesX();
+        int nbCasesY=m.getNbCasesY();
 
         //permet de stocker les rectangles qui composent l'affichage du plateau, et donc de changer leur couleur
-        affichagePlateau=new Rectangle[m.getNbCasesX()][m.getNbCasesY()];
+        affichagePlateau=new Rectangle[nbCasesX][nbCasesY];
         
-        /*
-        affichage = new Text("");
-        affichage.setFont(Font.font ("Verdana", 20));
-        affichage.setFill(Color.RED);
-        border.setTop(affichage);
-        */
+
+
 
         // la vue observe les "update" du modèle, et réalise les mises à jour graphiques
         m.addObserver(new Observer() {
@@ -69,11 +73,9 @@ public class VueControleur extends BorderPane {
             @Override
             public void update(Observable o, Object arg) {
                 int[][] plateau=m.getEtatDuPlateau();
-                int nbCasesX=m.getNbCasesX();
-                int nbCaseY=m.getNbCasesY();
 
                 for(int x=0;x<nbCasesX;x++) {
-                    for (int y = 0; y < nbCaseY; y++) {
+                    for (int y = 0; y < nbCasesY; y++) {
                         Rectangle rect=affichagePlateau[x][y];
                         if(plateau[x][y]==0){
                             rect.setFill(Color.WHITE);
@@ -111,18 +113,18 @@ public class VueControleur extends BorderPane {
 
 
         //////// Création des cases du plateau + controlleurs //////////////////////////////
-        int nbCasesX=m.getNbCasesX();
-        int nbCaseY=m.getNbCasesY();
+        tailleRectanglesX=taillePaneX/nbCasesX;
+        tailleRectanglesY =taillePaneY/nbCasesY;
 
         for(int x=0;x<nbCasesX;x++){
-            for(int y=0;y<nbCaseY;y++){
+            for(int y=0;y<nbCasesY;y++){
                 Rectangle rect = new Rectangle();
-                rect.setWidth(30);
-                rect.setHeight(30);
-                rect.setX(x*20);
-                rect.setY(y*20);
+                rect.setWidth(tailleRectanglesX);
+                rect.setHeight(tailleRectanglesY);
+                rect.setX(x*tailleRectanglesX);
+                rect.setY(y* tailleRectanglesY);
                 rect.setFill(Color.WHITE);
-/*
+
                 rect.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     // si case
                     @Override
@@ -131,10 +133,9 @@ public class VueControleur extends BorderPane {
                     }
 
                 });
-                */
+
 
                 gPane.add(rect,x,y);
-                //gPane.add(t,x+20,y);
 
 
                 affichagePlateau[x][y]=rect;

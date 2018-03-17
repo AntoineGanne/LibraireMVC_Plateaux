@@ -12,6 +12,7 @@ public class Piece {
     private int posAbsolueX,posAbsolueY;  //correspond au coin en haut a gauche de la forme de la pièce
     private int id;   //pour pouvoir differencier les differents pièces, a voir si c'est nécessaire
     //private int pivotX,pivotY;
+    private boolean[] deplacementsPossible; //0=>droite ;1=>haut ;2=>gauche ;3=>bas
 
     //region GETTER/SETTER
     public int getId() {
@@ -22,7 +23,7 @@ public class Piece {
     public boolean [][] getMatriceBoolPiece(){
         boolean[][] result = new boolean[tailleX][tailleY];
         for(int i=0;i<tailleX;i++){
-            for(int j=0;j<tailleX;j++){
+            for(int j=0;j<tailleY;j++){
                 result[i][j]=false;
             }
         }
@@ -72,6 +73,8 @@ public class Piece {
 
         Random rand=new Random();
         id=rand.nextInt(253)+1;
+
+        deplacementsPossible=new boolean[]{true,true,true,true};
     }
 
 
@@ -118,14 +121,15 @@ public class Piece {
     /**
      * simule un pivotage anti-horaire de 90 degrés sans modifier la piece
      * (le plateau doit faire des tests avant de confirmer le pivotage)
+     * @param sensHoraire si vrai alors pivot dans le sens horaire.
      * @return les cases qui forment la version pivottée de la piece
      */
-    public ArrayList<Case> pivoter(){
+    public ArrayList<Case> pivoter(boolean sensHoraire){
         ArrayList<Case> resultat=new ArrayList<Case>(forme.size());
         for (Case c:
              forme) {
             Case casemodifie=new Case(c);
-            casemodifie.pivoterCase();
+            casemodifie.pivoterCase(sensHoraire);
             resultat.add(casemodifie);
         }
         return resultat;
@@ -143,6 +147,46 @@ public class Piece {
         }
         return resultat;
     }
+
+    public boolean peutAllerADroite(){
+        return deplacementsPossible[0];
+    }
+    public boolean peutAllerEnHaut(){
+        return deplacementsPossible[1];
+    }
+    public boolean peutAllerAGauche(){
+        return deplacementsPossible[2];
+    }
+    public boolean peutAllerEnBas(){
+        return deplacementsPossible[3];
+    }
+    public boolean peutAllerDirection(String direction){
+        switch(direction){
+            case "droite": // Droite
+                return peutAllerADroite();
+            case "gauche": // Gauche
+                return peutAllerAGauche();
+            case "bas": // Bas
+                return peutAllerEnBas();
+            case "haut": // Haut
+                return peutAllerEnHaut();
+            default:
+                return false;
+        }
+    }
+
+    public void setDeplacementsPossibles(String instructions){
+        for(int i=0;i<deplacementsPossible.length;i++) deplacementsPossible[i]=false;
+        if(instructions.contains("horizontal")){
+            deplacementsPossible[0]=true;
+            deplacementsPossible[2]=true;
+        }
+        if(instructions.contains("vertical")){
+            deplacementsPossible[1]=true;
+            deplacementsPossible[3]=true;
+        }
+    }
+
 
 
 

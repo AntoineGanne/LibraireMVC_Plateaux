@@ -15,10 +15,11 @@ public class VueControleurJeuBlokus extends Application{
 
     @Override
     public void start(Stage primaryStage) {
-        VueControleur vue = new VueControleur();
 
         // initialisation du modèle que l'on souhaite utiliser
         modele = new ModeleJeuBlokus(20,20);
+
+        VueControleur vue = new VueControleur(modele.getModelePlateau(),500,500);
 
         // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
         BorderPane border = new BorderPane();

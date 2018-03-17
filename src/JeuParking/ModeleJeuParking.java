@@ -13,9 +13,13 @@ public class ModeleJeuParking {
     public ModeleJeuParking(int nbColonnes,int nbLignes){
         modelePlateau=new Modele(nbColonnes,nbLignes);
         idPieceSelected=0;
+        modelePlateau.posePiece(nbColonnes-4,nbLignes-5,new boolean[][]{{true,true,true}},0,0,"vertical");
 
-        modelePlateau.posePiece(nbColonnes-4,nbLignes-5);
-        modelePlateau.posePiece(2,1);
+    }
+
+    public void PosePiece(){
+
+        modelePlateau.posePiece(2,1,new boolean[][]{{true},{true},{true}},0,0,"horizontal");
     }
 
     /**
@@ -30,8 +34,10 @@ public class ModeleJeuParking {
 
     public void deplacerPiece(String direction){
         if(idPieceSelected !=0){
-            modelePlateau.deplacementPiece(idPieceSelected,direction,1);
+            modelePlateau.deplacementPiece(idPieceSelected,direction);
         }
     }
+
+
 
 }
