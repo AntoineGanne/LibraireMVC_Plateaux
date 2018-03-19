@@ -2,6 +2,8 @@ package mvc.ModelePlateau;
 
 
 import mvc.ExceptionsDuProjet.*;
+
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Plateau {
@@ -35,7 +37,6 @@ public class Plateau {
     }
 
     public Piece recupPiece(int numPiece) throws exceptionIDPieceDontExist{
-        int[][] etatplateau=etatDuPlateau();
         boolean b_yaunepiece = false;
         Piece p = null;
         for(int i=0;i<pieces.size();i++){
@@ -51,6 +52,13 @@ public class Plateau {
         else{
             throw new exceptionIDPieceDontExist();
         }
+    }
+
+    public Piece getPiece(int idPiece){
+        //l'identifiant est censé etre l'index de la piece dans le tableau de Piece + 1
+        // le +1 sert a ne pas avoir un identifianrt a 0
+        assert (idPiece>0 && idPiece<=pieces.size());
+        return pieces.get(idPiece-1);
     }
 
     public void deplacerPiece(int numPiece, String direction, int nbcase) throws exceptionDeplacementPieceFigee { // avec l'id de la piece, la deplacer jusqu'a ce que son pivot atteigne posX, posY
@@ -159,9 +167,20 @@ public class Plateau {
     public void ajouterPiece(int posX_input,int posY_input, boolean[][] FormeDeLaPiece, int pivotX, int pivotY) throws Exception{
         ajouterPiece(posX_input,posY_input,FormeDeLaPiece,pivotX,pivotY,"");
     }
+
+    public void ajouterPiece(int posX_input,int posY_input, boolean[][] FormeDeLaPiece,
+                             int pivotX, int pivotY, String deplacementsPossibles,Color couleur) throws Exception{
+        try{
+            ajouterPiece(posX_input,posY_input,FormeDeLaPiece,pivotX,pivotY,deplacementsPossibles);
+
+            pieces.get(pieces.size()-1).setCouleur(couleur); //risqué?
+        }
+        catch(Exception ex){
+            throw ex;
+        }
+    }
     public void ajouterPiece(int posX_input,int posY_input, boolean[][] FormeDeLaPiece,
                              int pivotX, int pivotY, String deplacementsPossibles) throws Exception{
-
         int tx=FormeDeLaPiece.length;
         int ty=0;
         if(tx!=0){
@@ -183,10 +202,17 @@ public class Plateau {
                 }
             }
         }
-        Piece p = new Piece(FormeDeLaPiece,posX,posY);
+
+        //l'id de la piece est liée a sa place dans la tableau de pieces afin de facilement retrouver une piece
+        //cependant la valeur 0 correspond a l'id d'une case vide, donc on ajoute 1 pour eviter la confusion
+        int idPiece=pieces.size()+1;
+
+        Piece p = new Piece(FormeDeLaPiece,posX,posY,pieces.size()+1);
         p.setDeplacementsPossibles(deplacementsPossibles);
         pieces.add(p);
     }
+
+
 
     /**
      * definit les déplacements possibles de la piece
@@ -231,6 +257,12 @@ public class Plateau {
             }
         }
         */
+    }
+
+    public Color getCouleurDePiece(int idPiece){
+        Piece p=getPiece(idPiece);
+        return p.getCouleur();
+
     }
 
     /**
@@ -294,6 +326,12 @@ public class Plateau {
     }
 
 
+    /**
+     *supprime toutes les pieces du plateau
+     */
+    public void clearPieces() {
+        pieces.clear();
+    }
 }
 
 

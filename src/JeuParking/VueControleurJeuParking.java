@@ -15,7 +15,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import mvc.VueControleur;
 
-import java.security.Key;
 
 public class VueControleurJeuParking extends Application{
     ModeleJeuParking modele;
@@ -32,7 +31,8 @@ public class VueControleurJeuParking extends Application{
         //initialisation de la vue
         VueControleur vue = new VueControleur(modele.getModelePlateau(),500,500);
 
-        modele.PosePiece();
+        //pour le test
+        modele.PosePiece(); //a enlever
 
         // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
         BorderPane border = new BorderPane();
@@ -95,8 +95,8 @@ public class VueControleurJeuParking extends Application{
             }
         }
 
-
-
+        // controller for the arrow keys
+        // move the selected piece in the model in the
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
@@ -116,7 +116,7 @@ public class VueControleurJeuParking extends Application{
 
 
 
-        primaryStage.setTitle("Le Super Tetris!");
+        primaryStage.setTitle("Le Super Rush Hour!");
         primaryStage.setScene(scene);
         primaryStage.show();
 

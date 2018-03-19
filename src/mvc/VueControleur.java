@@ -81,31 +81,11 @@ public class VueControleur extends BorderPane {
                             rect.setFill(Color.WHITE);
                         }
                         else{
-                            rect.setFill(Color.hsb(plateau[x][y],0.8,0.8));
+                            //on recupere la couleur de la piece a partir de son id
+                            java.awt.Color c=m.getCouleurDePiece(plateau[x][y]);
+                            //on doit transformer la couleur recuperée (en java.awt) en une Color javaFX
+                            rect.setFill(Color.rgb(c.getRed(),c.getGreen(),c.getBlue()));
                         }
-                        /*
-                        switch (plateau[x][y]){
-                            case 0:
-                                rect.setFill(Color.WHITE);
-                                break;
-                            case 1:
-                                rect.setFill(Color.GRAY);
-                                break;
-                            case 2:
-                                rect.setFill(Color.BLACK);
-                                break;
-                            case 3:
-                                rect.setFill(Color.GREEN);
-                                break;
-                            case 4:
-                                rect.setFill(Color.BURLYWOOD);
-                            case 5:
-                                rect.setFill(Color.hsb(5,0.5,0.7));
-                            default:
-                                rect.setFill(Color.PINK);
-                        }
-                        */
-
                     }
                 }
             }
@@ -129,7 +109,7 @@ public class VueControleur extends BorderPane {
                     // si case
                     @Override
                     public void handle(MouseEvent event) {
-                        m.posePiece((int)rect.getX()/20,(int)rect.getY()/20);
+                        m.posePiece((int)rect.getX()/tailleRectanglesX,(int)rect.getY()/tailleRectanglesY);
                     }
 
                 });
@@ -150,13 +130,7 @@ public class VueControleur extends BorderPane {
         //gPane.setGridLinesVisible(true);
         
         this.setCenter(gPane);
-        /*
-        Scene scene = new Scene(border, Color.LIGHTBLUE);
-        
-        primaryStage.setTitle("Le Super Plateau!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        */
+
     }
 
     

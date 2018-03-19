@@ -1,6 +1,7 @@
 package mvc.ModelePlateau;
 
 
+import java.awt.*;
 import java.util.Random;
 
 import java.util.ArrayList;
@@ -11,14 +12,21 @@ public class Piece {
     private boolean estFigee;
     private int posAbsolueX,posAbsolueY;  //correspond au coin en haut a gauche de la forme de la pièce
     private int id;   //pour pouvoir differencier les differents pièces, a voir si c'est nécessaire
+    private static int DEFAULT_ID=1;
     //private int pivotX,pivotY;
     private boolean[] deplacementsPossible; //0=>droite ;1=>haut ;2=>gauche ;3=>bas
+
+
+
+    //couleur
+    private Color couleur;
+    private static float SATURATION=0.5f; //paramètre par defaut pour la création d'un couleur en HSB
+    private static float BRIGHTNESS=0.8f; //idem
 
     //region GETTER/SETTER
     public int getId() {
         return id;
     }
-
 
     public boolean [][] getMatriceBoolPiece(){
         boolean[][] result = new boolean[tailleX][tailleY];
@@ -62,33 +70,65 @@ public class Piece {
     public void setPosAbsolueY(int posAbsolueY) {
         this.posAbsolueY = posAbsolueY;
     }
+
+    public Color getCouleur() { return couleur; }
+    public void setCouleur(Color couleur) { this.couleur = couleur; }
+    /**
+     * set les deplacement possibles selon les instructions données dans le String
+     * les instructions sont censées contenir "horizontal" "vertical" "tous" ou etre vide
+     * @param instructions String
+     */
+    public void setDeplacementsPossibles(String instructions){
+        for(int i=0;i<deplacementsPossible.length;i++) deplacementsPossible[i]=false;
+        if(instructions.contains("horizontal")){
+            deplacementsPossible[0]=true;
+            deplacementsPossible[2]=true;
+        }
+        if(instructions.contains("vertical")){
+            deplacementsPossible[1]=true;
+            deplacementsPossible[3]=true;
+        }
+        if(instructions.contains("tous")){
+            for(int j=0;j<deplacementsPossible.length;j++){
+                deplacementsPossible[j]=true;
+            }
+        }
+    }
     //endregion
 
 
     //region CONSTRUCTEURS
-    Piece(){
-        tailleX=3;
-        tailleY=3;
+
+    /**
+     * constructeur sans paramètres,
+     * initialise certains composant, notamment forme
+     * @warning la géneration aléatoire de couleur semble ne pas marcher
+     */
+    public Piece(){
         forme=new ArrayList<Case>();
 
         Random rand=new Random();
-        id=rand.nextInt(253)+1;
+        id=DEFAULT_ID;
+
+        couleur=Color.getHSBColor(rand.nextInt(255),SATURATION, BRIGHTNESS);
 
         deplacementsPossible=new boolean[]{true,true,true,true};
     }
+
+
 
 
     /**
      * On crée la pièce en lui donnant un tableau 2D de boolean
      * Surement la méthode la plus simple pour rapidement créer des pièces personnalisée.
      * Le constructeur transforme la matrice en une collection de cases (les coordonnées des cases sont relatives)
-     * @param matrice le tableau de boolean
+     * @param matrice boolean[][] decrivant la forme de la piece
      */
-    Piece(boolean [][] matrice,int posAbsolueX_,int posAbsolueY_){
+    public Piece(boolean [][] matrice,int posAbsolueX_,int posAbsolueY_){
         this();
 
-        posAbsolueX=posAbsolueX_;
-        posAbsolueY=posAbsolueY_;
+        this.posAbsolueX=posAbsolueX_;
+        this.posAbsolueY=posAbsolueY_;
 
         // on récupere les tailles en x et y du tableau matrice
         int tx=matrice.length;
@@ -105,7 +145,6 @@ public class Piece {
 
 
         //
-
         //initialisation de forme
         for(int x=0;x<tx;x++){
             for(int y=0;y<ty;y++){
@@ -113,6 +152,41 @@ public class Piece {
             }
         }
     }
+
+    /**
+     * On crée la pièce en lui donnant un tableau 2D de boolean
+     * Surement la méthode la plus simple pour rapidement créer des pièces personnalisée.
+     * Le constructeur transforme la matrice en une collection de cases (les coordonnées des cases sont relatives)
+     * L'identifiant est donné en paramètre pour essayer d'assurer l'unicité des identitifiants
+     * @param matrice boolean[][] decrivant la forme de la piece
+     * @param posAbsolueX_ position absolue en X du pivot de la piece
+     * @param posAbsolueY_ position absolue en Y du pivot de la piece
+     * @param id_input  identifiant donné par la classe Plateau
+     */
+    public Piece(boolean [][] matrice,int posAbsolueX_,int posAbsolueY_,int id_input){
+        this(matrice,posAbsolueX_,posAbsolueY_);
+        id=id_input;
+    }
+
+    /**
+     * On crée la pièce en lui donnant un tableau 2D de boolean
+     * Surement la méthode la plus simple pour rapidement créer des pièces personnalisée.
+     * Le constructeur transforme la matrice en une collection de cases (les coordonnées des cases sont relatives)
+     * L'identifiant est donné en paramètre pour essayer d'assurer l'unicité des identitifiants
+     * @param matrice boolean[][] decrivant la forme de la piece
+     * @param posAbsolueX_ position absolue en X du pivot de la piece
+     * @param posAbsolueY_ position absolue en Y du pivot de la piece
+     * @param id_input  identifiant donné par la classe Plateau
+     * @param couleur_input Couleur de la piece
+     */
+    public Piece(boolean [][] matrice,int posAbsolueX_,int posAbsolueY_,int id_input, Color couleur_input){
+        this(matrice,posAbsolueX_,posAbsolueY_,id_input);
+        this.couleur=couleur_input;
+    }
+
+
+
+
     //endregion
 
 
@@ -175,17 +249,7 @@ public class Piece {
         }
     }
 
-    public void setDeplacementsPossibles(String instructions){
-        for(int i=0;i<deplacementsPossible.length;i++) deplacementsPossible[i]=false;
-        if(instructions.contains("horizontal")){
-            deplacementsPossible[0]=true;
-            deplacementsPossible[2]=true;
-        }
-        if(instructions.contains("vertical")){
-            deplacementsPossible[1]=true;
-            deplacementsPossible[3]=true;
-        }
-    }
+
 
 
 
