@@ -1,13 +1,15 @@
 package JeuParking;
 
 import mvc.Modele;
+
+import java.util.Observable;
 import java.util.Random;
 import java.awt.*;
 
 import java.awt.*;
 import java.util.HashMap;
 
-public class ModeleJeuParking {
+public class ModeleJeuParking extends Observable{
     public Modele getModelePlateau() {
         return modelePlateau;
     }
@@ -15,9 +17,16 @@ public class ModeleJeuParking {
     private Modele modelePlateau;
     private int idPieceSelected;
 
+    public boolean isPartieFinie() {
+        return partieFinie;
+    }
+
+    private boolean partieFinie;
+
     public ModeleJeuParking(int nbColonnes,int nbLignes){
         modelePlateau=new Modele(nbColonnes,nbLignes);
         idPieceSelected=0;
+        partieFinie=false;
         // bordure :
         modelePlateau.posePiece(7,0,new boolean[][]{{true,true,true}},0,0,"",Color.BLACK);
         modelePlateau.posePiece(7,4,new boolean[][]{{true,true,true,true}},0,0,"",Color.BLACK);
@@ -59,7 +68,9 @@ public class ModeleJeuParking {
             modelePlateau.deplacementPiece(idPieceSelected,direction);
         }
         if(modelePlateau.selectionnerPiece(7,3)!=0){
-            modelePlateau.clearPieces();
+            partieFinie=true;
+            setChanged();
+            notifyObservers();
         }
     }
 

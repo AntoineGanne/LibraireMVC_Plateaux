@@ -2,15 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9da84765-4363-4d57-a0d5-9180947dbd3a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ExceptionsDuProjet/exceptionPieceHorsPlateau.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ExceptionsDuProjet/exceptionPieceHorsPlateau.class" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/Modele.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/Modele.class" />
+      <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ModelePlateau/Case.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ModelePlateau/Case.class" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ModelePlateau/Piece.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ModelePlateau/Piece.class" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ModelePlateau/Plateau.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/ModelePlateau/Plateau.class" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur$1.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur$1.class" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur$2.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur$2.class" />
       <change beforePath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur.class" afterPath="$PROJECT_DIR$/out/production/LibraireMVC_Plateaux/mvc/VueControleur.class" />
-      <change beforePath="$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java" afterPath="$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java" />
-      <change beforePath="$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java" afterPath="$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java" />
+      <change beforePath="$PROJECT_DIR$/src/JeuParking/ModeleJeuParking.java" afterPath="$PROJECT_DIR$/src/JeuParking/ModeleJeuParking.java" />
+      <change beforePath="$PROJECT_DIR$/src/JeuParking/VueControleurJeuParking.java" afterPath="$PROJECT_DIR$/src/JeuParking/VueControleurJeuParking.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,56 +25,151 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="exceptionIDPieceDontExist.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionIDPieceDontExist.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="e#129#130#0" expanded="true" />
-                <element signature="e#212#213#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Piece.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#getMatriceBoolPiece#0;class#Piece#0" expanded="false" />
-                <element signature="method#Piece#0;class#Piece#0" expanded="false" />
-                <element signature="docComment;method#Piece#1;class#Piece#0" expanded="false" />
-                <element signature="method#Piece#1;class#Piece#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Plateau.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1090">
-              <caret line="73" column="92" lean-forward="true" selection-start-line="73" selection-start-column="92" selection-end-line="73" selection-end-column="92" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#295#296#0" expanded="true" />
-                <element signature="e#326#327#0" expanded="true" />
-                <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.34270832">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="ModeleTetris.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/JeuDeTestTetris/ModeleTetris.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="23" />
+                  <folding>
+                    <element signature="e#99#100#0" expanded="true" />
+                    <element signature="e#123#124#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="VueControleur.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/mvc/VueControleur.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1207">
+                  <caret line="114" column="0" lean-forward="true" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#764#765#0" expanded="true" />
+                    <element signature="e#792#793#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="VueControllerTetris.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/JeuDeTestTetris/VueControllerTetris.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-22">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Case.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Case.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-193">
+                  <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Plateau.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="334">
+                  <caret line="287" column="17" lean-forward="true" selection-start-line="287" selection-start-column="17" selection-end-line="287" selection-end-column="17" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
+                    <element signature="e#10796#10797#0" expanded="true" />
+                    <element signature="e#10826#10827#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="Modele.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/mvc/Modele.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="918">
+                  <caret line="67" column="45" lean-forward="false" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#635#636#0" expanded="true" />
+                    <element signature="e#674#675#0" expanded="true" />
+                    <element signature="e#4227#4228#0" expanded="true" />
+                    <element signature="e#4281#4282#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="ModeleJeuParking.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/JeuParking/ModeleJeuParking.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="357">
+                  <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#248#249#0" expanded="true" />
+                    <element signature="e#284#285#0" expanded="true" />
+                    <element signature="e#390#391#0" expanded="true" />
+                    <element signature="e#424#425#0" expanded="true" />
+                    <element signature="e#2134#2135#0" expanded="true" />
+                    <element signature="e#2236#2237#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="VueControleurJeuParking.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/JeuParking/VueControleurJeuParking.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-629">
+                  <caret line="53" column="48" lean-forward="false" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#4462#4463#0" expanded="true" />
+                    <element signature="e#4490#4491#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="Piece.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="969">
+                  <caret line="113" column="43" lean-forward="false" selection-start-line="113" selection-start-column="43" selection-end-line="113" selection-end-column="43" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#7205#7206#0" expanded="true" />
+                    <element signature="e#7251#7252#0" expanded="true" />
+                    <element signature="e#7289#7290#0" expanded="true" />
+                    <element signature="e#7335#7336#0" expanded="true" />
+                    <element signature="e#7374#7375#0" expanded="true" />
+                    <element signature="e#7420#7421#0" expanded="true" />
+                    <element signature="e#7457#7458#0" expanded="true" />
+                    <element signature="e#7503#7504#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -92,12 +191,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionPieceHorsPlateau.java" />
+        <option value="$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionIDPieceDontExist.java" />
+        <option value="$PROJECT_DIR$/src/JeuParking.fxml" />
+        <option value="$PROJECT_DIR$/src/JeuDeTestTetris/ModeleTetris.java" />
+        <option value="$PROJECT_DIR$/src/JeuBlokus/ModeleJeuBlokus.java" />
+        <option value="$PROJECT_DIR$/src/mvc/ModelePlateau/Case.java" />
+        <option value="$PROJECT_DIR$/src/JeuBlokus/VueControleurJeuBlokus.java" />
+        <option value="$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java" />
         <option value="$PROJECT_DIR$/src/mvc/VueControleur.java" />
         <option value="$PROJECT_DIR$/src/mvc/Modele.java" />
-        <option value="$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionIDPieceDontExist.java" />
-        <option value="$PROJECT_DIR$/src/mvc/ModelePlateau/Case.java" />
+        <option value="$PROJECT_DIR$/src/JeuDeTestTetris/VueControllerTetris.java" />
         <option value="$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java" />
-        <option value="$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java" />
+        <option value="$PROJECT_DIR$/src/JeuParking/ModeleJeuParking.java" />
+        <option value="$PROJECT_DIR$/src/JeuParking/VueControleurJeuParking.java" />
       </list>
     </option>
   </component>
@@ -107,9 +213,9 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="514" />
-    <option name="width" value="1413" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="906" />
+    <option name="width" value="1021" />
     <option name="height" value="1047" />
   </component>
   <component name="ProjectView">
@@ -127,10 +233,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -147,6 +250,18 @@
               <item name="LibraireMVC_Plateaux" type="b2602c69:ProjectViewProjectNode" />
               <item name="LibraireMVC_Plateaux" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LibraireMVC_Plateaux" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LibraireMVC_Plateaux" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="JeuDeTestTetris" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="LibraireMVC_Plateaux" type="b2602c69:ProjectViewProjectNode" />
+              <item name="LibraireMVC_Plateaux" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="JeuParking" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="LibraireMVC_Plateaux" type="b2602c69:ProjectViewProjectNode" />
@@ -172,6 +287,9 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -196,7 +314,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.VueControleurJeuParking">
     <configuration default="true" type="Applet" factoryName="Applet">
       <module />
       <option name="HTML_USED" value="false" />
@@ -212,6 +330,44 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="mvc.VueControleur" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="LibraireMVC_Plateaux" />
+      <envs />
+    </configuration>
+    <configuration name="VueControleurJeuParking" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="JeuParking.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="JeuParking.VueControleurJeuParking" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="LibraireMVC_Plateaux" />
+      <envs />
+    </configuration>
+    <configuration name="VueControllerTetris" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="JeuDeTestTetris.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="JeuDeTestTetris.VueControllerTetris" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -297,9 +453,16 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
+    <list size="3">
+      <item index="0" class="java.lang.String" itemvalue="Application.VueControleur" />
+      <item index="1" class="java.lang.String" itemvalue="Application.VueControllerTetris" />
+      <item index="2" class="java.lang.String" itemvalue="Application.VueControleurJeuParking" />
+    </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Application.VueControleur" />
+      <list size="3">
+        <item index="0" class="java.lang.String" itemvalue="Application.VueControleurJeuParking" />
+        <item index="1" class="java.lang.String" itemvalue="Application.VueControllerTetris" />
+        <item index="2" class="java.lang.String" itemvalue="Application.VueControleur" />
       </list>
     </recent_temporary>
   </component>
@@ -320,42 +483,51 @@
       <workItem from="1519736971855" duration="5190000" />
       <workItem from="1519801754507" duration="377000" />
       <workItem from="1520354886496" duration="311000" />
-      <workItem from="1520702569903" duration="556000" />
+      <workItem from="1520702569903" duration="1152000" />
+      <workItem from="1520779582906" duration="56000" />
+      <workItem from="1520946348257" duration="6980000" />
+      <workItem from="1521032664822" duration="5953000" />
+      <workItem from="1521103425251" duration="130000" />
+      <workItem from="1521241253335" duration="1876000" />
+      <workItem from="1521303568076" duration="15922000" />
+      <workItem from="1521493264688" duration="8399000" />
+      <workItem from="1521548415899" duration="1944000" />
+      <workItem from="1521558438215" duration="6628000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9797000" />
+    <option name="totallyTimeSpent" value="58281000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="514" y="0" width="1413" height="1047" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32762313" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32869378" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2545069" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18754473" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19714071" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40364027" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40190881" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32869378" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -373,20 +545,20 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40364027" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4025696" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32869378" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32762313" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32869378" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14718163" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.254818" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19714071" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,17 +569,137 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="2" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/JeuParking/VueControleurJeuParking.java</url>
+          <line>52</line>
+          <properties />
+          <option name="timeStamp" value="24" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="25" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/mvc/VueControleur.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="40" column="18" lean-forward="false" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Case.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="32" column="32" lean-forward="false" selection-start-line="32" selection-start-column="32" selection-end-line="32" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JeuDeTestTetris/VueControllerTetris.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="30" column="54" lean-forward="false" selection-start-line="30" selection-start-column="54" selection-end-line="30" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JeuParking/ModeleJeuParking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="38" lean-forward="false" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
+            <element signature="e#284#285#0" expanded="true" />
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#424#425#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2236#2237#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JeuParking/VueControleurJeuParking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1411">
+          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4462#4463#0" expanded="true" />
+            <element signature="e#4490#4491#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionIDPieceDontExist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="73" column="92" lean-forward="false" selection-start-line="73" selection-start-column="92" selection-end-line="73" selection-end-column="92" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
+            <element signature="e#10796#10797#0" expanded="true" />
+            <element signature="e#10826#10827#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionIDPieceDontExist.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1156">
+          <caret line="73" column="92" lean-forward="true" selection-start-line="73" selection-start-column="92" selection-end-line="73" selection-end-column="92" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
+            <element signature="e#10796#10797#0" expanded="true" />
+            <element signature="e#10826#10827#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/VueControleur.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3475">
           <caret line="166" column="8" lean-forward="false" selection-start-line="166" selection-start-column="8" selection-end-line="166" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -416,7 +708,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="625">
           <caret line="37" column="75" lean-forward="false" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#4227#4228#0" expanded="true" />
+            <element signature="e#4281#4282#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -434,9 +732,9 @@
           <caret line="57" column="50" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
             <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
+            <element signature="e#10796#10797#0" expanded="true" />
+            <element signature="e#10826#10827#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -445,9 +743,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-          <folding>
-            <element signature="e#130#131#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -455,13 +750,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1200">
           <caret line="52" column="0" lean-forward="true" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getMatriceBoolPiece#0;class#Piece#0" expanded="false" />
-            <element signature="method#Piece#0;class#Piece#0" expanded="false" />
-            <element signature="docComment;method#Piece#1;class#Piece#0" expanded="false" />
-            <element signature="method#Piece#1;class#Piece#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -471,6 +759,8 @@
           <caret line="166" column="8" lean-forward="false" selection-start-line="166" selection-start-column="8" selection-end-line="166" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -480,7 +770,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="37" column="75" lean-forward="false" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#4227#4228#0" expanded="true" />
+            <element signature="e#4281#4282#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -498,9 +794,9 @@
           <caret line="57" column="50" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
             <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
+            <element signature="e#10796#10797#0" expanded="true" />
+            <element signature="e#10826#10827#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -509,9 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="31" lean-forward="true" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-          <folding>
-            <element signature="e#130#131#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -519,13 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
           <caret line="67" column="7" lean-forward="true" selection-start-line="67" selection-start-column="7" selection-end-line="67" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getMatriceBoolPiece#0;class#Piece#0" expanded="false" />
-            <element signature="method#Piece#0;class#Piece#0" expanded="false" />
-            <element signature="docComment;method#Piece#1;class#Piece#0" expanded="false" />
-            <element signature="method#Piece#1;class#Piece#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -535,6 +821,8 @@
           <caret line="91" column="75" lean-forward="false" selection-start-line="91" selection-start-column="75" selection-end-line="91" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -544,7 +832,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#4227#4228#0" expanded="true" />
+            <element signature="e#4281#4282#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -554,9 +848,9 @@
           <caret line="44" column="53" lean-forward="true" selection-start-line="44" selection-start-column="53" selection-end-line="44" selection-end-column="53" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
             <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
+            <element signature="e#10796#10797#0" expanded="true" />
+            <element signature="e#10826#10827#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -565,13 +859,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getMatriceBoolPiece#0;class#Piece#0" expanded="false" />
-            <element signature="method#Piece#0;class#Piece#0" expanded="false" />
-            <element signature="docComment;method#Piece#1;class#Piece#0" expanded="false" />
-            <element signature="method#Piece#1;class#Piece#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -579,83 +866,194 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding>
-            <element signature="e#130#131#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="jar://D:/Programmes/jdk1.8.0_161/javafx-src.zip!/javafx/scene/paint/Color.java" />
-    <entry file="file://$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionPieceHorsPlateau.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="31" lean-forward="false" selection-start-line="0" selection-start-column="31" selection-end-line="0" selection-end-column="31" />
-          <folding>
-            <element signature="e#130#131#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mvc/VueControleur.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="166" column="8" lean-forward="false" selection-start-line="166" selection-start-column="8" selection-end-line="166" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mvc/Modele.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="725">
-          <caret line="37" column="75" lean-forward="false" selection-start-line="37" selection-start-column="75" selection-end-line="37" selection-end-column="75" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Case.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JeuParking.fxml" />
     <entry file="file://$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionIDPieceDontExist.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JeuBlokus/ModeleJeuBlokus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="38" lean-forward="false" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Programmes/jdk1.8.0_161/javafx-src.zip!/com/sun/javafx/event/CompositeEventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="85" column="0" lean-forward="false" selection-start-line="85" selection-start-column="0" selection-end-line="85" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Programmes/jdk1.8.0_161/javafx-src.zip!/javafx/beans/property/DoublePropertyBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="132" column="0" lean-forward="false" selection-start-line="132" selection-start-column="0" selection-end-line="132" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Programmes/jdk1.8.0_161/javafx-src.zip!/javafx/scene/Scene.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="2501" column="0" lean-forward="false" selection-start-line="2501" selection-start-column="0" selection-end-line="2501" selection-end-column="0" />
           <folding>
-            <element signature="e#129#130#0" expanded="true" />
-            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#92668#92669#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java">
+    <entry file="jar://D:/Programmes/jdk1.8.0_161/javafx-src.zip!/com/sun/javafx/event/EventDispatchChainImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        <state relative-caret-position="1496">
+          <caret line="113" column="0" lean-forward="false" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Programmes/jdk1.8.0_161/javafx-src.zip!/javafx/event/Event.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2737">
+          <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JeuBlokus/VueControleurJeuBlokus.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="79" lean-forward="false" selection-start-line="21" selection-start-column="79" selection-end-line="21" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/ExceptionsDuProjet/exceptionPieceHorsPlateau.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Programmes/jdk1.8.0_161/javafx-src.zip!/javafx/event/EventHandler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="44" column="9" lean-forward="false" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JeuDeTestTetris/ModeleTetris.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="23" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#getMatriceBoolPiece#0;class#Piece#0" expanded="false" />
-            <element signature="method#Piece#0;class#Piece#0" expanded="false" />
-            <element signature="docComment;method#Piece#1;class#Piece#0" expanded="false" />
-            <element signature="method#Piece#1;class#Piece#0" expanded="false" />
+            <element signature="e#99#100#0" expanded="true" />
+            <element signature="e#123#124#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Plateau.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1090">
-          <caret line="73" column="92" lean-forward="true" selection-start-line="73" selection-start-column="92" selection-end-line="73" selection-end-column="92" />
+        <state relative-caret-position="334">
+          <caret line="287" column="17" lean-forward="true" selection-start-line="287" selection-start-column="17" selection-end-line="287" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#295#296#0" expanded="true" />
-            <element signature="e#326#327#0" expanded="true" />
             <element signature="method#ajouterPiece#0;class#Plateau#0" expanded="false" />
+            <element signature="e#10796#10797#0" expanded="true" />
+            <element signature="e#10826#10827#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Case.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-193">
+          <caret line="0" column="26" lean-forward="false" selection-start-line="0" selection-start-column="26" selection-end-line="0" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/ModelePlateau/Piece.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="969">
+          <caret line="113" column="43" lean-forward="false" selection-start-line="113" selection-start-column="43" selection-end-line="113" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7205#7206#0" expanded="true" />
+            <element signature="e#7251#7252#0" expanded="true" />
+            <element signature="e#7289#7290#0" expanded="true" />
+            <element signature="e#7335#7336#0" expanded="true" />
+            <element signature="e#7374#7375#0" expanded="true" />
+            <element signature="e#7420#7421#0" expanded="true" />
+            <element signature="e#7457#7458#0" expanded="true" />
+            <element signature="e#7503#7504#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/Modele.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="918">
+          <caret line="67" column="45" lean-forward="false" selection-start-line="67" selection-start-column="45" selection-end-line="67" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#635#636#0" expanded="true" />
+            <element signature="e#674#675#0" expanded="true" />
+            <element signature="e#4227#4228#0" expanded="true" />
+            <element signature="e#4281#4282#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JeuDeTestTetris/VueControllerTetris.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-22">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/mvc/VueControleur.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1207">
+          <caret line="114" column="0" lean-forward="true" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#764#765#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JeuParking/ModeleJeuParking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="72" column="30" lean-forward="true" selection-start-line="72" selection-start-column="30" selection-end-line="72" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#248#249#0" expanded="true" />
+            <element signature="e#284#285#0" expanded="true" />
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#424#425#0" expanded="true" />
+            <element signature="e#2134#2135#0" expanded="true" />
+            <element signature="e#2236#2237#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/JeuParking/VueControleurJeuParking.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-629">
+          <caret line="53" column="48" lean-forward="false" selection-start-line="53" selection-start-column="48" selection-end-line="53" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4462#4463#0" expanded="true" />
+            <element signature="e#4490#4491#0" expanded="true" />
           </folding>
         </state>
       </provider>
