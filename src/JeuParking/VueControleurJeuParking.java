@@ -25,8 +25,8 @@ public class VueControleurJeuParking extends Application{
 
     @Override
     public void start(Stage primaryStage){
-        nbColonnes=6;
-        nbLignes=7;
+        nbColonnes=8;
+        nbLignes=8;
 
         // initialisation du modèle que l'on souhaite utiliser
         modele = new ModeleJeuParking(nbColonnes,nbLignes);

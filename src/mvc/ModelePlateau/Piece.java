@@ -110,8 +110,8 @@ public class Piece {
         Random rand=new Random();
         id=DEFAULT_ID;
 
-        float randInt=rand.nextFloat();
-        couleur=Color.getHSBColor(randInt,SATURATION, BRIGHTNESS);
+        float randFloat=rand.nextFloat();
+        couleur=Color.getHSBColor(randFloat,SATURATION, BRIGHTNESS);
 
         deplacementsPossible=new boolean[]{true,true,true,true};
     }
