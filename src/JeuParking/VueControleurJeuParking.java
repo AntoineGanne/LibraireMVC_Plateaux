@@ -20,6 +20,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import mvc.VueControleur;
 
+import javax.naming.SizeLimitExceededException;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -37,11 +38,27 @@ public class VueControleurJeuParking extends Application{
 
     //Fonts
     Font fontTitres;
+    Font fontBoutons;
+
 
     @Override
     public void start(Stage primaryStage){
+
         nbColonnes=8;
         nbLignes=8;
+
+        // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
+        border = new BorderPane();
+        //border.setPrefSize(900,600);
+
+
+        //Fonts
+        fontTitres=new Font("Arial",20);
+        fontBoutons=new Font("Arial",15);
+
+        textePrincipal=new Label("cliquez sur une pièce puis utilisez les touches directionelles pour les déplacer");
+        textePrincipal.setFont(fontTitres);
+        border.setTop(textePrincipal);
 
         // initialisation du modèle que l'on souhaite utiliser
         modele = new ModeleJeuParking(nbColonnes,nbLignes);
@@ -50,7 +67,7 @@ public class VueControleurJeuParking extends Application{
             @Override
             public void update(Observable o, Object arg) {
                 if(modele.isPartieFinie()){
-                    textePrincipal=new Label("Felicitation! Vous avez fini le niveau!");
+                    textePrincipal.setText("Felicitation! Vous avez fini le niveau!");
                     border.setTop(textePrincipal);
                 }
             }
@@ -59,11 +76,8 @@ public class VueControleurJeuParking extends Application{
         //initialisation de la vue
         VueControleur vue = new VueControleur(modele.getModelePlateau(),500,500);
 
-        //pour le test
-        modele.PosePiece(); //a enlever
 
-        // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
-        border = new BorderPane();
+
 
         // permet de placer des boutons
         GridPane gPaneBoutons = new GridPane();
@@ -109,31 +123,43 @@ public class VueControleurJeuParking extends Application{
         });
 
         //boutons
-        Button bouton1=new Button("a droite");
-        bouton1.setOnAction(mousebutton -> {
-            modele.deplacerPiece("droite");
+        Button btn_vide=new Button("Niveau vide");
+        btn_vide.setFont(fontBoutons);
+        btn_vide.setOnAction(mousebutton -> {
+            modele.initialiserNiveauVide();
         });
-        gPaneBoutons.add(bouton1,0,0);
+        gPaneBoutons.add(btn_vide,0,0);
 
-        Button bouton2=new Button("a gauche");
-        bouton2.setOnAction(mousebutton -> {
-            modele.deplacerPiece("gauche");
+        Button btn_Niveau1=new Button("Niveau 1");
+        btn_Niveau1.setFont(fontBoutons);
+        btn_Niveau1.setOnAction(mousebutton -> {
+            modele.initialiserNiveau1();
         });
-        gPaneBoutons.add(bouton2,0,1);
+        gPaneBoutons.add(btn_Niveau1,0,1);
 
-        vue.setRight(gPaneBoutons);
+        Button btn_Niveau2=new Button("Niveau 2");
+        btn_Niveau2.setFont(fontBoutons);
+        btn_Niveau2.setOnAction(mousebutton -> {
+            modele.initialiserNiveau2();
+        });
+        gPaneBoutons.add(btn_Niveau2,0,2);
+
+        Button btn_Niveau3=new Button("Niveau 3");
+        btn_Niveau3.setFont(fontBoutons);
+        btn_Niveau3.setOnAction(mousebutton -> {
+            modele.initialiserNiveau3();
+        });
+        gPaneBoutons.add(btn_Niveau3,0,3);
+
+        border.setRight(gPaneBoutons);
         /////////fin des controleurs
 
-        textePrincipal=new Label("cliquez sur une pièce puis utilisez les touches directionelles pour les déplacer");
-        fontTitres=new Font("Arial",30);
-        textePrincipal.setFont(fontTitres);
-        border.setTop(textePrincipal);
+
 
 
         primaryStage.setTitle("Le Super Rush Hour!");
         primaryStage.setScene(scene);
         primaryStage.show();
-
     }
 
 

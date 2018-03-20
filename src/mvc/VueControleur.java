@@ -35,6 +35,8 @@ public class VueControleur extends BorderPane {
 
     private GridPane gPane;
 
+    private static Color DEFAULT_COLOR=Color.WHITE;
+
 
     /**
      * initialise la vue du plateau
@@ -59,7 +61,6 @@ public class VueControleur extends BorderPane {
 
         //permet de stocker les rectangles qui composent l'affichage du plateau, et donc de changer leur couleur
         affichagePlateau=new Rectangle[nbCasesX][nbCasesY];
-        
 
 
 
@@ -72,22 +73,7 @@ public class VueControleur extends BorderPane {
              */
             @Override
             public void update(Observable o, Object arg) {
-                int[][] plateau=m.getEtatDuPlateau();
-
-                for(int x=0;x<nbCasesX;x++) {
-                    for (int y = 0; y < nbCasesY; y++) {
-                        Rectangle rect=affichagePlateau[x][y];
-                        if(plateau[x][y]==0){
-                            rect.setFill(Color.WHITE);
-                        }
-                        else{
-                            //on recupere la couleur de la piece a partir de son id
-                            java.awt.Color c=m.getCouleurDePiece(plateau[x][y]);
-                            //on doit transformer la couleur recuperée (en java.awt) en une Color javaFX
-                            rect.setFill(Color.rgb(c.getRed(),c.getGreen(),c.getBlue()));
-                        }
-                    }
-                }
+                MiseAJourVue();
             }
         });
 
@@ -95,6 +81,7 @@ public class VueControleur extends BorderPane {
         //////// Création des cases du plateau + controlleurs //////////////////////////////
         tailleRectanglesX=taillePaneX/nbCasesX;
         tailleRectanglesY =taillePaneY/nbCasesY;
+        int[][] etatDuPlateau=m.getEtatDuPlateau();
 
         for(int x=0;x<nbCasesX;x++){
             for(int y=0;y<nbCasesY;y++){
@@ -103,7 +90,18 @@ public class VueControleur extends BorderPane {
                 rect.setHeight(tailleRectanglesY);
                 rect.setX(x*tailleRectanglesX);
                 rect.setY(y* tailleRectanglesY);
-                rect.setFill(Color.WHITE);
+
+                int id=etatDuPlateau[x][y];
+                if(id==0){
+                    rect.setFill(DEFAULT_COLOR);
+                }else{
+                    //on recupere la couleur de la piece a partir de son id
+                    java.awt.Color c=m.getCouleurDePiece(id);
+                    //on doit transformer la couleur recuperée (en java.awt) en une Color javaFX
+                    rect.setFill(Color.rgb(c.getRed(),c.getGreen(),c.getBlue()));
+                }
+
+
 
                 rect.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     // si case
@@ -113,19 +111,14 @@ public class VueControleur extends BorderPane {
                     }
                 });
 
-
-
                 gPane.add(rect,x,y);
-
-
                 affichagePlateau[x][y]=rect;
             }
         }
-
         ///////////////////////////////////////////////////////////////////////////////////
 
 
-        
+
 
         //gPane.setGridLinesVisible(true);
         
@@ -133,5 +126,26 @@ public class VueControleur extends BorderPane {
 
     }
 
-    
+
+    public void MiseAJourVue(){
+        int[][] plateau=m.getEtatDuPlateau();
+        int nbCasesX=m.getNbCasesX();
+        int nbCasesY=m.getNbCasesY();
+
+        for(int x=0;x<nbCasesX;x++) {
+            for (int y = 0; y < nbCasesY; y++) {
+                Rectangle rect=affichagePlateau[x][y];
+                if(plateau[x][y]==0){
+                    rect.setFill(Color.WHITE);
+                }
+                else{
+                    //on recupere la couleur de la piece a partir de son id
+                    java.awt.Color c=m.getCouleurDePiece(plateau[x][y]);
+                    //on doit transformer la couleur recuperée (en java.awt) en une Color javaFX
+                    rect.setFill(Color.rgb(c.getRed(),c.getGreen(),c.getBlue()));
+                }
+            }
+        }
+    }
+
 }
