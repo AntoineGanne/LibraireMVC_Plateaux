@@ -22,10 +22,11 @@ public class VueControllerTetris extends Application {
 
     @Override
     public void start(Stage primaryStage){
-
+        nbColonnes=10;
+        nbLignes=40;
 
         // initialisation du modèle que l'on souhaite utiliser
-        m = new ModeleTetris(20,20);
+        m = new ModeleTetris(nbColonnes,nbLignes);
 
         //initialisation de la vue
         VueControleur vue = new VueControleur(m.getM(),500,500);
@@ -36,8 +37,7 @@ public class VueControllerTetris extends Application {
         // permet de placer les diffrents boutons dans une grille
         GridPane gPane = new GridPane();
 
-        nbColonnes=10;
-        nbLignes=40;
+
 
 
 

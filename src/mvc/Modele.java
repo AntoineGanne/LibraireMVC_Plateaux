@@ -73,6 +73,18 @@ public class Modele extends Observable {
         notifyObservers();
     }
 
+    /**
+     * crée une piece selon les paramètres donnés
+     * @param posX position en X relativement a l'origine du plateau du pivot de la piece
+     * @param posY position en Y relativement a l'origine du plateau du pivot de la piece
+     * @param FormeDeLaPiece boolean[][] decrivant la forme de la piece (true correspond a une case remplie)
+     * @param pivotX position en X du pivot relativement a l'origine (FormeDeLaPiece[0][0])
+     * @param pivotY position en Y du pivot relativement a l'origine (FormeDeLaPiece[0][0])
+     * @param deplacementsPossibles String decrivant les déplacement possibles de la piece.
+     *                              mots clés reconnus:"vertical" "horizontal" "tous".
+     *                              par défaut (si aucun mot clé reconnu): aucun mouvement autorisé
+     * @param couleur  Couleur de la piece
+     */
     public void posePiece(int posX,int posY, boolean[][] FormeDeLaPiece,
                           int pivotX, int pivotY, String deplacementsPossibles,Color couleur)
     {
@@ -98,7 +110,11 @@ public class Modele extends Observable {
     }
 
 
-
+    /**
+     * deplace d'une case la piece dont l'id est numPiece et dans la direction indiquée par direction
+     * @param numPiece id de la piece
+     * @param direction mot clé de la direction
+     */
     public void deplacementPiece(int numPiece, String direction){
         try {
             plat.deplacerPiece(numPiece,direction);

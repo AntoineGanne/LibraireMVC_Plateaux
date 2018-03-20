@@ -5,7 +5,9 @@ import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.scene.layout.BorderPane;
@@ -38,8 +40,8 @@ public class VueControleurJeuParking extends Application{
         // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
         BorderPane border = new BorderPane();
 
-        // permet de placer les diffrents boutons dans une grille
-        GridPane gPane = new GridPane();
+        // permet de placer des boutons
+        GridPane gPaneBoutons = new GridPane();
 
 
 
@@ -51,35 +53,6 @@ public class VueControleurJeuParking extends Application{
 
 
         ///////// controleurs
-        /*
-        for(int x=0;x<nbColonnes;x++){
-            for(int y=0;y<nbLignes;y++){
-                Rectangle rect = new Rectangle();
-                rect.setWidth(30);
-                rect.setHeight(30);
-                rect.setX(x*20);
-                rect.setY(y*20);
-                rect.setFill(Color.TRANSPARENT);
-
-                // si case
-                rect.setOnMouseClicked(event -> {
-                    modele.selectionnerPiece((int)rect.getX()/20,(int)rect.getY()/20);
-                    System.out.println("detection clic");
-                });
-
-                gPane.add(rect,x,y);
-
-            }
-        }*/
-        /*
-        for(Node n:
-                vue.getgPane().getChildren()){
-                n.setOnMouseClicked((MouseEvent event) -> {
-                modele.selectionnerPiece((int)event.getX()/20,(int) event.getY()/20);
-                System.out.println("detection clic");
-            });
-        }
-        */
 
         // on definit les controlleurs des cases du plateau
         // On touche aux élement du gridPane contenu dans VueController et déjà initalisés
@@ -110,8 +83,20 @@ public class VueControleurJeuParking extends Application{
             }
         });
 
+        //boutons
+        Button bouton1=new Button("a droite");
+        bouton1.setOnAction(mousebutton -> {
+            modele.deplacerPiece("droite");
+        });
+        gPaneBoutons.getChildren().add(bouton1);
 
-        //vue.setCenter(gPane);
+        Button bouton2=new Button("a gauche");
+        bouton2.setOnAction(mousebutton -> {
+            modele.deplacerPiece("gauche");
+        });
+        gPaneBoutons.getChildren().add(bouton2);
+
+        vue.setRight(gPaneBoutons);
         /////////fin des controleurs
 
 
