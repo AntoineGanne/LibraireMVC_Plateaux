@@ -250,8 +250,10 @@ public class Piece {
     }
 
 
-
-
-
-
+    public void supprimerCase(int posX, int posY) {
+        for(Case c:
+                forme){
+            if(posAbsolueX+c.getX()==posX && posAbsolueY+c.getY()==posY) forme.remove(c);
+        }
+    }
 }

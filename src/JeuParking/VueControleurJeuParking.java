@@ -23,10 +23,11 @@ public class VueControleurJeuParking extends Application{
 
     @Override
     public void start(Stage primaryStage){
-
+        nbColonnes=6;
+        nbLignes=7;
 
         // initialisation du modèle que l'on souhaite utiliser
-        modele = new ModeleJeuParking(20,20);
+        modele = new ModeleJeuParking(nbColonnes,nbLignes);
 
         //initialisation de la vue
         VueControleur vue = new VueControleur(modele.getModelePlateau(),500,500);
@@ -40,8 +41,7 @@ public class VueControleurJeuParking extends Application{
         // permet de placer les diffrents boutons dans une grille
         GridPane gPane = new GridPane();
 
-        nbColonnes=20;
-        nbLignes=20;
+
 
 
 
@@ -85,12 +85,12 @@ public class VueControleurJeuParking extends Application{
         // On touche aux élement du gridPane contenu dans VueController et déjà initalisés
         for(int x=0;x<nbColonnes;x++) {
             for (int y = 0; y < nbLignes; y++) {
-                Node n=vue.getgPane().getChildren().get(x*nbColonnes+y);
+                int indexNode=x*nbLignes+y; //calcul de l'index du node a partir de x et y
+                Node n=vue.getgPane().getChildren().get(indexNode);
                 int finalX = x;
                 int finalY = y;
                 n.setOnMouseClicked((MouseEvent event) -> {
                     modele.selectionnerPiece(finalX, finalY); //finalX et finalY permet d'avoir une variable finale (qui n'est pas modifiable)
-                    System.out.println("detection clic");
                 });
             }
         }

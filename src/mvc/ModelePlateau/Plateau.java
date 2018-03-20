@@ -272,7 +272,7 @@ public class Plateau {
     public int[][] etatDuPlateau() {
         int[][] resultat=new int[nbCasesX][nbCasesY];
         for(int x=0;x<nbCasesX;x++){
-            for(int y=0;y<nbCasesX;y++){
+            for(int y=0;y<nbCasesY;y++){
                 resultat[x][y]=0;
             }
         }
@@ -302,7 +302,7 @@ public class Plateau {
     public int[][] etatDuPlateauSansUnePiece(int idPiece) {
         int[][] resultat=new int[nbCasesX][nbCasesY];
         for(int x=0;x<nbCasesX;x++){
-            for(int y=0;y<nbCasesX;y++){
+            for(int y=0;y<nbCasesY;y++){
                 resultat[x][y]=0;
             }
         }
@@ -331,6 +331,16 @@ public class Plateau {
      */
     public void clearPieces() {
         pieces.clear();
+    }
+
+    /**
+     * vide la case => supprime la case de la piece qui y est présente (si il y a bien un piece a cet endroit)
+     * @param posX
+     * @param posY
+     */
+    public void clearCase(int posX, int posY,int idPiece) {
+        Piece p = getPiece(idPiece);
+        p.supprimerCase(posX,posY);
     }
 }
 

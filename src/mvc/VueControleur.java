@@ -111,8 +111,8 @@ public class VueControleur extends BorderPane {
                     public void handle(MouseEvent event) {
                         m.posePiece((int)rect.getX()/tailleRectanglesX,(int)rect.getY()/tailleRectanglesY);
                     }
-
                 });
+
 
 
                 gPane.add(rect,x,y);

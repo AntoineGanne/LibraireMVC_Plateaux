@@ -138,4 +138,19 @@ public class Modele extends Observable {
         setChanged();
         notifyObservers();
     }
+
+    /**
+     * vide la case => supprime la case de la piece qui y est présente (si il y a bien un piece a cet endroit)
+     * @param posX
+     * @param posY
+     */
+    public void clearCase(int posX,int posY){
+        etatDuPlateau=getEtatDuPlateau();
+        if(etatDuPlateau[posX][posY]!=0){
+            int  idPiece=etatDuPlateau[posX][posY];
+            plat.clearCase(posX,posY,idPiece);
+            setChanged();
+            notifyObservers();
+        }
+    }
 }

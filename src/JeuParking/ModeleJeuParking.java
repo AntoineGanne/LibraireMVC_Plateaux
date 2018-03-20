@@ -3,6 +3,7 @@ package JeuParking;
 import mvc.Modele;
 
 import java.awt.*;
+import java.util.HashMap;
 
 public class ModeleJeuParking {
     public Modele getModelePlateau() {
@@ -15,8 +16,6 @@ public class ModeleJeuParking {
     public ModeleJeuParking(int nbColonnes,int nbLignes){
         modelePlateau=new Modele(nbColonnes,nbLignes);
         idPieceSelected=0;
-        modelePlateau.posePiece(nbColonnes-4,nbLignes-5,new boolean[][]{{true,true,true}},0,0,"vertical", Color.GRAY);
-
     }
 
     public void PosePiece(){
@@ -40,6 +39,14 @@ public class ModeleJeuParking {
         }
     }
 
+    public void initialiserNiveau1(){
 
+    }
 
+/*
+    private HashMap<String,Boolean[][]> poolDePiece =
+            new HashMap<String, Boolean[][]>(){
+                    {"H2",new Boolean[][]{{true},{true},{true}}}
+            };
+    */
 }
