@@ -19,10 +19,15 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import mvc.VueControleur;
+import javafx.util.Duration;
+
 
 import javax.naming.SizeLimitExceededException;
 import java.util.Observable;
 import java.util.Observer;
+
+import mvc.ExceptionsDuProjet.*;
+
 
 
 public class VueControleurJeuParking extends Application{
@@ -34,7 +39,9 @@ public class VueControleurJeuParking extends Application{
     BorderPane border;
 
     //Textes
-    Label textePrincipal;
+    Label txt1;
+    Label txt2;
+    int nbcoup = 0, nbmax=0;
 
     //Fonts
     Font fontTitres;
@@ -53,12 +60,15 @@ public class VueControleurJeuParking extends Application{
 
 
         //Fonts
-        fontTitres=new Font("Arial",20);
+        fontTitres=new Font("Arial",16);
         fontBoutons=new Font("Arial",15);
 
-        textePrincipal=new Label("cliquez sur une pièce puis utilisez les touches directionelles pour les déplacer");
-        textePrincipal.setFont(fontTitres);
-        border.setTop(textePrincipal);
+        txt1=new Label(" Règles du jeu : \n Sorter la pièce rouge du plateau \n Cliquez sur une pièce puis utilisez les touches directionelles pour les déplacer");
+        txt1.setFont(fontTitres);
+        border.setTop(txt1);
+        txt2=new Label(nbcoup+" coups");
+        txt2.setFont(fontTitres);
+        border.setBottom(txt2);
 
         // initialisation du modèle que l'on souhaite utiliser
         modele = new ModeleJeuParking(nbColonnes,nbLignes);
@@ -67,8 +77,8 @@ public class VueControleurJeuParking extends Application{
             @Override
             public void update(Observable o, Object arg) {
                 if(modele.isPartieFinie()){
-                    textePrincipal.setText("Felicitation! Vous avez fini le niveau!");
-                    border.setTop(textePrincipal);
+                    txt1.setText("\n Felicitation! Vous avez fini le niveau !\n  ");
+                    border.setTop(txt1);
                 }
             }
         });
@@ -111,7 +121,13 @@ public class VueControleurJeuParking extends Application{
         // move the selected piece in the model in the
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
-            public void handle(KeyEvent event) {
+            public void handle(KeyEvent event){
+                nbcoup+=1;
+                txt2.setText(nbcoup+" coups");
+                border.setBottom(txt2);
+                if(nbcoup>nbmax){
+                    txt2.setTextFill(Color.rgb(255,0,0));
+                }
                 switch (event.getCode()){
                     case RIGHT: modele.deplacerPiece("droite"); break;
                     case LEFT: modele.deplacerPiece("gauche");break;
@@ -119,21 +135,20 @@ public class VueControleurJeuParking extends Application{
                     case UP: modele.deplacerPiece("haut");break;
                     default:break;
                 }
+
             }
         });
 
         //boutons
-        Button btn_vide=new Button("Niveau vide");
-        btn_vide.setFont(fontBoutons);
-        btn_vide.setOnAction(mousebutton -> {
-            modele.initialiserNiveauVide();
-        });
-        gPaneBoutons.add(btn_vide,0,0);
-
         Button btn_Niveau1=new Button("Niveau 1");
         btn_Niveau1.setFont(fontBoutons);
         btn_Niveau1.setOnAction(mousebutton -> {
             modele.initialiserNiveau1();
+            nbcoup=0;
+            nbmax=12;
+            txt2.setText(nbcoup+" coups ");
+            txt2.setTextFill(Color.rgb(0,0,0));
+            border.setBottom(txt2);
         });
         gPaneBoutons.add(btn_Niveau1,0,1);
 
@@ -141,6 +156,11 @@ public class VueControleurJeuParking extends Application{
         btn_Niveau2.setFont(fontBoutons);
         btn_Niveau2.setOnAction(mousebutton -> {
             modele.initialiserNiveau2();
+            nbcoup=0;
+            nbmax=18;
+            txt2.setText(nbcoup+" coups ");
+            txt2.setTextFill(Color.rgb(0,0,0));
+            border.setBottom(txt2);
         });
         gPaneBoutons.add(btn_Niveau2,0,2);
 
@@ -148,6 +168,11 @@ public class VueControleurJeuParking extends Application{
         btn_Niveau3.setFont(fontBoutons);
         btn_Niveau3.setOnAction(mousebutton -> {
             modele.initialiserNiveau3();
+            nbcoup=0;
+            nbmax=12;
+            txt2.setText(nbcoup+" coups ");
+            txt2.setTextFill(Color.rgb(0,0,0));
+            border.setBottom(txt2);
         });
         gPaneBoutons.add(btn_Niveau3,0,3);
 

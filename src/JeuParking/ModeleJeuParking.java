@@ -30,8 +30,6 @@ public class ModeleJeuParking extends Observable{
         // bordure :
         setContours();
 
-
-
     }
 
 
@@ -48,7 +46,11 @@ public class ModeleJeuParking extends Observable{
 
     public void deplacerPiece(String direction){
         if(idPieceSelected !=0){
-            modelePlateau.deplacementPiece(idPieceSelected,direction);
+            try{
+                modelePlateau.deplacementPiece(idPieceSelected,direction);
+            } catch(Exception e){
+
+            }
         }
         // pour tester la fin de partie on teste simplement si une piece est dans le trou des contours,
         //etant donnée que seule la piece principale peut y acceder
@@ -133,14 +135,4 @@ public class ModeleJeuParking extends Observable{
     }
 
 
-
-
-
-
-/*
-    private HashMap<String,Boolean[][]> poolDePiece =
-            new HashMap<String, Boolean[][]>(){
-                    {"H2",new Boolean[][]{{true},{true},{true}}}
-            };
-    */
 }
