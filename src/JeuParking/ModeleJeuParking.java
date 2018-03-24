@@ -1,5 +1,7 @@
 package JeuParking;
 
+import mvc.ExceptionsDuProjet.exceptionChevauchementDePiece;
+import mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau;
 import mvc.Modele;
 
 import java.util.Observable;
@@ -70,7 +72,13 @@ public class ModeleJeuParking extends Observable{
         modelePlateau.clearPieces();
         setContours();
         //piece principale
-        modelePlateau.posePiece(1,3,new boolean[][]{{true},{true}},0,0,"horizontal",Color.RED);
+        try {
+            modelePlateau.posePiece(1,3,new boolean[][]{{true},{true}},0,0,"horizontal",Color.RED);
+        } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau exceptionPieceHorsPlateau) {
+            exceptionPieceHorsPlateau.printStackTrace();
+        } catch (mvc.ExceptionsDuProjet.exceptionChevauchementDePiece exceptionChevauchementDePiece) {
+            exceptionChevauchementDePiece.printStackTrace();
+        }
 
         //autres pieces
         modelePlateau.posePiece(3,2,new boolean[][]{{true},{true}},0,0,"horizontal");
@@ -90,7 +98,13 @@ public class ModeleJeuParking extends Observable{
         modelePlateau.clearPieces();
         setContours();
         //piece principale
-        modelePlateau.posePiece(1,3,new boolean[][]{{true},{true}},0,0,"horizontal",Color.RED);
+        try {
+            modelePlateau.posePiece(1,3,new boolean[][]{{true},{true}},0,0,"horizontal",Color.RED);
+        } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau exceptionPieceHorsPlateau) {
+            exceptionPieceHorsPlateau.printStackTrace();
+        } catch (mvc.ExceptionsDuProjet.exceptionChevauchementDePiece exceptionChevauchementDePiece) {
+            exceptionChevauchementDePiece.printStackTrace();
+        }
 
         //autres pieces
         modelePlateau.posePiece(2,1,new boolean[][]{{true},{true}},0,0,"horizontal");
@@ -109,7 +123,13 @@ public class ModeleJeuParking extends Observable{
         modelePlateau.clearPieces();
         setContours();
         //piece principale
-        modelePlateau.posePiece(1, 3, new boolean[][]{{true}, {true}}, 0, 0, "horizontal", Color.RED);
+        try {
+            modelePlateau.posePiece(1, 3, new boolean[][]{{true}, {true}}, 0, 0, "horizontal", Color.RED);
+        } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau exceptionPieceHorsPlateau) {
+            exceptionPieceHorsPlateau.printStackTrace();
+        } catch (mvc.ExceptionsDuProjet.exceptionChevauchementDePiece exceptionChevauchementDePiece) {
+            exceptionChevauchementDePiece.printStackTrace();
+        }
         //autres pieces
         modelePlateau.posePiece(2,1,new boolean[][]{{true},{true}},0,0,"horizontal");
         modelePlateau.posePiece(1,2,new boolean[][]{{true},{true}},0,0,"horizontal");
@@ -127,11 +147,15 @@ public class ModeleJeuParking extends Observable{
     }
 
     private void setContours(){
-        modelePlateau.posePiece(7,0,new boolean[][]{{true,true,true}},0,0,"",Color.BLACK);
-        modelePlateau.posePiece(7,4,new boolean[][]{{true,true,true,true}},0,0,"",Color.BLACK);
-        modelePlateau.posePiece(0,0,new boolean[][]{{true,true,true,true,true,true,true,true}},0,0,"",Color.BLACK);
-        modelePlateau.posePiece(1,0,new boolean[][]{{true},{true},{true},{true},{true},{true}},0,0,"",Color.BLACK);
-        modelePlateau.posePiece(1,7,new boolean[][]{{true},{true},{true},{true},{true},{true}},0,0,"",Color.BLACK);
+       try{
+           modelePlateau.posePiece(7,0,new boolean[][]{{true,true,true}},0,0,"",Color.BLACK);
+           modelePlateau.posePiece(7,4,new boolean[][]{{true,true,true,true}},0,0,"",Color.BLACK);
+           modelePlateau.posePiece(0,0,new boolean[][]{{true,true,true,true,true,true,true,true}},0,0,"",Color.BLACK);
+           modelePlateau.posePiece(1,0,new boolean[][]{{true},{true},{true},{true},{true},{true}},0,0,"",Color.BLACK);
+           modelePlateau.posePiece(1,7,new boolean[][]{{true},{true},{true},{true},{true},{true}},0,0,"",Color.BLACK);
+       }catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau | exceptionChevauchementDePiece exceptionPieceHorsPlateau) {
+           exceptionPieceHorsPlateau.printStackTrace();
+       }
     }
 
 

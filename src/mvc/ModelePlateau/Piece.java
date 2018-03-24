@@ -311,6 +311,10 @@ public class Piece {
         return resultat;
     }
 
+    /**
+     * pivote la piece selon son pivot(la piece de cooroonnée 0,0 )
+     * @param sensHoraire  si vrai alors pivot dans le sens horaire.
+     */
     public void pivoter(boolean sensHoraire){
         for (Case c:
                 forme) {
@@ -371,16 +375,33 @@ public class Piece {
     }
 
     /**
+     * supprime toute les cases sur la ligne definie par yLigne
+     * @param yLigne ligne de suppression
+     */
+    public void supprimerLigneDeCase(int yLigne){
+        //la suppression se fait en 2 temps car on ne peut pas supprimer un élement de forme pendant qu'on le parcourt
+        ArrayList<Case> CasesAEnlever=new ArrayList<>();
+        for(Case c:forme){
+            if(posAbsolueY+c.getY()==yLigne)CasesAEnlever.add(c);
+        }
+        for(Case c:CasesAEnlever){
+            forme.remove(c);
+        }
+    }
+
+    /**
      * décale la case a la position donnée dans la direction donnée
-     * @param posX position en X relativement a la grille du plateau
-     * @param posY position en Y relativement a la grille du plateau
-     * @param directionX direction en X : devrait etre -1,0 ou 1
+     * @param yLigne numero de ligne relativement a la grille du plateau
      * @param directionY direction en Y : devrait etre -1,0 ou 1
      */
-    public void decalerCase(int posX,int posY,short directionX,short directionY){
+    public void decalerCaseLigne(int yLigne,short directionY){
+        ArrayList<Case> CasesADecaler=new ArrayList<>();
         for(Case c:
                 forme){
-            if(posAbsolueX+c.getX()==posX && posAbsolueY+c.getY()==posY) c.decaler(directionX,directionY);
+            if(posAbsolueY+c.getY()==yLigne) CasesADecaler.add(c);
+        }
+        for(Case c: CasesADecaler){
+            c.decaler((short)0,(short)1);
         }
     }
 

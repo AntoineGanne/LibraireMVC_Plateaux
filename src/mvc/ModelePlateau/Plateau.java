@@ -32,9 +32,7 @@ public class Plateau {
         nbCasesY=nbCasesY_in;
     }
 
-    public void ajouterPiece(int posX,int posY) throws Exception{
-       ajouterPiece(posX,posY,new boolean[][]{{true}});
-    }
+
 
 
 
@@ -143,17 +141,19 @@ public class Plateau {
 
 
 
-
+    public void ajouterPiece(int posX,int posY) throws Exception{
+        ajouterPiece(posX,posY,new boolean[][]{{true}});
+    }
     public void ajouterPiece(int posX,int posY, boolean[][] FormeDeLaPiece) throws Exception{
         ajouterPiece(posX,posY,FormeDeLaPiece,0,0);
     }
 
-    public void ajouterPiece(int posX_input,int posY_input, boolean[][] FormeDeLaPiece, int pivotX, int pivotY) throws Exception{
+    public void ajouterPiece(int posX_input,int posY_input, boolean[][] FormeDeLaPiece, int pivotX, int pivotY)throws exceptionPieceHorsPlateau,exceptionChevauchementDePiece{
         ajouterPiece(posX_input,posY_input,FormeDeLaPiece,pivotX,pivotY,"");
     }
 
     public void ajouterPiece(int posX_input,int posY_input, boolean[][] FormeDeLaPiece,
-                             int pivotX, int pivotY, String deplacementsPossibles,Color couleur) throws Exception{
+                             int pivotX, int pivotY, String deplacementsPossibles,Color couleur) throws exceptionPieceHorsPlateau,exceptionChevauchementDePiece{
         try{
             ajouterPiece(posX_input,posY_input,FormeDeLaPiece,pivotX,pivotY,deplacementsPossibles);
 
@@ -175,7 +175,7 @@ public class Plateau {
      * @throws Exception
      */
     public void ajouterPiece(int posX_input,int posY_input, boolean[][] FormeDeLaPiece,
-                             int pivotX, int pivotY, String deplacementsPossibles) throws Exception{
+                             int pivotX, int pivotY, String deplacementsPossibles) throws exceptionPieceHorsPlateau,exceptionChevauchementDePiece{
         int tx=FormeDeLaPiece.length;
         int ty=0;
         if(tx!=0){
@@ -348,7 +348,8 @@ public class Plateau {
     public void clearCase(int posX, int posY,int idPiece) {
         try{
             Piece p = getPiece(idPiece);
-            p.supprimerCase(posX,posY);
+            //p.supprimerCase(posX,posY);
+            p.supprimerLigneDeCase(posY);
         }catch (exceptionIDPieceDontExist e){
             e.printStackTrace();
         }
@@ -377,9 +378,10 @@ public class Plateau {
             //decalages des pieces au dessus de la ligne vers le bas
             for(int y=ligne-1;y>=0;y--){
                 for(int x=0;x<nbCasesX;x++){
-                    int id=etatDuPlateau[x][ligne];
+                    int id=etatDuPlateau[x][y];
                     if(id!=0 && id!=idPiece){
-                        clearCase(x,ligne,id);
+                        Piece p=getPiece(id);
+                        p.decalerCaseLigne(y,(short)1);
                     }
                 }
             }

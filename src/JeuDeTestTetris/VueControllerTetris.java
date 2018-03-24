@@ -27,6 +27,7 @@ public class VueControllerTetris extends Application {
 
     //Textes
     Label textePrincipal;
+    Label texteScore;
     //Fonts
     Font fontTitres;
     Font fontBoutons;
@@ -36,18 +37,51 @@ public class VueControllerTetris extends Application {
         nbColonnes=10;
         nbLignes=30;
 
-        // initialisation du modèle que l'on souhaite utiliser
-        modele= new ModeleTetris(nbColonnes,nbLignes);
-
-        //initialisation de la vue
-        VueControleur vue = new VueControleur(modele.getM(),200,600);
-
         // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
         BorderPane border = new BorderPane();
+
+        // permet de placer les differents boutons dans une grille
+        GridPane gPane = new GridPane();
+
 
         //Fonts
         fontTitres=new Font("Arial",20);
         fontBoutons=new Font("Arial",15);
+        //labels
+        textePrincipal=new Label(" Règles du jeu : \n " +
+                "fleches gauche et droite pour deplacer la piece \n " +
+                "fleche haut pour pivoter la piece \n"+
+                "fleche bas pour accelerer la descente de la piece \n"+
+                "Vous gagnez un point pour chaque piece posée");
+        textePrincipal.setFont(fontTitres);
+        border.setTop(textePrincipal);
+
+        texteScore=new Label("Votre score: 0");
+        texteScore.setFont(fontTitres);
+        border.setBottom(texteScore);
+
+        // initialisation du modèle que l'on souhaite utiliser
+        modele= new ModeleTetris(nbColonnes,nbLignes);
+        modele.addObserver(new Observer() {
+            @Override
+            public void update(Observable o, Object arg) {
+                if(modele.isPartieFinie()){
+                    texteScore.setText("C'est perdu! \n " +
+                            "Vous avez fait un score de "+modele.getScore()+" points");
+                }else {
+                    texteScore.setText("Votre score: "+modele.getScore()+" points");
+                }
+                border.setBottom(texteScore);
+            }
+        });
+
+
+
+        //initialisation de la vue
+        VueControleur vue = new VueControleur(modele.getM(),200,600);
+
+
+
 
 
 
@@ -55,8 +89,6 @@ public class VueControllerTetris extends Application {
         Scene scene = new Scene(border, Color.LIGHTBLUE);
 
         ////// Controleurs
-        // permet de placer les differents boutons dans une grille
-        GridPane gPane = new GridPane();
 
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override

@@ -88,14 +88,17 @@ public class Modele extends Observable {
      *                              mots clés reconnus:"vertical" "horizontal" "tous".
      *                              par défaut (si aucun mot clé reconnu): aucun mouvement autorisé
      * @param couleur  Couleur de la piece
+     * @exception exceptionChevauchementDePiece
+     * @exception exceptionPieceHorsPlateau
      */
     public void posePiece(int posX,int posY, boolean[][] FormeDeLaPiece,
-                          int pivotX, int pivotY, String deplacementsPossibles,Color couleur)
-    {
+                          int pivotX, int pivotY, String deplacementsPossibles,Color couleur) throws exceptionPieceHorsPlateau, exceptionChevauchementDePiece {
         try {
             plat.ajouterPiece(posX,posY,FormeDeLaPiece,pivotX,pivotY,deplacementsPossibles,couleur);
-        } catch (Exception e) {
-            //e.printStackTrace();
+        } catch (exceptionPieceHorsPlateau |exceptionChevauchementDePiece e) {
+            throw e;
+        }catch (Exception e){
+            e.printStackTrace();
         }
         setChanged();
         notifyObservers();
@@ -126,12 +129,12 @@ public class Modele extends Observable {
      * @param numPiece id de la piece
      * @param direction mot clé de la direction
      */
-    public void deplacementPiece(int numPiece, String direction){
+    public void deplacementPiece(int numPiece, String direction)throws exceptionDeplacementPieceFigee{
         try {
             plat.deplacerPiece(numPiece,direction);
         }
         catch(exceptionDeplacementPieceFigee e){
-            //e.printStackTrace();
+            throw e;
         }catch (Exception e){
             e.printStackTrace();
         }

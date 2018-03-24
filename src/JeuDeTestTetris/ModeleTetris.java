@@ -1,11 +1,15 @@
 package JeuDeTestTetris;
 
+import mvc.ExceptionsDuProjet.exceptionChevauchementDePiece;
+import mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee;
+import mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau;
 import mvc.Modele;
 import java.awt.*;
+import java.util.Observable;
 
 import static java.lang.Math.floor;
 
-public class ModeleTetris {
+public class ModeleTetris extends Observable{
     public Modele getM() {
         return m;
     }
@@ -13,17 +17,38 @@ public class ModeleTetris {
     private Modele m;
     private int idPieceEnMouvement;
 
+    public boolean isPartieFinie() {
+        return partieFinie;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    private int score;
+    private boolean partieFinie;
+
+    //attributs prochaine piece
+    private boolean[][] forme;
+    private int pivotX , pivotY;
+    Color clr;
+
     public  ModeleTetris(int nbColonnes,int nbLignes){
         m=new Modele(nbColonnes,nbLignes);
+        miseAJourProchainePiece();
+        partieFinie=false;
     }
 
     public void nouvellePartie(){
         m.clearPieces();
-        int nbCasesX=m.getNbCasesX();
+        nouvellePiece();
+        score=0;
+
+        miseAJourProchainePiece();
+    }
+
+    private void miseAJourProchainePiece(){
         int aleat = 1 + (int)(Math.random()*((7-1)+1));
-        boolean[][] forme;
-        int pivotX , pivotY;
-        Color clr;
         switch (aleat){
             case 1: // I
                 forme = new boolean[][]{{true},{true},{true},{true}};
@@ -74,18 +99,41 @@ public class ModeleTetris {
                 clr = new Color(153,51,255);
                 break;
         }
+    }
+
+    private void nouvellePiece(){
+        int nbCasesX=m.getNbCasesX();
         int x=(int)floor(nbCasesX/2);
-        m.posePiece(x,pivotY,forme,pivotX,pivotY,"horizontal bas", clr);
+        try {
+            m.posePiece(x,pivotY,forme,pivotX,pivotY,"horizontal bas", clr);
+        } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau exceptionPieceHorsPlateau) {
+            exceptionPieceHorsPlateau.printStackTrace();
+        } catch (mvc.ExceptionsDuProjet.exceptionChevauchementDePiece exceptionChevauchementDePiece) {
+            finDePartie();
+        }
         idPieceEnMouvement=m.selectionnerDernierPieceAdded();
+        miseAJourProchainePiece();
+
+        gestionDeLigneRemplie();
+    }
+
+    private void finDePartie() {
+        partieFinie=true;
+
     }
 
     private void gestionDeLigneRemplie(){
         int nbColonnes=m.getNbCasesX();
         int nbLignes=m.getNbCasesY();
         //on parcourt les lignes depuis le bas du plateau
-        for(int y=nbLignes-1;y>=0;y--){
-            if(ligneRemplie(y)){
 
+        int y=nbLignes-1;
+        while(y>=0){
+            if(ligneRemplie(y)){
+                m.clearLigneEtDescendCases(y,idPieceEnMouvement);
+                //on ne décremente pas y dans ce cas, car la ligne du dessus descend d'un cran
+            }else{
+                y--;
             }
         }
     }
@@ -99,23 +147,39 @@ public class ModeleTetris {
         return true;
     }
 
-    private void suppressionLigne(int ligne){
-        
-    }
+
 
     public void deplacerPieceADroite(){
-        m.deplacementPiece(idPieceEnMouvement,"droite");
+        try {
+            m.deplacementPiece(idPieceEnMouvement,"droite");
+        } catch (mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee e) {
+
+        }
     }
     public void deplacerPieceAGauche(){
-        m.deplacementPiece(idPieceEnMouvement,"gauche");
+        try {
+            m.deplacementPiece(idPieceEnMouvement,"gauche");
+        } catch (mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee e) {
+
+        }
     }
     public void descendrePiece(){
-        m.deplacementPiece(idPieceEnMouvement,"bas");
+        try {
+            m.deplacementPiece(idPieceEnMouvement,"bas");
+        } catch (mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee e) {
+            nouvellePiece();
+            incrementerScore();
+        }
     }
     public void pivoterPiece(){
         m.pivoterPiece(idPieceEnMouvement,true);
     }
 
+    private void incrementerScore(){
+        score++;
+        setChanged();
+        notifyObservers();
+    }
 
 
 

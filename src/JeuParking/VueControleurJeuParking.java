@@ -63,7 +63,7 @@ public class VueControleurJeuParking extends Application{
         fontTitres=new Font("Arial",16);
         fontBoutons=new Font("Arial",15);
 
-        txt1=new Label(" Règles du jeu : \n Sorter la pièce rouge du plateau \n Cliquez sur une pièce puis utilisez les touches directionelles pour les déplacer");
+        txt1=new Label(" Règles du jeu : \n Sortez la pièce rouge du plateau \n Cliquez sur une pièce puis utilisez les touches directionelles pour les déplacer");
         txt1.setFont(fontTitres);
         border.setTop(txt1);
         txt2=new Label(nbcoup+" coups");

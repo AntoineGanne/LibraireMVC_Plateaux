@@ -47,8 +47,8 @@ public class Case {
     }
 
     public void decaler(short directionX,short directionY){
-        this.x=this.x+directionX;
-        this.y=this.y+directionY;
+        this.x+=directionX;
+        this.y+=directionY;
     }
 
     public void add(int x_added,int y_added){
