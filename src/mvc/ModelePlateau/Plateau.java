@@ -81,7 +81,7 @@ public class Plateau {
         }
     }
 
-    public void deplacerPiece(int numPiece, String direction) throws Exception { // avec l'id de la piece, la deplacer jusqu'a ce que son pivot atteigne posX, posY
+    public void deplacerPiece(int numPiece, String direction) throws exceptionDeplacementPieceFigee { // avec l'id de la piece, la deplacer jusqu'a ce que son pivot atteigne posX, posY
         int[][] etatplateau=etatDuPlateau();
         Piece p = null;
         try {
@@ -97,7 +97,7 @@ public class Plateau {
         if(!p.peutAllerDirection(direction))throw new exceptionDeplacementPieceFigee();
 
         int[][] etatPlateauSansP=etatDuPlateauSansUnePiece(p.getId());
-        Piece pieceTest=new Piece(p.getMatriceBoolPiece(),p.getPosAbsolueX(),p.getPosAbsolueY());
+        Piece pieceTest=new Piece(p.getMatriceBoolPiece(),p.getPosAbsolueX(),p.getPosAbsolueY(),p.getPivotX(),p.getPivotY());
 
         switch(direction){
             case "droite": // Droite
@@ -119,7 +119,7 @@ public class Plateau {
             p.setPosAbsolueX(pieceTest.getPosAbsolueX());
             p.setPosAbsolueY(pieceTest.getPosAbsolueY());
         }else{
-            throw new Exception("deplacement impossible");
+            throw new exceptionDeplacementPieceFigee();
         }
 
     }
@@ -130,7 +130,7 @@ public class Plateau {
             int x=c.getX();
             int y=c.getY();
             //la piece ne sort pas du plateau
-            if(x<0 || x>=nbCasesX || y<0 || y>nbCasesY) return false;
+            if(x<0 || x>=nbCasesX || y<0 || y>=nbCasesY) return false;
             else{
                 //la piece n'occupe pas une case deja occupée par un autre piece
                 if(etatPlateauSansP[x][y]!=0){
@@ -163,6 +163,17 @@ public class Plateau {
             throw ex;
         }
     }
+
+    /**
+     * ajoute une piece au plateau.
+     * @param posX_input
+     * @param posY_input
+     * @param FormeDeLaPiece
+     * @param pivotX
+     * @param pivotY
+     * @param deplacementsPossibles
+     * @throws Exception
+     */
     public void ajouterPiece(int posX_input,int posY_input, boolean[][] FormeDeLaPiece,
                              int pivotX, int pivotY, String deplacementsPossibles) throws Exception{
         int tx=FormeDeLaPiece.length;
@@ -171,10 +182,11 @@ public class Plateau {
             ty=FormeDeLaPiece[0].length;
         }
 
+        //on récupere la position du coin en haut a droite
         int posX=posX_input-pivotX;
         int posY=posY_input-pivotY;
 
-        if(tx+posX<0 || tx+posX>nbCasesX || ty+posY<0 || ty+posY>nbCasesY){
+        if(posX<0 || tx+posX>nbCasesX || posY<0 || ty+posY>nbCasesY){
             throw new exceptionPieceHorsPlateau();
         }
 
@@ -191,7 +203,7 @@ public class Plateau {
         //cependant la valeur 0 correspond a l'id d'une case vide, donc on ajoute 1 pour eviter la confusion
         int idPiece=pieces.size()+1;
 
-        Piece p = new Piece(FormeDeLaPiece,posX,posY,pieces.size()+1);
+        Piece p = new Piece(FormeDeLaPiece,posX_input,posY_input,pivotX,pivotY,idPiece);
         p.setDeplacementsPossibles(deplacementsPossibles);
         pieces.add(p);
     }
@@ -228,10 +240,10 @@ public class Plateau {
 
 
         if(pieceSelected!=null){
-            ArrayList<Case> formePiecePivote=pieceSelected.pivoter(sensHoraire);
+            ArrayList<Case> formePiecePivote=pieceSelected.simulationPivotement(sensHoraire,true);
 
             int[][] etatPlateau=etatDuPlateauSansUnePiece(idPiece);
-            for (Case c: pieceSelected.getCasesPositionAbsolues()){
+            for (Case c:formePiecePivote){
                 int x=c.getX();
                 int y=c.getY();
                 if(x<0 || x>=nbCasesX || y<0 || y>=nbCasesY) {
@@ -243,7 +255,7 @@ public class Plateau {
             }
 
             //dans le cas ou aucune exception a été levée.
-            pieceSelected.setForme(formePiecePivote);
+            pieceSelected.pivoter(sensHoraire);
         }
 
     }

@@ -6,6 +6,7 @@
 package mvc;
 
 import mvc.ExceptionsDuProjet.exceptionChevauchementDePiece;
+import mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee;
 import mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau;
 import mvc.ModelePlateau.Plateau;
 
@@ -129,8 +130,10 @@ public class Modele extends Observable {
         try {
             plat.deplacerPiece(numPiece,direction);
         }
-        catch(Exception e){
+        catch(exceptionDeplacementPieceFigee e){
             //e.printStackTrace();
+        }catch (Exception e){
+            e.printStackTrace();
         }
 
         setChanged();
@@ -142,6 +145,8 @@ public class Modele extends Observable {
             plat.pivoterPiece(idPiece,sensHoraire);
         }catch (exceptionChevauchementDePiece | exceptionPieceHorsPlateau ex){
 
+        }catch (Exception e){
+            e.printStackTrace();
         }
         setChanged();
         notifyObservers();

@@ -8,14 +8,15 @@ import java.util.ArrayList;
 
 public class Piece {
     private ArrayList<Case> forme;
-    private int  tailleX, tailleY;
-    private boolean estFigee;
+    //private int  tailleX, tailleY;
+
     private int posAbsolueX,posAbsolueY;  //correspond au coin en haut a gauche de la forme de la pièce
     private int id;   //pour pouvoir differencier les differents pièces, a voir si c'est nécessaire
     private static int DEFAULT_ID=1;
-    //private int pivotX,pivotY;
+    //private int pivotX;
+    //private int pivotY;
     private boolean[] deplacementsPossible; //0=>droite ;1=>haut ;2=>gauche ;3=>bas
-
+    private boolean estFigee;
 
 
     //couleur
@@ -29,6 +30,8 @@ public class Piece {
     }
 
     public boolean [][] getMatriceBoolPiece(){
+        int tailleX=getTailleX();
+        int tailleY=getTailleY();
         boolean[][] result = new boolean[tailleX][tailleY];
         for(int i=0;i<tailleX;i++){
             for(int j=0;j<tailleY;j++){
@@ -36,8 +39,10 @@ public class Piece {
             }
         }
 
+        int  pivotX=getPivotX();
+        int pivotY=getPivotY();
         for(int i=0;i<forme.size();i++){
-            result[forme.get(i).getX()][forme.get(i).getY()]=true;
+            result[forme.get(i).getX()+pivotX][forme.get(i).getY()+pivotY]=true;
         }
 
         return result;
@@ -56,6 +61,56 @@ public class Piece {
     public void setForme(ArrayList<Case> forme) {
         this.forme = forme;
     }
+
+    /**
+     * calcule la taille en X de la forme de la piece
+     * @return
+     */
+    public int getTailleX(){
+        int min=100;
+        int max=-100;
+        for(Case c: forme){
+            int x=c.getX();
+            max=(x>max? x:max);
+            min=(x<min?x:min);
+        }
+        return max-min+1;
+    }
+    /**
+     * calcule la taille en X de la forme de la piece
+     * @return
+     */
+    public int getTailleY(){
+        int min=100;
+        int max=-100;
+        for(Case c: forme){
+            int y=c.getY();
+            max=(y>max? y:max);
+            min=(y<min?y:min);
+        }
+        return max-min+1;
+    }
+
+    public int getPivotX(){
+        int min=100;
+        for(Case c: forme){
+            int x=c.getX();
+            min=(x<min?x:min);
+        }
+        return -min;
+    }
+    public int getPivotY(){
+        int min=100;
+        for(Case c: forme){
+            int y=c.getY();
+            min=(y<min?y:min);
+        }
+        return -min;
+    }
+
+
+    //public int getPivotY() { return pivotY; }
+    //public int getPivotX() { return pivotX; }
 
     public int getPosAbsolueX() {
         return posAbsolueX;
@@ -146,19 +201,19 @@ public class Piece {
     }
 
 
-
-
     /**
      * On crée la pièce en lui donnant un tableau 2D de boolean
      * Surement la méthode la plus simple pour rapidement créer des pièces personnalisée.
      * Le constructeur transforme la matrice en une collection de cases (les coordonnées des cases sont relatives)
      * @param matrice boolean[][] decrivant la forme de la piece
      */
-    public Piece(boolean [][] matrice,int posAbsolueX_,int posAbsolueY_){
+    public Piece(boolean [][] matrice,int posAbsolueX_,int posAbsolueY_,int pivotX,int pivotY){
         this();
 
         this.posAbsolueX=posAbsolueX_;
         this.posAbsolueY=posAbsolueY_;
+        //this.pivotX=pivotX_input;
+        //this.pivotY=pivotY_input;
 
         // on récupere les tailles en x et y du tableau matrice
         int tx=matrice.length;
@@ -169,16 +224,15 @@ public class Piece {
         else{
             System.out.println("erreur Piece()");
         }
-
+        /*
         tailleX=tx;
         tailleY=ty;
-
-
+        */
         //
         //initialisation de forme
         for(int x=0;x<tx;x++){
             for(int y=0;y<ty;y++){
-                if(matrice[x][y])forme.add(new Case(x,y)) ;
+                if(matrice[x][y])forme.add(new Case(x-pivotX,y-pivotY)) ;
             }
         }
     }
@@ -187,14 +241,32 @@ public class Piece {
      * On crée la pièce en lui donnant un tableau 2D de boolean
      * Surement la méthode la plus simple pour rapidement créer des pièces personnalisée.
      * Le constructeur transforme la matrice en une collection de cases (les coordonnées des cases sont relatives)
-     * L'identifiant est donné en paramètre pour essayer d'assurer l'unicité des identitifiants
+     * L'identifiant est donné en paramètre pour essayer d'assurer l'unicité des identitifiants.
+     * Le pivot est fixé comme etant le coin superieur gauche de la matrice
      * @param matrice boolean[][] decrivant la forme de la piece
      * @param posAbsolueX_ position absolue en X du pivot de la piece
      * @param posAbsolueY_ position absolue en Y du pivot de la piece
      * @param id_input  identifiant donné par la classe Plateau
      */
     public Piece(boolean [][] matrice,int posAbsolueX_,int posAbsolueY_,int id_input){
-        this(matrice,posAbsolueX_,posAbsolueY_);
+        this(matrice,posAbsolueX_,posAbsolueY_,0,0);
+        id=id_input;
+    }
+
+    /**
+     * On crée la pièce en lui donnant un tableau 2D de boolean
+     * Surement la méthode la plus simple pour rapidement créer des pièces personnalisée.
+     * Le constructeur transforme la matrice en une collection de cases (les coordonnées des cases sont relatives)
+     * L'identifiant est donné en paramètre pour essayer d'assurer l'unicité des identitifiants
+     * @param matrice boolean[][] decrivant la forme de la piece
+     * @param posAbsX position absolue en X du pivot de la piece
+     * @param posAbsY position absolue en Y du pivot de la piece
+     * @param pivotX position relative a la matrice du pivot(piece centrale) en X
+     * @param pivotY position relative a la matrice du pivot(piece centrale) en Y
+     * @param id_input  identifiant donné par la classe Plateau
+     */
+    public Piece(boolean [][] matrice,int posAbsX,int posAbsY,int pivotX,int pivotY,int id_input){
+        this(matrice,posAbsX,posAbsY,pivotX,pivotY);
         id=id_input;
     }
 
@@ -223,18 +295,27 @@ public class Piece {
      * simule un pivotage anti-horaire de 90 degrés sans modifier la piece
      * (le plateau doit faire des tests avant de confirmer le pivotage)
      * @param sensHoraire si vrai alors pivot dans le sens horaire.
-     * @return les cases qui forment la version pivottée de la piece
+     * @param enPositiosAbsolues si vrai renvoit les cases en positions absolues.
+     *                           Si non les renvoit en position relatives au pivot de la piece
+     * @return les cases qui forment la version pivottée de la piece, en position relatives
      */
-    public ArrayList<Case> pivoter(boolean sensHoraire){
+    public ArrayList<Case> simulationPivotement(boolean sensHoraire,boolean enPositiosAbsolues){
         ArrayList<Case> resultat=new ArrayList<Case>(forme.size());
         for (Case c:
              forme) {
             Case casemodifie=new Case(c);
             casemodifie.pivoterCase(sensHoraire);
-            casemodifie.add(posAbsolueX,posAbsolueY);
+            if(enPositiosAbsolues)casemodifie.add(posAbsolueX,posAbsolueY);
             resultat.add(casemodifie);
         }
         return resultat;
+    }
+
+    public void pivoter(boolean sensHoraire){
+        for (Case c:
+                forme) {
+            c.pivoterCase(sensHoraire);
+        }
     }
 
     /**
@@ -302,4 +383,5 @@ public class Piece {
             if(posAbsolueX+c.getX()==posX && posAbsolueY+c.getY()==posY) c.decaler(directionX,directionY);
         }
     }
+
 }
