@@ -5,9 +5,12 @@
  */
 package mvc;
 
+import mvc.ExceptionsDuProjet.exceptionChevauchementDePiece;
+import mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau;
 import mvc.ModelePlateau.Plateau;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.Observable;
 
 
@@ -109,9 +112,16 @@ public class Modele extends Observable {
         return etatDuPlateau[posX][posY];
     }
 
+    public int selectionnerDernierPieceAdded(){
+        return plat.dernierePieceAdded();
+    }
+
 
     /**
-     * deplace d'une case la piece dont l'id est numPiece et dans la direction indiquée par direction
+     * deplace d'une case la piece dont l'id est numPiece et dans la direction indiquée par direction.
+     * les instructions sont censées contenir "horizontal" "vertical" "tous" "haut" "bas" "gauche" "droite" ou etre vide.
+     * Il est possible d'utiliser plusieurs mots clés.
+     * par defaut(aucun mot reconnu ou vide) tous les déplacement sont interdits
      * @param numPiece id de la piece
      * @param direction mot clé de la direction
      */
@@ -123,6 +133,16 @@ public class Modele extends Observable {
             //e.printStackTrace();
         }
 
+        setChanged();
+        notifyObservers();
+    }
+
+    public void pivoterPiece(int idPiece,boolean sensHoraire){
+        try{
+            plat.pivoterPiece(idPiece,sensHoraire);
+        }catch (exceptionChevauchementDePiece | exceptionPieceHorsPlateau ex){
+
+        }
         setChanged();
         notifyObservers();
     }
@@ -168,5 +188,22 @@ public class Modele extends Observable {
             setChanged();
             notifyObservers();
         }
+    }
+
+    /**
+     * supprime toutes les cases de la ligne donnée et dacale vers le bas toutes les cases situées plus haut.
+     * Le decalage des cases ignore la piece dont l'id est donné en paramètre.
+     *
+     * @param ligne ligne a supprimer
+     * @param idPiece  id de la piece a ignorer
+     */
+    public void clearLigneEtDescendCases(int ligne,int idPiece){
+        try {
+            plat.clearLigneEtDescendCases(ligne,idPiece);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        setChanged();
+        notifyObservers();
     }
 }

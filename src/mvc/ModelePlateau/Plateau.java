@@ -36,36 +36,20 @@ public class Plateau {
        ajouterPiece(posX,posY,new boolean[][]{{true}});
     }
 
-    public Piece recupPiece(int numPiece) throws exceptionIDPieceDontExist{
-        boolean b_yaunepiece = false;
-        Piece p = null;
-        for(int i=0;i<pieces.size();i++){
-            if(pieces.get(i).getId()==numPiece){
-                b_yaunepiece=true;
-                p = pieces.get(i);
-            }
-        }
 
-        if(b_yaunepiece){
-            return p;
-        }
-        else{
-            throw new exceptionIDPieceDontExist();
-        }
-    }
 
-    public Piece getPiece(int idPiece){
+    public Piece getPiece(int idPiece) throws exceptionIDPieceDontExist{
         //l'identifiant est censé etre l'index de la piece dans le tableau de Piece + 1
         // le +1 sert a ne pas avoir un identifianrt a 0
-        assert (idPiece>0 && idPiece<=pieces.size());
-        return pieces.get(idPiece-1);
+        if(!(idPiece>0 && idPiece<=pieces.size())) throw new exceptionIDPieceDontExist();
+        else return pieces.get(idPiece-1);
     }
 
     public void deplacerPiece(int numPiece, String direction, int nbcase) throws exceptionDeplacementPieceFigee { // avec l'id de la piece, la deplacer jusqu'a ce que son pivot atteigne posX, posY
         int[][] etatplateau=etatDuPlateau();
         Piece p = null;
         try {
-            p = recupPiece(numPiece);
+            p = getPiece(numPiece);
         }
         catch(Exception e){
             System.out.println("exception ID don't exist captée");
@@ -101,7 +85,7 @@ public class Plateau {
         int[][] etatplateau=etatDuPlateau();
         Piece p = null;
         try {
-            p = recupPiece(numPiece);
+            p = getPiece(numPiece);
         }
         catch(Exception e){
             System.out.println("exception ID don't exist captée");
@@ -215,16 +199,16 @@ public class Plateau {
 
 
     /**
-     * definit les déplacements possibles de la piece
-     * Si Instructions contient "horizontal" la piece peut se deplacer horizontalement
-     * Si Instructions contient "vertical" la piece peut se deplacer verticalement
-     * si Instruction ne contient pas ces mots clés, aucun déplacemnts n'est autorisé
+     * definit les déplacements possibles de la piece selon les instructions données dans le String
+     * les instructions sont censées contenir "horizontal" "vertical" "tous" "haut" "bas" "gauche" "droite" ou etre vide.
+     * Il est possible d'utiliser plusieurs mots clés.
+     * par defaut(aucun mot reconnu ou vide) tous les déplacement sont interdits
      * @param id int
      * @param instructions String
      */
     public void setDeplacementsPossiblesPiece(int id, String instructions){
         try{
-            Piece p=recupPiece(id);
+            Piece p=getPiece(id);
             p.setDeplacementsPossibles(instructions);
         } catch (mvc.ExceptionsDuProjet.exceptionIDPieceDontExist exceptionIDPieceDontExist) {
             exceptionIDPieceDontExist.printStackTrace();
@@ -233,35 +217,45 @@ public class Plateau {
     }
 
 
-    public void pivoterPiece(int idPiece, boolean sensHoraire) throws exceptionChevauchementDePiece
-    {
+    public void pivoterPiece(int idPiece, boolean sensHoraire)
+            throws exceptionChevauchementDePiece, exceptionPieceHorsPlateau {
         Piece pieceSelected=null;
         try{
-            pieceSelected=this.recupPiece(idPiece);
+            pieceSelected=this.getPiece(idPiece);
         }catch (exceptionIDPieceDontExist e){
             e.printStackTrace();
         }
 
-        /*
-        if(pieceSelected!=null){
-            ArrayList<Case> formePiecePivote=pieceSelected.pivoter();
 
-            int[][] etatPlateau=etatDuPlateau();
-            for (Piece p:
-                 pieces) {
-                if(p.getId()!=idPiece){
-                    for(Case c:
-                            p.getForme())
-                        if(c.getX()==)
+        if(pieceSelected!=null){
+            ArrayList<Case> formePiecePivote=pieceSelected.pivoter(sensHoraire);
+
+            int[][] etatPlateau=etatDuPlateauSansUnePiece(idPiece);
+            for (Case c: pieceSelected.getCasesPositionAbsolues()){
+                int x=c.getX();
+                int y=c.getY();
+                if(x<0 || x>=nbCasesX || y<0 || y>=nbCasesY) {
+                    throw new  exceptionPieceHorsPlateau();
+                }
+                if(etatPlateau[x][y]!=0){
+                    throw new exceptionChevauchementDePiece();
                 }
             }
+
+            //dans le cas ou aucune exception a été levée.
+            pieceSelected.setForme(formePiecePivote);
         }
-        */
+
     }
 
     public Color getCouleurDePiece(int idPiece){
-        Piece p=getPiece(idPiece);
-        return p.getCouleur();
+        try{
+            Piece p=getPiece(idPiece);
+            return p.getCouleur();
+        }catch (exceptionIDPieceDontExist e){
+            e.printStackTrace();
+            return Color.WHITE;
+        }
 
     }
 
@@ -327,7 +321,8 @@ public class Plateau {
 
 
     /**
-     *supprime toutes les pieces du plateau
+     *supprime toutes les pieces du plateau.
+     *tous les identifiants de pieces ne sont plus valides!
      */
     public void clearPieces() {
         pieces.clear();
@@ -339,8 +334,48 @@ public class Plateau {
      * @param posY
      */
     public void clearCase(int posX, int posY,int idPiece) {
-        Piece p = getPiece(idPiece);
-        p.supprimerCase(posX,posY);
+        try{
+            Piece p = getPiece(idPiece);
+            p.supprimerCase(posX,posY);
+        }catch (exceptionIDPieceDontExist e){
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * supprime toutes les cases de la ligne donnée et dacale vers le bas toutes les cases situées plus haut.
+     * Le decalage des cases ignore la piece dont l'id est donné en paramètre.
+     *
+     * @param ligne ligne a supprimer
+     * @param idPiece  id de la piece a ignorer
+     * @throws Exception  dans le cas ou le numero de ligne n'est pas correct
+     */
+    public void clearLigneEtDescendCases(int ligne, int idPiece) throws Exception{
+        if(ligne<0||ligne>=nbCasesY)throw new Exception("ligne non valide");
+        else{
+            int[][] etatDuPlateau= etatDuPlateau();
+            //suppression
+            for(int x=0;x<nbCasesX;x++){
+                int id=etatDuPlateau[x][ligne];
+                if(id!=0){
+                    clearCase(x,ligne,id);
+                }
+            }
+
+            //decalages des pieces au dessus de la ligne vers le bas
+            for(int y=ligne-1;y>=0;y--){
+                for(int x=0;x<nbCasesX;x++){
+                    int id=etatDuPlateau[x][ligne];
+                    if(id!=0 && id!=idPiece){
+                        clearCase(x,ligne,id);
+                    }
+                }
+            }
+        }
+    }
+
+    public int dernierePieceAdded() {
+        return pieces.size();
     }
 }
 
