@@ -1,6 +1,7 @@
 package JeuDeTestTetris;
 
 import mvc.Modele;
+import java.awt.*;
 
 import static java.lang.Math.floor;
 
@@ -22,50 +23,59 @@ public class ModeleTetris {
         int aleat = 1 + (int)(Math.random()*((7-1)+1));
         boolean[][] forme;
         int pivotX , pivotY;
+        Color clr;
         switch (aleat){
             case 1: // I
                 forme = new boolean[][]{{true},{true},{true},{true}};
                 pivotX=1;
                 pivotY=0;
+                clr = new Color(102,255,255);
                 break;
             case 2: // O
                 forme = new boolean[][]{{true,true},{true,true}};
                 pivotX=0;
                 pivotY=0;
+                clr = new Color(232,232,8);
                 break;
             case 3: // T
                 forme=new boolean[][]{{true,false},{true,true},{true,false}};
                 pivotX=1;
                 pivotY=0;
+                clr = new Color(153,51,255);
                 break;
             case 4: // L
                 forme = new boolean[][]{{true,true},{true,false},{true,false}};
                 pivotX=0;
                 pivotY=0;
+                clr = new Color(255,153,51);
                 break;
             case 5: // J
                 forme = new boolean[][]{{true,false},{true,false},{true,true}};
                 pivotX=2;
                 pivotY=0;
+                clr = new Color(51,51,255);
                 break;
             case 6: // Z
                 forme = new boolean[][]{{true,false},{true,true},{false,true}};
                 pivotX=1;
                 pivotY=0;
+                clr = new Color(255,51,0);
                 break;
             case 7: // S
-                forme=new boolean[][]{{true,false},{true,true},{true,false}};
+                forme=new boolean[][]{{false,true},{true,true},{true,false}};
                 pivotX=1;
                 pivotY=0;
+                clr = new Color(0,255,0);
                 break;
             default: // T
                 forme = new boolean[][]{{false,true},{true,true},{true,false}};
                 pivotX=1;
                 pivotY=0;
+                clr = new Color(153,51,255);
                 break;
         }
         int x=(int)floor(nbCasesX/2);
-        m.posePiece(x,pivotY,forme,pivotX,pivotY,"horizontal bas");
+        m.posePiece(x,pivotY,forme,pivotX,pivotY,"horizontal bas", clr);
         idPieceEnMouvement=m.selectionnerDernierPieceAdded();
     }
 
