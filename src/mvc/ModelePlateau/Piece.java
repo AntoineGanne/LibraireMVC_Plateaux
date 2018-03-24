@@ -75,7 +75,9 @@ public class Piece {
     public void setCouleur(Color couleur) { this.couleur = couleur; }
     /**
      * set les deplacement possibles selon les instructions données dans le String
-     * les instructions sont censées contenir "horizontal" "vertical" "tous" ou etre vide
+     * les instructions sont censées contenir "horizontal" "vertical" "tous" "haut" "bas" "gauche" "droite" ou etre vide.
+     * Il est possible d'utiliser plusieurs mots clés.
+     * par defaut(aucun mot reconnu ou vide) tous les déplacement sont interdits
      * @param instructions String
      */
     public void setDeplacementsPossibles(String instructions){
@@ -88,11 +90,38 @@ public class Piece {
             deplacementsPossible[1]=true;
             deplacementsPossible[3]=true;
         }
+        if(instructions.contains("droite")){
+            deplacementsPossible[0]=true;
+        }
+        if(instructions.contains("haut")){
+            deplacementsPossible[1]=true;
+        }
+        if(instructions.contains("gauche")){
+            deplacementsPossible[2]=true;
+        }
+        if(instructions.contains("bas")){
+            deplacementsPossible[3]=true;
+        }
         if(instructions.contains("tous")){
             for(int j=0;j<deplacementsPossible.length;j++){
                 deplacementsPossible[j]=true;
             }
         }
+    }
+
+    /**
+     * renvoit une collection de cases correspondant a la forme de la piece en position absolue (= relativement au plateau)
+     * @return une collection de cases
+     */
+    public ArrayList<Case> getCasesPositionAbsolues(){
+        ArrayList<Case> resultat=new ArrayList<>();
+        for(Case c:forme){
+            int newX=c.getX()+posAbsolueX;
+            int newY=c.getY()+posAbsolueY;
+            Case cResultat=new Case(newX,newY);
+            resultat.add(cResultat);
+        }
+        return resultat;
     }
     //endregion
 
@@ -185,9 +214,6 @@ public class Piece {
         this.couleur=couleur_input;
     }
 
-
-
-
     //endregion
 
 
@@ -205,6 +231,7 @@ public class Piece {
              forme) {
             Case casemodifie=new Case(c);
             casemodifie.pivoterCase(sensHoraire);
+            casemodifie.add(posAbsolueX,posAbsolueY);
             resultat.add(casemodifie);
         }
         return resultat;
@@ -250,11 +277,29 @@ public class Piece {
         }
     }
 
-
+    /**
+     * supprime la case de la piece a la position indiquée
+     * @param posX position en X relativement a la grille du plateau
+     * @param posY position en Y relativement a la grille du plateau
+     */
     public void supprimerCase(int posX, int posY) {
         for(Case c:
                 forme){
             if(posAbsolueX+c.getX()==posX && posAbsolueY+c.getY()==posY) forme.remove(c);
+        }
+    }
+
+    /**
+     * décale la case a la position donnée dans la direction donnée
+     * @param posX position en X relativement a la grille du plateau
+     * @param posY position en Y relativement a la grille du plateau
+     * @param directionX direction en X : devrait etre -1,0 ou 1
+     * @param directionY direction en Y : devrait etre -1,0 ou 1
+     */
+    public void decalerCase(int posX,int posY,short directionX,short directionY){
+        for(Case c:
+                forme){
+            if(posAbsolueX+c.getX()==posX && posAbsolueY+c.getY()==posY) c.decaler(directionX,directionY);
         }
     }
 }

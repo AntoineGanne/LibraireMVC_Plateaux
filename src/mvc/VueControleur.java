@@ -102,7 +102,7 @@ public class VueControleur extends BorderPane {
                 }
 
 
-
+                /*
                 rect.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     // si case
                     @Override
@@ -110,6 +110,7 @@ public class VueControleur extends BorderPane {
                         m.posePiece((int)rect.getX()/tailleRectanglesX,(int)rect.getY()/tailleRectanglesY);
                     }
                 });
+                */
 
                 gPane.add(rect,x,y);
                 affichagePlateau[x][y]=rect;

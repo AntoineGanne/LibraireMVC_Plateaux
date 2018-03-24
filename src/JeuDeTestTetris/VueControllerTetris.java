@@ -4,46 +4,86 @@ import java.util.Observable;
 import java.util.Observer;
 import javafx.application.Application;
 
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.shape.*;
 
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import mvc.VueControleur;
 
 public class VueControllerTetris extends Application {
-    private ModeleTetris m;
+    private ModeleTetris modele;
 
     private int nbColonnes, nbLignes;
+
+    //Textes
+    Label textePrincipal;
+    //Fonts
+    Font fontTitres;
+    Font fontBoutons;
 
     @Override
     public void start(Stage primaryStage){
         nbColonnes=10;
-        nbLignes=40;
+        nbLignes=30;
 
         // initialisation du modèle que l'on souhaite utiliser
-        m = new ModeleTetris(nbColonnes,nbLignes);
+        modele= new ModeleTetris(nbColonnes,nbLignes);
 
         //initialisation de la vue
-        VueControleur vue = new VueControleur(m.getM(),500,500);
+        VueControleur vue = new VueControleur(modele.getM(),200,600);
 
         // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
         BorderPane border = new BorderPane();
 
-        // permet de placer les diffrents boutons dans une grille
-        GridPane gPane = new GridPane();
-
-
-
+        //Fonts
+        fontTitres=new Font("Arial",20);
+        fontBoutons=new Font("Arial",15);
 
 
 
         border.setCenter(vue);
         Scene scene = new Scene(border, Color.LIGHTBLUE);
+
+        ////// Controleurs
+        // permet de placer les differents boutons dans une grille
+        GridPane gPane = new GridPane();
+
+        scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                switch (event.getCode()){
+                    case RIGHT: modele.deplacerPieceADroite(); break;
+                    case LEFT: modele.deplacerPieceAGauche();break;
+                    case DOWN: modele.descendrePiece();break;
+                    case UP: modele.pivoterPiece();break;
+                    default:break;
+                }
+            }
+        });
+
+        //boutons
+        Button btn_nouvellePartie=new Button("Nouvelle Partie");
+        btn_nouvellePartie.setFont(fontBoutons);
+        btn_nouvellePartie.setOnAction(event -> modele.nouvellePartie());
+
+        gPane.add(btn_nouvellePartie, 1, 0);
+
+
+        ///////fin Controleurs
+        border.setRight(gPane);
+
+
+
 
         primaryStage.setTitle("Le Super Tetris!");
         primaryStage.setScene(scene);

@@ -3,9 +3,6 @@ package mvc.ModelePlateau;
 
 public class Case {
     private int x;
-
-
-
     private int y;
     // x=0 ; y=0 : case pivot
     public int getX() {
@@ -48,5 +45,17 @@ public class Case {
                 this.y=-tempX;
             }
     }
+
+    public void decaler(short directionX,short directionY){
+        this.x=this.x+directionX;
+        this.y=this.y+directionY;
+    }
+
+    public void add(int x_added,int y_added){
+        this.x+=x_added;
+        this.y+=y_added;
+    }
+
+
 
 }
