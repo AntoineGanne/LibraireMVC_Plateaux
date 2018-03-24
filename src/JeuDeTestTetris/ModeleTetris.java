@@ -21,7 +21,6 @@ public class ModeleTetris {
         int nbCasesX=m.getNbCasesX();
         int aleat = 1 + (int)(Math.random()*((7-1)+1));
         boolean[][] forme;
-        forme = new boolean[][]{{false,true},{true,true},{true,false}};
         int pivotX , pivotY;
         switch (aleat){
             case 1: // I
@@ -100,12 +99,13 @@ public class ModeleTetris {
     public void deplacerPieceAGauche(){
         m.deplacementPiece(idPieceEnMouvement,"gauche");
     }
-    public void pivoterPiece(){
-        m.pivoterPiece(idPieceEnMouvement,true);
-    }
     public void descendrePiece(){
         m.deplacementPiece(idPieceEnMouvement,"bas");
     }
+    public void pivoterPiece(){
+        m.pivoterPiece(idPieceEnMouvement,true);
+    }
+
 
 
 
