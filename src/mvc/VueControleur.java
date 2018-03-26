@@ -11,6 +11,7 @@ package mvc;
 import java.util.Observable;
 import java.util.Observer;
 
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 
 import javafx.scene.input.MouseEvent;
@@ -74,6 +75,7 @@ public class VueControleur extends BorderPane {
             @Override
             public void update(Observable o, Object arg) {
                 MiseAJourVue();
+
             }
         });
 

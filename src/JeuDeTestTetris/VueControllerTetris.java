@@ -4,15 +4,13 @@ import java.util.Observable;
 import java.util.Observer;
 import javafx.application.Application;
 
-import javafx.event.ActionEvent;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.*;
 
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -20,8 +18,11 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import mvc.VueControleur;
 
-public class VueControllerTetris extends Application {
+public class VueControllerTetris extends Application implements Observer{
     private ModeleTetris modele;
+    private VueControleur vue;
+
+    private VueControleur vueProchainePiece;
 
     private int nbColonnes, nbLignes;
 
@@ -56,7 +57,8 @@ public class VueControllerTetris extends Application {
         textePrincipal.setFont(fontTitres);
         border.setTop(textePrincipal);
 
-        texteScore=new Label("Votre score: 0");
+        texteScore=new Label("Votre score: 0  \n" +
+                "    ");
         texteScore.setFont(fontTitres);
         border.setBottom(texteScore);
 
@@ -64,28 +66,25 @@ public class VueControllerTetris extends Application {
         modele= new ModeleTetris(nbColonnes,nbLignes);
         modele.addObserver(new Observer() {
             @Override
-            public void update(Observable o, Object arg) {
-                if(modele.isPartieFinie()){
-                    texteScore.setText("C'est perdu! \n " +
-                            "Vous avez fait un score de "+modele.getScore()+" points");
-                }else {
-                    texteScore.setText("Votre score: "+modele.getScore()+" points");
-                }
-                border.setBottom(texteScore);
+            public void  update(Observable o, Object arg) {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        MiseAJour();
+                    }
+                });
             }
         });
 
 
 
         //initialisation de la vue
-        VueControleur vue = new VueControleur(modele.getM(),200,600);
-
-
-
-
+        vue = new VueControleur(modele.getModelePrincipal(),200,600);
+        vueProchainePiece=new VueControleur(modele.getModeleProchainePiece(),100,100);
 
 
         border.setCenter(vue);
+        gPane.add(vueProchainePiece,0,1);
         Scene scene = new Scene(border, Color.LIGHTBLUE);
 
         ////// Controleurs
@@ -108,7 +107,7 @@ public class VueControllerTetris extends Application {
         btn_nouvellePartie.setFont(fontBoutons);
         btn_nouvellePartie.setOnAction(event -> modele.nouvellePartie());
 
-        gPane.add(btn_nouvellePartie, 1, 0);
+        gPane.add(btn_nouvellePartie, 0, 0);
 
 
         ///////fin Controleurs
@@ -132,4 +131,24 @@ public class VueControllerTetris extends Application {
     }
 
 
+    private void MiseAJour(){
+        if(modele.isPartieFinie()){
+            texteScore.setText("C'est perdu! \n " +
+                    "Vous avez fait un score de "+modele.getScore()+" points");
+        }else {
+            texteScore.setText("Votre score: "+modele.getScore()+" points");
+        }
+        //border.setBottom(texteScore);
+    }
+
+
+    @Override
+    public void update(Observable o, Object arg) {
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                vue.MiseAJourVue();
+            }
+        });
+    }
 }

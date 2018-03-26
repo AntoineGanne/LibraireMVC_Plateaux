@@ -43,41 +43,7 @@ public class Plateau {
         else return pieces.get(idPiece-1);
     }
 
-    public void deplacerPiece(int numPiece, String direction, int nbcase) throws exceptionDeplacementPieceFigee { // avec l'id de la piece, la deplacer jusqu'a ce que son pivot atteigne posX, posY
-        int[][] etatplateau=etatDuPlateau();
-        Piece p = null;
-        try {
-            p = getPiece(numPiece);
-        }
-        catch(Exception e){
-            System.out.println("exception ID don't exist captée");
-        }
 
-        boolean[][] matrice = p.getMatriceBoolPiece();
-
-
-        if(!p.getEstFigee()){ // si droit au déplacement (piece non figée)
-            switch(direction){
-                case "droite": // Droite
-                    p.setPosAbsolueX(p.getPosAbsolueX()+nbcase);
-                    break;
-                case "gauche": // Gauche
-                    p.setPosAbsolueX(p.getPosAbsolueX()-nbcase);
-                    break;
-                case "bas": // Bas
-                    p.setPosAbsolueY(p.getPosAbsolueY()+nbcase);
-                    break;
-                case "haut": // Haut
-                    p.setPosAbsolueY(p.getPosAbsolueY()-nbcase);
-                    break;
-                default:
-                    break;
-            }
-        }
-        else {
-            throw new exceptionDeplacementPieceFigee();
-        }
-    }
 
     public void deplacerPiece(int numPiece, String direction) throws exceptionDeplacementPieceFigee { // avec l'id de la piece, la deplacer jusqu'a ce que son pivot atteigne posX, posY
         int[][] etatplateau=etatDuPlateau();

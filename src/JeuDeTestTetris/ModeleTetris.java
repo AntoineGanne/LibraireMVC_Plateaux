@@ -1,7 +1,6 @@
 package JeuDeTestTetris;
 
 import mvc.ExceptionsDuProjet.exceptionChevauchementDePiece;
-import mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee;
 import mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau;
 import mvc.Modele;
 import java.awt.*;
@@ -9,13 +8,21 @@ import java.util.Observable;
 
 import static java.lang.Math.floor;
 
-public class ModeleTetris extends Observable{
-    public Modele getM() {
-        return m;
+
+
+public class ModeleTetris extends Observable implements Runnable{
+    public Modele getModelePrincipal() {
+        return modelePrincipal;
     }
 
-    private Modele m;
+    private Modele modelePrincipal;
+    private Modele modeleProchainePiece;
     private int idPieceEnMouvement;
+    private Thread threadEnCours;
+
+    private static int TAILLE_PIECE_X_MAX=5;
+    private static int TAILLE_PIECE_Y_MAX=5;
+
 
     public boolean isPartieFinie() {
         return partieFinie;
@@ -34,17 +41,34 @@ public class ModeleTetris extends Observable{
     Color clr;
 
     public  ModeleTetris(int nbColonnes,int nbLignes){
-        m=new Modele(nbColonnes,nbLignes);
+        modelePrincipal =new Modele(nbColonnes,nbLignes);
+        modeleProchainePiece=new Modele(TAILLE_PIECE_X_MAX,TAILLE_PIECE_X_MAX);
         miseAJourProchainePiece();
         partieFinie=false;
+
+        threadEnCours=new Thread(this);
+        threadEnCours.start();
     }
 
+    public void run(){
+        boolean pieceEnMouvement=true;
+        while(!partieFinie){
+            try{Thread.sleep(100);}
+            catch (InterruptedException e){e.printStackTrace();}
+            if(idPieceEnMouvement!=0 )pieceEnMouvement=descendrePiece();
+        }
+    }
+
+
+
     public void nouvellePartie(){
-        m.clearPieces();
+        modelePrincipal.clearPieces();
         nouvellePiece();
         score=0;
 
         miseAJourProchainePiece();
+
+
     }
 
     private void miseAJourProchainePiece(){
@@ -99,22 +123,32 @@ public class ModeleTetris extends Observable{
                 clr = new Color(153,51,255);
                 break;
         }
+
+        modeleProchainePiece.clearPieces();
+        int x=(int)floor(TAILLE_PIECE_X_MAX/2);
+        try {
+            modeleProchainePiece.posePiece(x,pivotY,forme,pivotX,pivotY,"horizontal bas", clr);
+        } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau | exceptionChevauchementDePiece exceptionPieceHorsPlateau) {
+            exceptionPieceHorsPlateau.printStackTrace();
+        }
     }
 
     private void nouvellePiece(){
-        int nbCasesX=m.getNbCasesX();
+        int nbCasesX= modelePrincipal.getNbCasesX();
         int x=(int)floor(nbCasesX/2);
         try {
-            m.posePiece(x,pivotY,forme,pivotX,pivotY,"horizontal bas", clr);
+            modelePrincipal.posePiece(x,pivotY,forme,pivotX,pivotY,"horizontal bas", clr);
         } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau exceptionPieceHorsPlateau) {
             exceptionPieceHorsPlateau.printStackTrace();
         } catch (mvc.ExceptionsDuProjet.exceptionChevauchementDePiece exceptionChevauchementDePiece) {
             finDePartie();
         }
-        idPieceEnMouvement=m.selectionnerDernierPieceAdded();
+        idPieceEnMouvement= modelePrincipal.selectionnerDernierPieceAdded();
         miseAJourProchainePiece();
 
         gestionDeLigneRemplie();
+
+        //new Thread(this).start();
     }
 
     private void finDePartie() {
@@ -123,14 +157,14 @@ public class ModeleTetris extends Observable{
     }
 
     private void gestionDeLigneRemplie(){
-        int nbColonnes=m.getNbCasesX();
-        int nbLignes=m.getNbCasesY();
+        int nbColonnes= modelePrincipal.getNbCasesX();
+        int nbLignes= modelePrincipal.getNbCasesY();
         //on parcourt les lignes depuis le bas du plateau
 
         int y=nbLignes-1;
         while(y>=0){
             if(ligneRemplie(y)){
-                m.clearLigneEtDescendCases(y,idPieceEnMouvement);
+                modelePrincipal.clearLigneEtDescendCases(y,idPieceEnMouvement);
                 //on ne décremente pas y dans ce cas, car la ligne du dessus descend d'un cran
             }else{
                 y--;
@@ -140,8 +174,8 @@ public class ModeleTetris extends Observable{
 
 
     private boolean ligneRemplie(int numLigne){
-        for(int x=0;x<m.getNbCasesX();x++){
-            if(m.selectionnerPiece(x,numLigne)==0) return false;
+        for(int x = 0; x< modelePrincipal.getNbCasesX(); x++){
+            if(modelePrincipal.selectionnerPiece(x,numLigne)==0) return false;
         }
         //si on a atteint la fin de la ligne sans trouver de case vide
         return true;
@@ -151,28 +185,35 @@ public class ModeleTetris extends Observable{
 
     public void deplacerPieceADroite(){
         try {
-            m.deplacementPiece(idPieceEnMouvement,"droite");
+            modelePrincipal.deplacementPiece(idPieceEnMouvement,"droite");
         } catch (mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee e) {
 
         }
     }
     public void deplacerPieceAGauche(){
         try {
-            m.deplacementPiece(idPieceEnMouvement,"gauche");
+            modelePrincipal.deplacementPiece(idPieceEnMouvement,"gauche");
         } catch (mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee e) {
 
         }
     }
-    public void descendrePiece(){
+
+    /**
+     * descend la piece correspondant a idPieceEnMouvement
+     * @return vrai si le deplacement a reussit, faut sinon;
+     */
+    public boolean descendrePiece(){
         try {
-            m.deplacementPiece(idPieceEnMouvement,"bas");
+            modelePrincipal.deplacementPiece(idPieceEnMouvement,"bas");
+            return true;
         } catch (mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee e) {
             nouvellePiece();
             incrementerScore();
+            return false;
         }
     }
     public void pivoterPiece(){
-        m.pivoterPiece(idPieceEnMouvement,true);
+        modelePrincipal.pivoterPiece(idPieceEnMouvement,true);
     }
 
     private void incrementerScore(){
@@ -182,5 +223,7 @@ public class ModeleTetris extends Observable{
     }
 
 
-
+    public Modele getModeleProchainePiece() {
+        return modeleProchainePiece;
+    }
 }
