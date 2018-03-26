@@ -1,78 +1,76 @@
 package JeuParking;
-
-import JeuDeTestTetris.ModeleTetris;
 import javafx.application.Application;
 import javafx.event.EventHandler;
-import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TouchEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import mvc.VueControleur;
-import javafx.util.Duration;
-
-
-import javax.naming.SizeLimitExceededException;
 import java.util.Observable;
 import java.util.Observer;
 
-import mvc.ExceptionsDuProjet.*;
-
-
 
 public class VueControleurJeuParking extends Application{
+
+    //region ATTRIBUTS
     ModeleJeuParking modele;
-
     private int nbColonnes, nbLignes;
+    private int nbcoup = 0, nbmax=0;
 
-    // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
-    BorderPane border;
-
-    //Textes
-    Label txt1;
-    Label txt2;
-    int nbcoup = 0, nbmax=0;
-
-    //Fonts
-    Font fontTitres;
-    Font fontBoutons;
+    private BorderPane border; // gestion du placement (permet de placer le champ Text affichage en haut, et GridPane gPane au centre)
+    private Label txt1; // Texte
+    private Label txt2; // Texte
+    private Font fontTitres; // Mise en forme texte
+    private Font fontBoutons; // Mise en forme texte
+    //endregion
 
 
     @Override
     public void start(Stage primaryStage){
 
+        //region - Elements de la fenetre de jeu
+
+        // Taille plateau
         nbColonnes=8;
         nbLignes=8;
-
-        // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
+        // Divise la fenetre en 5 parties
         border = new BorderPane();
-        //border.setPrefSize(900,600);
-
-
-        //Fonts
+        // Mise en forme texte
         fontTitres=new Font("Arial",16);
         fontBoutons=new Font("Arial",15);
-
+        // Textes + Mise en forme + Placement
         txt1=new Label(" Règles du jeu : \n Sortez la pièce rouge du plateau \n Cliquez sur une pièce puis utilisez les touches directionelles pour les déplacer");
         txt1.setFont(fontTitres);
         border.setTop(txt1);
         txt2=new Label(nbcoup+" coups");
         txt2.setFont(fontTitres);
         border.setBottom(txt2);
+        // Modele
+        modele = new ModeleJeuParking(nbColonnes,nbLignes); // Initialisation du modele (création plateau et initialisation des var du modele)
+        // Vue
+        VueControleur vue = new VueControleur(modele.getModelePlateau(),500,500);
+        border.setCenter(vue);
+        // GridPane
+        GridPane gPaneBoutons = new GridPane(); // permet le placement des boutons sur la droite
+        // Scene
+        Scene scene = new Scene(border, Color.LIGHTBLUE);
+        // Stage
+        primaryStage.setTitle("Le Super Rush Hour!");
+        primaryStage.setScene(scene);
+        primaryStage.show();
 
-        // initialisation du modèle que l'on souhaite utiliser
-        modele = new ModeleJeuParking(nbColonnes,nbLignes);
+        //endregion
 
+
+
+        //region -  Modification des textes
         modele.addObserver(new Observer() {
             @Override
             public void update(Observable o, Object arg) {
@@ -88,26 +86,9 @@ public class VueControleurJeuParking extends Application{
                 }
             }
         });
+        //endregion
 
-        //initialisation de la vue
-        VueControleur vue = new VueControleur(modele.getModelePlateau(),500,500);
-
-
-
-
-        // permet de placer des boutons
-        GridPane gPaneBoutons = new GridPane();
-
-
-
-
-
-
-        border.setCenter(vue);
-        Scene scene = new Scene(border, Color.LIGHTBLUE);
-
-
-        ///////// controleurs
+        //region - Selection d'une piece
 
         // on definit les controlleurs des cases du plateau
         // On touche aux élement du gridPane contenu dans VueController et déjà initalisés
@@ -117,14 +98,15 @@ public class VueControleurJeuParking extends Application{
                 Node n=vue.getgPane().getChildren().get(indexNode);
                 int finalX = x;
                 int finalY = y;
+                // permet de selectionner une piece et de mettre son id dans la var du modele @idPieceSelected
                 n.setOnMouseClicked((MouseEvent event) -> {
                     modele.selectionnerPiece(finalX, finalY); //finalX et finalY permet d'avoir une variable finale (qui n'est pas modifiable)
                 });
             }
         }
+        //endregion
 
-        // controller for the arrow keys
-        // move the selected piece in the model in the
+        //region - Mouvement des pieces
         scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event){
@@ -134,18 +116,20 @@ public class VueControleurJeuParking extends Application{
                 if(nbcoup>nbmax){
                     txt2.setTextFill(Color.rgb(255,0,0));
                 }
-                switch (event.getCode()){
+                switch (event.getCode()){ // déplacement de la piece selectionnée
                     case RIGHT: modele.deplacerPiece("droite"); break;
                     case LEFT: modele.deplacerPiece("gauche");break;
                     case DOWN: modele.deplacerPiece("bas");break;
                     case UP: modele.deplacerPiece("haut");break;
                     default:break;
                 }
-
             }
         });
+        //endregion
 
-        //boutons
+        //region - Boutons
+
+        // NIVEAU 1
         Button btn_Niveau1=new Button("Niveau 1");
         btn_Niveau1.setFont(fontBoutons);
         btn_Niveau1.setOnAction(mousebutton -> {
@@ -158,8 +142,8 @@ public class VueControleurJeuParking extends Application{
             txt2.setTextFill(Color.rgb(0,0,0));
             border.setBottom(txt2);
         });
-        gPaneBoutons.add(btn_Niveau1,0,1);
 
+        // NIVEAU 2
         Button btn_Niveau2=new Button("Niveau 2");
         btn_Niveau2.setFont(fontBoutons);
         btn_Niveau2.setOnAction(mousebutton -> {
@@ -172,8 +156,8 @@ public class VueControleurJeuParking extends Application{
             txt2.setTextFill(Color.rgb(0,0,0));
             border.setBottom(txt2);
         });
-        gPaneBoutons.add(btn_Niveau2,0,2);
 
+        // NIVEAU 3
         Button btn_Niveau3=new Button("Niveau 3");
         btn_Niveau3.setFont(fontBoutons);
         btn_Niveau3.setOnAction(mousebutton -> {
@@ -186,18 +170,17 @@ public class VueControleurJeuParking extends Application{
             txt2.setTextFill(Color.rgb(0,0,0));
             border.setBottom(txt2);
         });
+
+        // Placement des boutons dans le GridPane, et placement du GridPane au BorderPane
+        gPaneBoutons.add(btn_Niveau1,0,1);
+        gPaneBoutons.add(btn_Niveau2,0,2);
         gPaneBoutons.add(btn_Niveau3,0,3);
-
         border.setRight(gPaneBoutons);
-        /////////fin des controleurs
+        //endregion
 
 
-
-
-        primaryStage.setTitle("Le Super Rush Hour!");
-        primaryStage.setScene(scene);
-        primaryStage.show();
     }
+
 
 
     /**
