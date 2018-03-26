@@ -1,51 +1,78 @@
 package JeuParking;
-
 import mvc.ExceptionsDuProjet.exceptionChevauchementDePiece;
-import mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau;
 import mvc.Modele;
-
 import java.util.Observable;
-import java.util.Random;
 import java.awt.*;
 
-import java.awt.*;
-import java.util.HashMap;
 
 public class ModeleJeuParking extends Observable{
+
+    //region ATTRIBUTS
+    private Modele modelePlateau;
+    private int idPieceSelected;
+    private boolean partieFinie;
+    //endregion
+
+    // region GETTER
     public Modele getModelePlateau() {
         return modelePlateau;
     }
-
-    private Modele modelePlateau;
-    private int idPieceSelected;
-
     public boolean isPartieFinie() {
         return partieFinie;
     }
+    //endregion
 
-    private boolean partieFinie;
-
+    //region CONSTRUCTEUR
+    /**
+     * Création du modèle dans VueControllerJeuParking
+     * spécifie la taille du plateau
+     * pas de piece selectionnée au debut, la partie n'est pas finie et on initialise les contours du plateau
+     *
+     * @param nbColonnes
+     * @param nbLignes
+     */
     public ModeleJeuParking(int nbColonnes,int nbLignes){
         modelePlateau=new Modele(nbColonnes,nbLignes);
         idPieceSelected=0;
         partieFinie=false;
         // bordure :
         setContours();
+    }
+    //endregion
 
+    //region METHODES
+    /**
+     * Création et positionnement des pieces de contour (pas de direction possible donc "")
+     */
+    private void setContours(){
+        try{
+            modelePlateau.posePiece(7,0,new boolean[][]{{true,true,true}},0,0,"",Color.BLACK);
+            modelePlateau.posePiece(7,4,new boolean[][]{{true,true,true,true}},0,0,"",Color.BLACK);
+            modelePlateau.posePiece(0,0,new boolean[][]{{true,true,true,true,true,true,true,true}},0,0,"",Color.BLACK);
+            modelePlateau.posePiece(1,0,new boolean[][]{{true},{true},{true},{true},{true},{true}},0,0,"",Color.BLACK);
+            modelePlateau.posePiece(1,7,new boolean[][]{{true},{true},{true},{true},{true},{true}},0,0,"",Color.BLACK);
+        }catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau | exceptionChevauchementDePiece exceptionPieceHorsPlateau) {
+            exceptionPieceHorsPlateau.printStackTrace();
+        }
     }
 
-
-
     /**
+     * Selection d'une piece grace a sa position, et remplie var @idPieceSelected avec son id
      *
      * @param posX
      * @param posY
      */
-    public void selectionnerPiece(int posX,int posY)
-    {
+    public void selectionnerPiece(int posX,int posY) {
         this.idPieceSelected=modelePlateau.selectionnerPiece(posX,posY);
     }
 
+    /**
+     * Déplacement de la piece selectionnée préalablement (grace var @idPieceSelected), si = 0 rien ne se passe
+     * direction = "horizontal" ou "vertical" (aurait pu etre "droite", "gauche", "bas", "haut")
+     * on test si la partie est finie si une piece est située dans la case[7][3]
+     *
+     * @param direction
+     */
     public void deplacerPiece(String direction){
         if(idPieceSelected !=0){
             try{
@@ -63,11 +90,12 @@ public class ModeleJeuParking extends Observable{
         }
     }
 
-    public void initialiserNiveauVide(){
-        modelePlateau.clearPieces();
-        setContours();
-    }
 
+    /**
+     * Suppression de toutes les pieces du plateau (pour commencer une nouvelle partie)
+     * On remet les contours + on crée les pieces (piece principale de couleur rouge, autres pieces couleur aleat)
+     * avec leur direction respective
+     */
     public void initialiserNiveau1(){
         modelePlateau.clearPieces();
         setContours();
@@ -94,6 +122,9 @@ public class ModeleJeuParking extends Observable{
         modelePlateau.posePiece(6,3,new boolean[][]{{true,true}},0,0,"vertical");
     }
 
+    /**
+     * idem
+     */
     public void initialiserNiveau2(){
         modelePlateau.clearPieces();
         setContours();
@@ -119,6 +150,9 @@ public class ModeleJeuParking extends Observable{
         modelePlateau.posePiece(6,1,new boolean[][]{{true,true,true}},0,0,"vertical");
     }
 
+    /**
+     * idem
+     */
     public void initialiserNiveau3() {
         modelePlateau.clearPieces();
         setContours();
@@ -145,18 +179,6 @@ public class ModeleJeuParking extends Observable{
         modelePlateau.posePiece(1,4,new boolean[][]{{true,true,true}},0,0,"vertical");
 
     }
-
-    private void setContours(){
-       try{
-           modelePlateau.posePiece(7,0,new boolean[][]{{true,true,true}},0,0,"",Color.BLACK);
-           modelePlateau.posePiece(7,4,new boolean[][]{{true,true,true,true}},0,0,"",Color.BLACK);
-           modelePlateau.posePiece(0,0,new boolean[][]{{true,true,true,true,true,true,true,true}},0,0,"",Color.BLACK);
-           modelePlateau.posePiece(1,0,new boolean[][]{{true},{true},{true},{true},{true},{true}},0,0,"",Color.BLACK);
-           modelePlateau.posePiece(1,7,new boolean[][]{{true},{true},{true},{true},{true},{true}},0,0,"",Color.BLACK);
-       }catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau | exceptionChevauchementDePiece exceptionPieceHorsPlateau) {
-           exceptionPieceHorsPlateau.printStackTrace();
-       }
-    }
-
+    //endregion
 
 }
