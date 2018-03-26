@@ -77,7 +77,13 @@ public class VueControleurJeuParking extends Application{
             @Override
             public void update(Observable o, Object arg) {
                 if(modele.isPartieFinie()){
-                    txt1.setText("\n Felicitation! Vous avez fini le niveau !\n  ");
+                    if(nbcoup<=nbmax){
+                        txt1.setText("\n Felicitation! Vous avez fini le niveau avec un minimum de coup !\n  ");
+                        txt1.setTextFill(Color.rgb(0,176,80));
+                    }
+                    else {
+                        txt1.setText("\n Felicitation! Vous avez fini le niveau !\n  ");
+                    }
                     border.setTop(txt1);
                 }
             }
