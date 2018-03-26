@@ -8,17 +8,14 @@ package mvc;
 
 
 //import java.awt.*;
-import java.util.Observable;
-import java.util.Observer;
 
-import javafx.application.Platform;
-import javafx.event.EventHandler;
-
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+
+import java.util.Observable;
+import java.util.Observer;
 
 
 public class VueControleur extends BorderPane {
@@ -27,12 +24,6 @@ public class VueControleur extends BorderPane {
     private Modele m;
 
     private Rectangle[][] affichagePlateau;
-    int tailleRectanglesX;
-    int tailleRectanglesY;
-
-    public GridPane getgPane() {
-        return gPane;
-    }
 
     private GridPane gPane;
 
@@ -80,9 +71,9 @@ public class VueControleur extends BorderPane {
         });
 
 
-        //////// Création des cases du plateau + controlleurs //////////////////////////////
-        tailleRectanglesX=taillePaneX/nbCasesX;
-        tailleRectanglesY =taillePaneY/nbCasesY;
+        //////// Création des cases du plateau //////////////////////////////
+        int tailleRectanglesX = taillePaneX / nbCasesX;
+        int tailleRectanglesY = taillePaneY / nbCasesY;
         int[][] etatDuPlateau=m.getEtatDuPlateau();
 
         for(int x=0;x<nbCasesX;x++){
@@ -90,7 +81,7 @@ public class VueControleur extends BorderPane {
                 Rectangle rect = new Rectangle();
                 rect.setWidth(tailleRectanglesX);
                 rect.setHeight(tailleRectanglesY);
-                rect.setX(x*tailleRectanglesX);
+                rect.setX(x* tailleRectanglesX);
                 rect.setY(y* tailleRectanglesY);
 
                 int id=etatDuPlateau[x][y];
@@ -103,33 +94,19 @@ public class VueControleur extends BorderPane {
                     rect.setFill(Color.rgb(c.getRed(),c.getGreen(),c.getBlue()));
                 }
 
-
-                /*
-                rect.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    // si case
-                    @Override
-                    public void handle(MouseEvent event) {
-                        m.posePiece((int)rect.getX()/tailleRectanglesX,(int)rect.getY()/tailleRectanglesY);
-                    }
-                });
-                */
-
                 gPane.add(rect,x,y);
                 affichagePlateau[x][y]=rect;
             }
         }
         ///////////////////////////////////////////////////////////////////////////////////
 
-
-
-
         //gPane.setGridLinesVisible(true);
-        
         this.setCenter(gPane);
-
     }
 
-
+    /**
+     * met a jour les rectangles qui composent la vue
+     */
     public void MiseAJourVue(){
         int[][] plateau=m.getEtatDuPlateau();
         int nbCasesX=m.getNbCasesX();
@@ -149,6 +126,10 @@ public class VueControleur extends BorderPane {
                 }
             }
         }
+    }
+
+    public GridPane getgPane() {
+        return gPane;
     }
 
 }

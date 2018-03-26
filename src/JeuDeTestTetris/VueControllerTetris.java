@@ -1,22 +1,21 @@
 package JeuDeTestTetris;
 
-import java.util.Observable;
-import java.util.Observer;
 import javafx.application.Application;
-
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
-
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import mvc.VueControleur;
+
+import java.util.Observable;
+import java.util.Observer;
 
 public class VueControllerTetris extends Application implements Observer{
     private ModeleTetris modele;
@@ -27,11 +26,11 @@ public class VueControllerTetris extends Application implements Observer{
     private int nbColonnes, nbLignes;
 
     //Textes
-    Label textePrincipal;
-    Label texteScore;
+    private Label textePrincipal;
+    private Label texteScore;
     //Fonts
-    Font fontTitres;
-    Font fontBoutons;
+    private Font fontTitres;
+    private Font fontBoutons;
 
     @Override
     public void start(Stage primaryStage){
@@ -50,10 +49,10 @@ public class VueControllerTetris extends Application implements Observer{
         fontBoutons=new Font("Arial",15);
         //labels
         textePrincipal=new Label(" Règles du jeu : \n " +
-                "fleches gauche et droite pour deplacer la piece \n " +
-                "fleche haut pour pivoter la piece \n"+
-                "fleche bas pour accelerer la descente de la piece \n"+
-                "Vous gagnez un point pour chaque piece posée");
+                "fleches gauche et droite pour deplacer la piece.\n " +
+                "fleche haut pour pivoter la piece. \n"+
+                "fleche bas pour accelerer la descente de la piece. \n"+
+                "Vous gagnez un point pour chaque piece posée.");
         textePrincipal.setFont(fontTitres);
         border.setTop(textePrincipal);
 
@@ -114,8 +113,6 @@ public class VueControllerTetris extends Application implements Observer{
         border.setRight(gPane);
 
 
-
-
         primaryStage.setTitle("Le Super Tetris!");
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -131,14 +128,17 @@ public class VueControllerTetris extends Application implements Observer{
     }
 
 
+    /**
+     * fait la mise a jour du score de la partie
+     */
     private void MiseAJour(){
         if(modele.isPartieFinie()){
             texteScore.setText("C'est perdu! \n " +
                     "Vous avez fait un score de "+modele.getScore()+" points");
         }else {
-            texteScore.setText("Votre score: "+modele.getScore()+" points");
+            texteScore.setText("Votre score: "+modele.getScore()+" points. \n" +
+                    "");
         }
-        //border.setBottom(texteScore);
     }
 
 

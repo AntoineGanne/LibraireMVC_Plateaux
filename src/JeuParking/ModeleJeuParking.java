@@ -1,15 +1,10 @@
 package JeuParking;
 
 import mvc.ExceptionsDuProjet.exceptionChevauchementDePiece;
-import mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau;
 import mvc.Modele;
 
+import java.awt.*;
 import java.util.Observable;
-import java.util.Random;
-import java.awt.*;
-
-import java.awt.*;
-import java.util.HashMap;
 
 public class ModeleJeuParking extends Observable{
     public Modele getModelePlateau() {
@@ -37,9 +32,9 @@ public class ModeleJeuParking extends Observable{
 
 
     /**
-     *
-     * @param posX
-     * @param posY
+     * renvoit l'id de la piece en posX,posY
+     * @param posX coordonnées
+     * @param posY coordonnées
      */
     public void selectionnerPiece(int posX,int posY)
     {
@@ -50,7 +45,7 @@ public class ModeleJeuParking extends Observable{
         if(idPieceSelected !=0){
             try{
                 modelePlateau.deplacementPiece(idPieceSelected,direction);
-            } catch(Exception e){
+            } catch(Exception ignored){
 
             }
         }
@@ -68,30 +63,30 @@ public class ModeleJeuParking extends Observable{
         setContours();
     }
 
-    public void initialiserNiveau1(){
+    public void initialiserNiveau1() {
         modelePlateau.clearPieces();
         setContours();
-        //piece principale
+
         try {
+            //piece principale
             modelePlateau.posePiece(1,3,new boolean[][]{{true},{true}},0,0,"horizontal",Color.RED);
-        } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau exceptionPieceHorsPlateau) {
+            //autres pieces
+            modelePlateau.posePiece(3,2,new boolean[][]{{true},{true}},0,0,"horizontal");
+            modelePlateau.posePiece(3,6,new boolean[][]{{true},{true}},0,0,"horizontal");
+            modelePlateau.posePiece(5,2,new boolean[][]{{true},{true}},0,0,"horizontal");
+            modelePlateau.posePiece(5,5,new boolean[][]{{true},{true}},0,0,"horizontal");
+            modelePlateau.posePiece(1,1,new boolean[][]{{true},{true}},0,0,"horizontal");
+
+            modelePlateau.posePiece(1,4,new boolean[][]{{true,true}},0,0,"vertical");
+            modelePlateau.posePiece(2,4,new boolean[][]{{true,true,true}},0,0,"vertical");
+            modelePlateau.posePiece(4,3,new boolean[][]{{true,true}},0,0,"vertical");
+            modelePlateau.posePiece(3,3,new boolean[][]{{true,true,true}},0,0,"vertical");
+            modelePlateau.posePiece(6,3,new boolean[][]{{true,true}},0,0,"vertical");
+        } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau | exceptionChevauchementDePiece exceptionPieceHorsPlateau) {
             exceptionPieceHorsPlateau.printStackTrace();
-        } catch (mvc.ExceptionsDuProjet.exceptionChevauchementDePiece exceptionChevauchementDePiece) {
-            exceptionChevauchementDePiece.printStackTrace();
         }
 
-        //autres pieces
-        modelePlateau.posePiece(3,2,new boolean[][]{{true},{true}},0,0,"horizontal");
-        modelePlateau.posePiece(3,6,new boolean[][]{{true},{true}},0,0,"horizontal");
-        modelePlateau.posePiece(5,2,new boolean[][]{{true},{true}},0,0,"horizontal");
-        modelePlateau.posePiece(5,5,new boolean[][]{{true},{true}},0,0,"horizontal");
-        modelePlateau.posePiece(1,1,new boolean[][]{{true},{true}},0,0,"horizontal");
 
-        modelePlateau.posePiece(1,4,new boolean[][]{{true,true}},0,0,"vertical");
-        modelePlateau.posePiece(2,4,new boolean[][]{{true,true,true}},0,0,"vertical");
-        modelePlateau.posePiece(4,3,new boolean[][]{{true,true}},0,0,"vertical");
-        modelePlateau.posePiece(3,3,new boolean[][]{{true,true,true}},0,0,"vertical");
-        modelePlateau.posePiece(6,3,new boolean[][]{{true,true}},0,0,"vertical");
     }
 
     public void initialiserNiveau2(){
@@ -100,49 +95,50 @@ public class ModeleJeuParking extends Observable{
         //piece principale
         try {
             modelePlateau.posePiece(1,3,new boolean[][]{{true},{true}},0,0,"horizontal",Color.RED);
-        } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau exceptionPieceHorsPlateau) {
+            //autres pieces
+            modelePlateau.posePiece(2,1,new boolean[][]{{true},{true}},0,0,"horizontal");
+            modelePlateau.posePiece(2,2,new boolean[][]{{true},{true},{true}},0,0,"horizontal");
+            modelePlateau.posePiece(2,5,new boolean[][]{{true},{true}},0,0,"horizontal");
+
+            modelePlateau.posePiece(1,1,new boolean[][]{{true,true}},0,0,"vertical");
+            modelePlateau.posePiece(1,4,new boolean[][]{{true,true}},0,0,"vertical");
+            modelePlateau.posePiece(3,3,new boolean[][]{{true,true}},0,0,"vertical");
+            modelePlateau.posePiece(5,1,new boolean[][]{{true,true}},0,0,"vertical");
+            modelePlateau.posePiece(4,3,new boolean[][]{{true,true,true}},0,0,"vertical");
+            modelePlateau.posePiece(6,1,new boolean[][]{{true,true,true}},0,0,"vertical");
+
+        } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau | exceptionChevauchementDePiece exceptionPieceHorsPlateau) {
             exceptionPieceHorsPlateau.printStackTrace();
-        } catch (mvc.ExceptionsDuProjet.exceptionChevauchementDePiece exceptionChevauchementDePiece) {
-            exceptionChevauchementDePiece.printStackTrace();
         }
 
-        //autres pieces
-        modelePlateau.posePiece(2,1,new boolean[][]{{true},{true}},0,0,"horizontal");
-        modelePlateau.posePiece(2,2,new boolean[][]{{true},{true},{true}},0,0,"horizontal");
-        modelePlateau.posePiece(2,5,new boolean[][]{{true},{true}},0,0,"horizontal");
 
-        modelePlateau.posePiece(1,1,new boolean[][]{{true,true}},0,0,"vertical");
-        modelePlateau.posePiece(1,4,new boolean[][]{{true,true}},0,0,"vertical");
-        modelePlateau.posePiece(3,3,new boolean[][]{{true,true}},0,0,"vertical");
-        modelePlateau.posePiece(5,1,new boolean[][]{{true,true}},0,0,"vertical");
-        modelePlateau.posePiece(4,3,new boolean[][]{{true,true,true}},0,0,"vertical");
-        modelePlateau.posePiece(6,1,new boolean[][]{{true,true,true}},0,0,"vertical");
     }
 
     public void initialiserNiveau3() {
         modelePlateau.clearPieces();
         setContours();
-        //piece principale
-        try {
-            modelePlateau.posePiece(1, 3, new boolean[][]{{true}, {true}}, 0, 0, "horizontal", Color.RED);
-        } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau exceptionPieceHorsPlateau) {
-            exceptionPieceHorsPlateau.printStackTrace();
-        } catch (mvc.ExceptionsDuProjet.exceptionChevauchementDePiece exceptionChevauchementDePiece) {
-            exceptionChevauchementDePiece.printStackTrace();
-        }
-        //autres pieces
-        modelePlateau.posePiece(2,1,new boolean[][]{{true},{true}},0,0,"horizontal");
-        modelePlateau.posePiece(1,2,new boolean[][]{{true},{true}},0,0,"horizontal");
-        modelePlateau.posePiece(3,2,new boolean[][]{{true},{true}},0,0,"horizontal");
-        modelePlateau.posePiece(4,5,new boolean[][]{{true},{true}},0,0,"horizontal");
-        modelePlateau.posePiece(5,4,new boolean[][]{{true},{true}},0,0,"horizontal");
-        modelePlateau.posePiece(4,6,new boolean[][]{{true},{true},{true}},0,0,"horizontal");
 
-        modelePlateau.posePiece(3,3,new boolean[][]{{true,true}},0,0,"vertical");
-        modelePlateau.posePiece(3,5,new boolean[][]{{true,true}},0,0,"vertical");
-        modelePlateau.posePiece(4,3,new boolean[][]{{true,true}},0,0,"vertical");
-        modelePlateau.posePiece(6,2,new boolean[][]{{true,true}},0,0,"vertical");
-        modelePlateau.posePiece(1,4,new boolean[][]{{true,true,true}},0,0,"vertical");
+        try {
+            //piece principale
+            modelePlateau.posePiece(1, 3, new boolean[][]{{true}, {true}}, 0, 0, "horizontal", Color.RED);
+
+            //autres pieces
+            modelePlateau.posePiece(2,1,new boolean[][]{{true},{true}},0,0,"horizontal");
+            modelePlateau.posePiece(1,2,new boolean[][]{{true},{true}},0,0,"horizontal");
+            modelePlateau.posePiece(3,2,new boolean[][]{{true},{true}},0,0,"horizontal");
+            modelePlateau.posePiece(4,5,new boolean[][]{{true},{true}},0,0,"horizontal");
+            modelePlateau.posePiece(5,4,new boolean[][]{{true},{true}},0,0,"horizontal");
+            modelePlateau.posePiece(4,6,new boolean[][]{{true},{true},{true}},0,0,"horizontal");
+
+            modelePlateau.posePiece(3,3,new boolean[][]{{true,true}},0,0,"vertical");
+            modelePlateau.posePiece(3,5,new boolean[][]{{true,true}},0,0,"vertical");
+            modelePlateau.posePiece(4,3,new boolean[][]{{true,true}},0,0,"vertical");
+            modelePlateau.posePiece(6,2,new boolean[][]{{true,true}},0,0,"vertical");
+            modelePlateau.posePiece(1,4,new boolean[][]{{true,true,true}},0,0,"vertical");
+
+        } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau | exceptionChevauchementDePiece exceptionPieceHorsPlateau) {
+            exceptionPieceHorsPlateau.printStackTrace();
+        }
 
     }
 

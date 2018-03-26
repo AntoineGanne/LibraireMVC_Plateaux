@@ -1,8 +1,8 @@
 package JeuDeTestTetris;
 
 import mvc.ExceptionsDuProjet.exceptionChevauchementDePiece;
-import mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau;
 import mvc.Modele;
+
 import java.awt.*;
 import java.util.Observable;
 
@@ -11,26 +11,14 @@ import static java.lang.Math.floor;
 
 
 public class ModeleTetris extends Observable implements Runnable{
-    public Modele getModelePrincipal() {
-        return modelePrincipal;
-    }
-
     private Modele modelePrincipal;
     private Modele modeleProchainePiece;
     private int idPieceEnMouvement;
-    private Thread threadEnCours;
 
     private static int TAILLE_PIECE_X_MAX=5;
     private static int TAILLE_PIECE_Y_MAX=5;
 
 
-    public boolean isPartieFinie() {
-        return partieFinie;
-    }
-
-    public int getScore() {
-        return score;
-    }
 
     private int score;
     private boolean partieFinie;
@@ -38,39 +26,57 @@ public class ModeleTetris extends Observable implements Runnable{
     //attributs prochaine piece
     private boolean[][] forme;
     private int pivotX , pivotY;
-    Color clr;
+    private Color clr;
 
+    /**
+     * Constructeur du modele
+     * @param nbColonnes nombre de colonnes
+     * @param nbLignes  nombre de lignes
+     */
     public  ModeleTetris(int nbColonnes,int nbLignes){
         modelePrincipal =new Modele(nbColonnes,nbLignes);
-        modeleProchainePiece=new Modele(TAILLE_PIECE_X_MAX,TAILLE_PIECE_X_MAX);
+        modeleProchainePiece=new Modele(TAILLE_PIECE_X_MAX,TAILLE_PIECE_Y_MAX);
         miseAJourProchainePiece();
         partieFinie=false;
 
-        threadEnCours=new Thread(this);
-        threadEnCours.start();
+        new Thread(this).start();
     }
 
+    /**
+     * thread du modèle:
+     * fait descendre la piece toutes les 100 millisecondes
+     */
     public void run(){
         boolean pieceEnMouvement=true;
-        while(!partieFinie){
-            try{Thread.sleep(100);}
-            catch (InterruptedException e){e.printStackTrace();}
-            if(idPieceEnMouvement!=0 )pieceEnMouvement=descendrePiece();
+        while(pieceEnMouvement){
+            if(!partieFinie){
+                try{Thread.sleep(100);}
+                catch (InterruptedException e){e.printStackTrace();}
+                if(idPieceEnMouvement!=0 )pieceEnMouvement=descendrePiece();
+            }
         }
     }
 
 
-
+    /**
+     * initialise une nouvelle partie
+     */
     public void nouvellePartie(){
         modelePrincipal.clearPieces();
         nouvellePiece();
         score=0;
+        partieFinie=false;
 
         miseAJourProchainePiece();
 
+        setChanged();
+        notifyObservers();
 
     }
 
+    /**
+     * selectionne une piece aléatoire
+     */
     private void miseAJourProchainePiece(){
         int aleat = 1 + (int)(Math.random()*((7-1)+1));
         switch (aleat){
@@ -133,6 +139,9 @@ public class ModeleTetris extends Observable implements Runnable{
         }
     }
 
+    /**
+     * crée une nouvelle piece(dont les attributs ont été auparavant definit par miseAJourProchainePiece()
+     */
     private void nouvellePiece(){
         int nbCasesX= modelePrincipal.getNbCasesX();
         int x=(int)floor(nbCasesX/2);
@@ -141,21 +150,21 @@ public class ModeleTetris extends Observable implements Runnable{
         } catch (mvc.ExceptionsDuProjet.exceptionPieceHorsPlateau exceptionPieceHorsPlateau) {
             exceptionPieceHorsPlateau.printStackTrace();
         } catch (mvc.ExceptionsDuProjet.exceptionChevauchementDePiece exceptionChevauchementDePiece) {
-            finDePartie();
+            //si l'emplacement de création de la piece est déjà pris alors la partie est finie
+            partieFinie=true;
         }
         idPieceEnMouvement= modelePrincipal.selectionnerDernierPieceAdded();
         miseAJourProchainePiece();
 
         gestionDeLigneRemplie();
 
-        //new Thread(this).start();
     }
 
-    private void finDePartie() {
-        partieFinie=true;
 
-    }
-
+    /**
+     * verifie si une ligne du plateau est remplie,
+     * appelle la fonction de suppression de ligne le cas écheant
+     */
     private void gestionDeLigneRemplie(){
         int nbColonnes= modelePrincipal.getNbCasesX();
         int nbLignes= modelePrincipal.getNbCasesY();
@@ -172,7 +181,11 @@ public class ModeleTetris extends Observable implements Runnable{
         }
     }
 
-
+    /**
+     *
+     * @param numLigne  coordonnée de la ligne a tester
+     * @return vrai si la ligne de coordonnée numLigne est remplie
+     */
     private boolean ligneRemplie(int numLigne){
         for(int x = 0; x< modelePrincipal.getNbCasesX(); x++){
             if(modelePrincipal.selectionnerPiece(x,numLigne)==0) return false;
@@ -183,17 +196,18 @@ public class ModeleTetris extends Observable implements Runnable{
 
 
 
+
     public void deplacerPieceADroite(){
         try {
             modelePrincipal.deplacementPiece(idPieceEnMouvement,"droite");
-        } catch (mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee e) {
+        } catch (mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee ignored) {
 
         }
     }
     public void deplacerPieceAGauche(){
         try {
             modelePrincipal.deplacementPiece(idPieceEnMouvement,"gauche");
-        } catch (mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee e) {
+        } catch (mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee ignored) {
 
         }
     }
@@ -212,6 +226,8 @@ public class ModeleTetris extends Observable implements Runnable{
             return false;
         }
     }
+
+
     public void pivoterPiece(){
         modelePrincipal.pivoterPiece(idPieceEnMouvement,true);
     }
@@ -223,7 +239,19 @@ public class ModeleTetris extends Observable implements Runnable{
     }
 
 
+    //GETTER
+    public Modele getModelePrincipal() {
+        return modelePrincipal;
+    }
+    public boolean isPartieFinie() {
+        return partieFinie;
+    }
+
+    public int getScore() {
+        return score;
+    }
     public Modele getModeleProchainePiece() {
         return modeleProchainePiece;
     }
+
 }
