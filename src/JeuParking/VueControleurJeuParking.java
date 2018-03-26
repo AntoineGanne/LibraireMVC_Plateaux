@@ -144,6 +144,8 @@ public class VueControleurJeuParking extends Application{
         btn_Niveau1.setFont(fontBoutons);
         btn_Niveau1.setOnAction(mousebutton -> {
             modele.initialiserNiveau1();
+            txt1.setText(" Règles du jeu : \n Sortez la pièce rouge du plateau \n Cliquez sur une pièce puis utilisez les touches directionelles pour les déplacer");
+            border.setTop(txt1);
             nbcoup=0;
             nbmax=12;
             txt2.setText(nbcoup+" coups ");
@@ -156,6 +158,8 @@ public class VueControleurJeuParking extends Application{
         btn_Niveau2.setFont(fontBoutons);
         btn_Niveau2.setOnAction(mousebutton -> {
             modele.initialiserNiveau2();
+            txt1.setText(" Règles du jeu : \n Sortez la pièce rouge du plateau \n Cliquez sur une pièce puis utilisez les touches directionelles pour les déplacer");
+            border.setTop(txt1);
             nbcoup=0;
             nbmax=18;
             txt2.setText(nbcoup+" coups ");
@@ -168,6 +172,8 @@ public class VueControleurJeuParking extends Application{
         btn_Niveau3.setFont(fontBoutons);
         btn_Niveau3.setOnAction(mousebutton -> {
             modele.initialiserNiveau3();
+            txt1.setText(" Règles du jeu : \n Sortez la pièce rouge du plateau \n Cliquez sur une pièce puis utilisez les touches directionelles pour les déplacer");
+            border.setTop(txt1);
             nbcoup=0;
             nbmax=12;
             txt2.setText(nbcoup+" coups ");
