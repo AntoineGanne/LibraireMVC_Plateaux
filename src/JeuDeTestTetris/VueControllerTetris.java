@@ -102,7 +102,6 @@ public class VueControllerTetris extends Application implements Observer{
                 }
             }
         });
-
         //boutons
         Button btn_nouvellePartie;
         btn_nouvellePartie = new Button("Nouvelle Partie");

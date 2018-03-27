@@ -56,6 +56,9 @@ public class ModeleTetris extends Observable implements Runnable{
                 try{Thread.sleep(200);}
                 catch (InterruptedException e){e.printStackTrace();}
                 if(idPieceEnMouvement!=0 )descendrePiece();
+            }else{
+                try{Thread.sleep(200);}
+                catch (InterruptedException e){e.printStackTrace();}
             }
         }
     }

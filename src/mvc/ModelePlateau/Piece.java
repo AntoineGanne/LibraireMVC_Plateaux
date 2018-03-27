@@ -29,6 +29,10 @@ public class Piece {
         return id;
     }
 
+    /**
+     *  renvoit un tableau de booléens qui correspond a la forme(liste de case) de la piece (simimilaire a la création de piece)
+     * @return un tableau de booléens
+     */
     public boolean [][] getMatriceBoolPiece(){
         int tailleX=getTailleX();
         int tailleY=getTailleY();

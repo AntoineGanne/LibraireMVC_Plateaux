@@ -123,7 +123,9 @@ public class ModeleJeuParking extends Observable{
     }
 
     /**
-     * idem
+     * Suppression de toutes les pieces du plateau (pour commencer une nouvelle partie)
+     * On remet les contours + on crée les pieces (piece principale de couleur rouge, autres pieces couleur aleat)
+     * avec leur direction respective
      */
     public void initialiserNiveau2(){
         modelePlateau.clearPieces();
@@ -152,7 +154,9 @@ public class ModeleJeuParking extends Observable{
     }
 
     /**
-     * idem
+     * Suppression de toutes les pieces du plateau (pour commencer une nouvelle partie)
+     * On remet les contours + on crée les pieces (piece principale de couleur rouge, autres pieces couleur aleat)
+     * avec leur direction respective
      */
     public void initialiserNiveau3() {
         modelePlateau.clearPieces();

@@ -21,7 +21,7 @@ import java.util.Observer;
 public class VueControleurJeuParking extends Application{
 
     //region ATTRIBUTS
-    ModeleJeuParking modele;
+    private ModeleJeuParking modele;
     private int nbColonnes, nbLignes;
     private int nbcoup = 0, nbmax=0;
 
