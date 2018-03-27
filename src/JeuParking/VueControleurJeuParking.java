@@ -1,5 +1,6 @@
 package JeuParking;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -171,11 +172,23 @@ public class VueControleurJeuParking extends Application{
             border.setBottom(txt2);
         });
 
+        //Quitter le jeu
+
+        Button btn_close;
+        btn_close = new Button("Quitter le jeu");
+        btn_close.setFont(fontBoutons);
+        btn_close.setOnAction(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
+
         // Placement des boutons dans le GridPane, et placement du GridPane au BorderPane
         gPaneBoutons.add(btn_Niveau1,0,1);
         gPaneBoutons.add(btn_Niveau2,0,2);
         gPaneBoutons.add(btn_Niveau3,0,3);
+        gPaneBoutons.add(btn_close,0,4);
         border.setRight(gPaneBoutons);
+
         //endregion
 
 

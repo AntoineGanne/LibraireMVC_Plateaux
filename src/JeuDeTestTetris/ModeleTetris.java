@@ -4,6 +4,9 @@ import mvc.ExceptionsDuProjet.exceptionChevauchementDePiece;
 import mvc.Modele;
 
 import java.awt.*;
+import java.sql.Timestamp;
+import java.time.Clock;
+import java.util.Calendar;
 import java.util.Observable;
 
 import static java.lang.Math.floor;
@@ -44,15 +47,15 @@ public class ModeleTetris extends Observable implements Runnable{
 
     /**
      * thread du modèle:
-     * fait descendre la piece toutes les 100 millisecondes
+     * fait descendre la piece toutes les 200 millisecondes
      */
     public void run(){
-        boolean pieceEnMouvement=true;
-        while(pieceEnMouvement){
+        //  la boucle infini sert a ce que le thread marche pour les parties suivantes
+        while(true){
             if(!partieFinie){
-                try{Thread.sleep(100);}
+                try{Thread.sleep(200);}
                 catch (InterruptedException e){e.printStackTrace();}
-                if(idPieceEnMouvement!=0 )pieceEnMouvement=descendrePiece();
+                if(idPieceEnMouvement!=0 )descendrePiece();
             }
         }
     }
@@ -158,6 +161,7 @@ public class ModeleTetris extends Observable implements Runnable{
 
         gestionDeLigneRemplie();
 
+
     }
 
 
@@ -218,7 +222,7 @@ public class ModeleTetris extends Observable implements Runnable{
      */
     public boolean descendrePiece(){
         try {
-            modelePrincipal.deplacementPiece(idPieceEnMouvement,"bas");
+            if(!partieFinie)modelePrincipal.deplacementPiece(idPieceEnMouvement,"bas");
             return true;
         } catch (mvc.ExceptionsDuProjet.exceptionDeplacementPieceFigee e) {
             nouvellePiece();

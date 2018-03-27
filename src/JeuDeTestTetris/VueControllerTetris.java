@@ -32,6 +32,8 @@ public class VueControllerTetris extends Application implements Observer{
     private Font fontTitres;
     private Font fontBoutons;
 
+    Button btn_nouvellePartie;
+
     @Override
     public void start(Stage primaryStage){
         nbColonnes=10;
@@ -83,7 +85,7 @@ public class VueControllerTetris extends Application implements Observer{
 
 
         border.setCenter(vue);
-        gPane.add(vueProchainePiece,0,1);
+        gPane.add(vueProchainePiece,0,0);
         Scene scene = new Scene(border, Color.LIGHTBLUE);
 
         ////// Controleurs
@@ -102,12 +104,23 @@ public class VueControllerTetris extends Application implements Observer{
         });
 
         //boutons
-        Button btn_nouvellePartie=new Button("Nouvelle Partie");
+        Button btn_nouvellePartie;
+        btn_nouvellePartie = new Button("Nouvelle Partie");
         btn_nouvellePartie.setFont(fontBoutons);
-        btn_nouvellePartie.setOnAction(event -> modele.nouvellePartie());
+        btn_nouvellePartie.setOnAction(event -> {
+            modele.nouvellePartie();
+        });
+        gPane.add(btn_nouvellePartie, 0, 1);
 
-        gPane.add(btn_nouvellePartie, 0, 0);
 
+        Button btn_close;
+        btn_close = new Button("Quitter le jeu");
+        btn_close.setFont(fontBoutons);
+        btn_close.setOnAction(event -> {
+            Platform.exit();
+            System.exit(0);
+        });
+        gPane.add(btn_close, 0, 2);
 
         ///////fin Controleurs
         border.setRight(gPane);
