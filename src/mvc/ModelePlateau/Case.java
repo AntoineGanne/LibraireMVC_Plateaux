@@ -12,14 +12,6 @@ public class Case {
         return y;
     }
 
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
-
 
     public Case(int x_,int y_){
         x=x_;
@@ -31,7 +23,8 @@ public class Case {
     }
 
     /**
-     * rotation anti-horaire de 90 degrés.
+     * rotation de la case, en prenant la case de coordonnées (0,0) relativement a la piece comme
+     * etant le centre de rotation
      * @param sensHoraire si vrai alors pivot dans le sens horaire.
      */
     public void pivoterCase(boolean sensHoraire){

@@ -37,7 +37,7 @@ public class VueControllerTetris extends Application implements Observer{
     @Override
     public void start(Stage primaryStage){
         nbColonnes=10;
-        nbLignes=30;
+        nbLignes=25;
 
         // gestion du placement (permet de palcer le champ Text affichage en haut, et GridPane gPane au centre)
         BorderPane border = new BorderPane();
@@ -80,7 +80,7 @@ public class VueControllerTetris extends Application implements Observer{
 
 
         //initialisation de la vue
-        vue = new VueControleur(modele.getModelePrincipal(),200,600);
+        vue = new VueControleur(modele.getModelePrincipal(),200,500);
         vueProchainePiece=new VueControleur(modele.getModeleProchainePiece(),100,100);
 
 
